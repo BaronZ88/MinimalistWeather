@@ -1,0 +1,44 @@
+def supportVersion = "23.2.0"
+def rxBindingVersion = "0.4.0"
+def retrofitVersion = "2.0.1"
+
+project.ext {
+    android = [
+            compileSdkVersion: 23,
+            buildToolsVersion: "23.0.3",
+            applicationId    : "me.baron.weatherstyle",
+            minSdkVersion    : 14,
+            targetSdkVersion : 23,
+            versionCode      : 1,
+            versionName      : "1.0"
+    ]
+
+    dependencies = [
+            //android-support
+            "support-v4"                 : "com.android.support:support-v4:${supportVersion}",
+            "appcompat-v7"               : "com.android.support:appcompat-v7:${supportVersion}",
+            "design"                     : "com.android.support:design:${supportVersion}",
+
+            //java8-support
+            "gradle-retrolambda"         : "me.tatarka:gradle-retrolambda:3.3.0-beta4",
+            "stream"                     : "com.annimon:stream:1.0.8",
+
+            //rx
+            "rxandroid"                  : "io.reactivex:rxandroid:1.1.0",
+            "rxbinding"                  : "com.jakewharton.rxbinding:rxbinding:${rxBindingVersion}",
+            "rxbinding-support-v4"       : "com.jakewharton.rxbinding:rxbinding-support-v4:${rxBindingVersion}",
+            "rxbinding-appcompat-v7"     : "com.jakewharton.rxbinding:rxbinding-appcompat-v7:${rxBindingVersion}",
+            "rxbinding-design"           : "com.jakewharton.rxbinding:rxbinding-design:${rxBindingVersion}",
+            "rxbinding-recyclerview-v7"  : "com.jakewharton.rxbinding:rxbinding-recyclerview-v7:${rxBindingVersion}",
+
+            //retrofit
+            "retrofit"                   : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            "adapter-rxjava"             : "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}",
+
+            //others
+            "okhttp3-logging-interceptor": "com.squareup.okhttp3:logging-interceptor:3.1.2",
+            "ormlite-android"            : "com.j256.ormlite:ormlite-android:4.48",
+            "fastjson"                   : "com.alibaba:fastjson:1.2.7",
+            "butterknife"                : "com.jakewharton:butterknife:7.0.1",
+    ]
+}

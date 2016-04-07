@@ -1,0 +1,37 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile rootProject.ext.dependencies.getAt("support-v4")
+    compile rootProject.ext.dependencies.getAt("appcompat-v7")
+    compile rootProject.ext.dependencies.getAt("design")
+    compile rootProject.ext.dependencies.getAt("butterknife")
+    compile rootProject.ext.dependencies.getAt("rxandroid")
+    compile rootProject.ext.dependencies.getAt("rxbinding")
+    compile rootProject.ext.dependencies.getAt("rxbinding-support-v4")
+    compile rootProject.ext.dependencies.getAt("rxbinding-appcompat-v7")
+    compile rootProject.ext.dependencies.getAt("rxbinding-design")
+    compile rootProject.ext.dependencies.getAt("rxbinding-recyclerview-v7")
+    compile rootProject.ext.dependencies.getAt("ormlite-android")
+    compile rootProject.ext.dependencies.getAt("stream")
+}
