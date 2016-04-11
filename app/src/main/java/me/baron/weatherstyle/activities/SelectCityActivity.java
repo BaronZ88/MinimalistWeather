@@ -4,11 +4,15 @@ import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.annimon.stream.Stream;
+import com.jakewharton.rxbinding.support.v7.widget.RxRecyclerView;
 import com.jakewharton.rxbinding.support.v7.widget.RxSearchView;
+import com.jakewharton.rxbinding.support.v7.widget.SearchViewQueryTextEvent;
 
 import java.util.concurrent.TimeUnit;
 
@@ -18,6 +22,8 @@ import me.baron.androidlibrary.activity.BaseActivity;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.fragments.SelectCityFragment;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
@@ -54,27 +60,11 @@ public class SelectCityActivity extends BaseActivity {
         MenuItem menuItem = menu.findItem(R.id.action_search);//在菜单中找到对应控件的item
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
         RxSearchView.queryTextChanges(searchView)
-//                .filter(charSequence -> {
-//                    if (TextUtils.isEmpty(charSequence)) {
-//
-//                    }
-//                    return !TextUtils.isEmpty(charSequence);
-//                })
-                .map(charSequence -> {
-
-                    Stream.of(selectCityFragment.cities)
-                            .filter(city -> !(city.getCityName().contains(charSequence)
-                                    || city.getCityNameEn().contains(charSequence)))
-                            .forEach(city -> selectCityFragment.cities.remove(city));
-                    return selectCityFragment.cities;
-                })
-                .throttleLast(300, TimeUnit.MILLISECONDS)
-                .debounce(300, TimeUnit.MILLISECONDS)
+                .map(charSequence -> charSequence == null ? null : charSequence.toString().trim())
+                .throttleLast(100, TimeUnit.MILLISECONDS)
+                .debounce(100, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(charSequence -> {
-                    selectCityFragment.cityListAdapter.notifyDataSetChanged();
-                });
-
+                .subscribe(searchText -> selectCityFragment.cityListAdapter.getFilter().filter(searchText));
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -82,12 +72,10 @@ public class SelectCityActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_search) {
-
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
-
 
     @Override
     protected void onDestroy() {

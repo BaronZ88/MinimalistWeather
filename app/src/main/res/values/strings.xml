@@ -7,5 +7,6 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">设置</string>
+    <string name="cities_importing">正在导入城市数据...</string>
 
 </resources>

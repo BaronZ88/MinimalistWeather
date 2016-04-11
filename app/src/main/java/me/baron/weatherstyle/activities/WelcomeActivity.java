@@ -25,8 +25,8 @@ public class WelcomeActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreate start");
         setContentView(R.layout.activity_splash);
+        Log.d(TAG, "onCreate start");
 
         Observable.just(initAppData())
                 .subscribeOn(Schedulers.io())

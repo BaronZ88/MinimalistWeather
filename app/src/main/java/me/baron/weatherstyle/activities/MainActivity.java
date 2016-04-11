@@ -22,6 +22,7 @@ import me.baron.weatherstyle.models.adapter.MiWeatherAdapter;
 import me.baron.weatherstyle.models.adapter.WeatherAdapter;
 import me.baron.weatherstyle.preferences.Preferences;
 import me.baron.weatherstyle.preferences.WeatherSettings;
+import me.baron.weatherstyle.utils.NetworkUtil;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -52,23 +53,25 @@ public class MainActivity extends BaseActivity
         assert navigationView != null;
         navigationView.setNavigationItemSelectedListener(this);
 
-        String cityId = Preferences.getSharedPreferences().getString(WeatherSettings.SETTINGS_CURRENT_CITY_ID.getId(), "");
-        ApiClient.weatherService.getMiWeather(cityId)
-                .map(miWeather -> {
-                    WeatherAdapter weather = new MiWeatherAdapter(miWeather);
-                    try {
-                        new WeatherDao(MainActivity.this).insertWeather(weather.getWeather());
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                    return weather;
-                })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(weatherAdapter -> {
-                    Log.d(TAG, weatherAdapter.getWeather() + "");
-                    Toast.makeText(MainActivity.this, weatherAdapter.getCityName(), Toast.LENGTH_LONG).show();
-                });
+        if(NetworkUtil.isNetworkConnected(this)) {
+            String cityId = Preferences.getSharedPreferences().getString(WeatherSettings.SETTINGS_CURRENT_CITY_ID.getId(), "");
+            ApiClient.weatherService.getMiWeather(cityId)
+                    .map(miWeather -> {
+                        WeatherAdapter weather = new MiWeatherAdapter(miWeather);
+                        try {
+                            new WeatherDao(MainActivity.this).insertWeather(weather.getWeather());
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                        return weather;
+                    })
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(weatherAdapter -> {
+                        Log.d(TAG, weatherAdapter.getWeather() + "");
+                        Toast.makeText(MainActivity.this, weatherAdapter.getCityName(), Toast.LENGTH_LONG).show();
+                    });
+        }
     }
 
     @Override
