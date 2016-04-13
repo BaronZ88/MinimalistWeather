@@ -2,9 +2,6 @@ package me.baron.weatherstyle.presenter;
 
 import android.content.Context;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import me.baron.weatherstyle.contract.SelectCityContract;
 import me.baron.weatherstyle.database.dao.CityDao;
 import rx.Observable;
@@ -38,11 +35,6 @@ public class SelectCityPresenter implements SelectCityContract.Presenter {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(cityListView::displayCities);
-    }
-
-    @Override
-    public void filterCities() {
-
     }
 
 }
