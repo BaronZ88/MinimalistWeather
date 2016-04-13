@@ -24,4 +24,5 @@ dependencies {
     compile rootProject.ext.dependencies.getAt("retrofit")
     compile rootProject.ext.dependencies.getAt("adapter-rxjava")
     compile rootProject.ext.dependencies.getAt("fastjson")
-    compile rootProject.ext.dependencies.getAt("okhttp3-logging-interceptor")}
+    compile rootProject.ext.dependencies.getAt("okhttp3-logging-interceptor")
+}

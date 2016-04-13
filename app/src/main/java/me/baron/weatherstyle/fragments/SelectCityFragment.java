@@ -21,6 +21,7 @@ import butterknife.ButterKnife;
 import me.baron.androidlibrary.fragment.BaseFragment;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.adapters.CityListAdapter;
+import me.baron.weatherstyle.contract.SelectCityContract;
 import me.baron.weatherstyle.database.dao.CityDao;
 import me.baron.weatherstyle.models.City;
 import me.baron.weatherstyle.widget.DividerItemDecoration;
@@ -31,13 +32,15 @@ import rx.schedulers.Schedulers;
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  */
-public class SelectCityFragment extends BaseFragment {
+public class SelectCityFragment extends BaseFragment implements SelectCityContract.View {
 
     public List<City> cities;
     public CityListAdapter cityListAdapter;
 
     @Bind(R.id.rv_city_list)
     RecyclerView recyclerView;
+
+    private SelectCityContract.Presenter presenter;
 
     public SelectCityFragment() {
     }
@@ -65,17 +68,15 @@ public class SelectCityFragment extends BaseFragment {
         cities = new ArrayList<>();
         cityListAdapter = new CityListAdapter(cities);
         cityListAdapter.setOnItemClickListener((parent, view, position, id) -> Toast.makeText(this.getActivity(), cities.get(position).getCityName(), Toast.LENGTH_LONG).show());
-        recyclerView.setAdapter(cityListAdapter);
-
-        Observable.create((Observable.OnSubscribe<List<City>>) subscriber ->
-                cities.addAll(new CityDao(getActivity()).queryCityList()))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(cities -> {
-                    cityListAdapter.notifyDataSetChanged();
-                });
 
         return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        this.presenter.start();
     }
 
     @Override
@@ -84,4 +85,14 @@ public class SelectCityFragment extends BaseFragment {
         ButterKnife.unbind(this);
     }
 
+    @Override
+    public void displayCities(List<City> cities) {
+        this.cities.addAll(cities);
+        recyclerView.setAdapter(cityListAdapter);
+    }
+
+    @Override
+    public void setPresenter(SelectCityContract.Presenter presenter) {
+        this.presenter = presenter;
+    }
 }

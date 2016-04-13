@@ -21,6 +21,7 @@ import butterknife.ButterKnife;
 import me.baron.androidlibrary.activity.BaseActivity;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.fragments.SelectCityFragment;
+import me.baron.weatherstyle.presenter.SelectCityPresenter;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
@@ -52,6 +53,8 @@ public class SelectCityActivity extends BaseActivity {
                 .beginTransaction()
                 .add(R.id.fragment_container, selectCityFragment)
                 .commit();
+
+        new SelectCityPresenter(this, selectCityFragment);
     }
 
     @Override

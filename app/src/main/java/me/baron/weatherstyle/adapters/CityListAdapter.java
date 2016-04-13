@@ -106,7 +106,8 @@ public class CityListAdapter extends RecyclerView.Adapter<CityListAdapter.ViewHo
                 ArrayList<City> newValues = new ArrayList<>();
                 Stream.of(cities)
                         .filter(city -> (city.getCityName().contains(prefixString)
-                                || city.getCityNameEn().contains(prefixString)))
+                                || city.getCityNameEn().contains(prefixString) || city.getParent().contains(prefixString)
+                                || city.getRoot().contains(prefixString)))
                         .forEach(newValues::add);
                 results.values = newValues;
                 results.count = newValues.size();
