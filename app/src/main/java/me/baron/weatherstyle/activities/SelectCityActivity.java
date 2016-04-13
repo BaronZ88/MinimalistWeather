@@ -22,6 +22,7 @@ import me.baron.androidlibrary.activity.BaseActivity;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.fragments.SelectCityFragment;
 import me.baron.weatherstyle.presenter.SelectCityPresenter;
+import me.baron.weatherstyle.utils.ActivityUtils;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
@@ -49,10 +50,7 @@ public class SelectCityActivity extends BaseActivity {
         }
 
         selectCityFragment = SelectCityFragment.newInstance();
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.fragment_container, selectCityFragment)
-                .commit();
+        ActivityUtils.addFragmentToActivity(getFragmentManager(), selectCityFragment, R.id.fragment_container);
 
         new SelectCityPresenter(this, selectCityFragment);
     }
@@ -60,14 +58,6 @@ public class SelectCityActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.search_city, menu);
-        MenuItem menuItem = menu.findItem(R.id.action_search);//在菜单中找到对应控件的item
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
-        RxSearchView.queryTextChanges(searchView)
-                .map(charSequence -> charSequence == null ? null : charSequence.toString().trim())
-                .throttleLast(100, TimeUnit.MILLISECONDS)
-                .debounce(100, TimeUnit.MILLISECONDS)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(searchText -> selectCityFragment.cityListAdapter.getFilter().filter(searchText));
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -75,6 +65,13 @@ public class SelectCityActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_search) {
+            SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
+            RxSearchView.queryTextChanges(searchView)
+                    .map(charSequence -> charSequence == null ? null : charSequence.toString().trim())
+                    .throttleLast(100, TimeUnit.MILLISECONDS)
+                    .debounce(100, TimeUnit.MILLISECONDS)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(searchText -> selectCityFragment.cityListAdapter.getFilter().filter(searchText));
             return true;
         }
         return super.onOptionsItemSelected(item);

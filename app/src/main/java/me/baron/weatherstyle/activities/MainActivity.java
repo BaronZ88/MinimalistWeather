@@ -7,24 +7,14 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
-
-import java.sql.SQLException;
 
 import me.baron.androidlibrary.activity.BaseActivity;
-import me.baron.weatherapi.ApiClient;
 import me.baron.weatherstyle.R;
-import me.baron.weatherstyle.database.dao.WeatherDao;
-import me.baron.weatherstyle.models.adapter.MiWeatherAdapter;
-import me.baron.weatherstyle.models.adapter.WeatherAdapter;
-import me.baron.weatherstyle.preferences.Preferences;
-import me.baron.weatherstyle.preferences.WeatherSettings;
-import me.baron.weatherstyle.utils.NetworkUtil;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import me.baron.weatherstyle.fragments.HomePageFragment;
+import me.baron.weatherstyle.presenter.HomePagePresenter;
+import me.baron.weatherstyle.utils.ActivityUtils;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
@@ -32,15 +22,12 @@ import rx.schedulers.Schedulers;
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final String TAG = "MainActivity";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -53,25 +40,10 @@ public class MainActivity extends BaseActivity
         assert navigationView != null;
         navigationView.setNavigationItemSelectedListener(this);
 
-        if(NetworkUtil.isNetworkConnected(this)) {
-            String cityId = Preferences.getSharedPreferences().getString(WeatherSettings.SETTINGS_CURRENT_CITY_ID.getId(), "");
-            ApiClient.weatherService.getMiWeather(cityId)
-                    .map(miWeather -> {
-                        WeatherAdapter weather = new MiWeatherAdapter(miWeather);
-                        try {
-                            new WeatherDao(MainActivity.this).insertWeather(weather.getWeather());
-                        } catch (SQLException e) {
-                            e.printStackTrace();
-                        }
-                        return weather;
-                    })
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(weatherAdapter -> {
-                        Log.d(TAG, weatherAdapter.getWeather() + "");
-                        Toast.makeText(MainActivity.this, weatherAdapter.getCityName(), Toast.LENGTH_LONG).show();
-                    });
-        }
+        HomePageFragment homePageFragment = HomePageFragment.newInstance();
+        ActivityUtils.addFragmentToActivity(getFragmentManager(), homePageFragment, R.id.fragment_container);
+
+        new HomePagePresenter(this, homePageFragment);
     }
 
     @Override
@@ -87,7 +59,6 @@ public class MainActivity extends BaseActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -95,13 +66,11 @@ public class MainActivity extends BaseActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         if (id == R.id.action_settings) {
             Intent intent = new Intent(MainActivity.this, SelectCityActivity.class);
             startActivity(intent);
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
