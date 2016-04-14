@@ -1,7 +1,6 @@
 package me.baron.weatherstyle.presenter;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import java.sql.SQLException;
 

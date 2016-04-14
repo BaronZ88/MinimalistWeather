@@ -68,6 +68,7 @@ public class SelectCityFragment extends BaseFragment implements SelectCityContra
         cities = new ArrayList<>();
         cityListAdapter = new CityListAdapter(cities);
         cityListAdapter.setOnItemClickListener((parent, view, position, id) -> Toast.makeText(this.getActivity(), cities.get(position).getCityName(), Toast.LENGTH_LONG).show());
+        recyclerView.setAdapter(cityListAdapter);
 
         return rootView;
     }
@@ -88,7 +89,7 @@ public class SelectCityFragment extends BaseFragment implements SelectCityContra
     @Override
     public void displayCities(List<City> cities) {
         this.cities.addAll(cities);
-        recyclerView.setAdapter(cityListAdapter);
+        cityListAdapter.notifyDataSetChanged();
     }
 
     @Override

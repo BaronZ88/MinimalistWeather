@@ -1,4 +1,4 @@
-package me.baron.weatherstyle;
+package me.baron.androidlibrary.presenter;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
