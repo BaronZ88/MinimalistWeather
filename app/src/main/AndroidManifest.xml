@@ -27,7 +27,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="activities.MainActivity" />
         </activity>
-        <activity android:name=".activities.CityManagerActivity" />
+        <activity
+            android:name=".activities.CityManagerActivity"
+            android:label="@string/title_activity_city_manager"
+            android:parentActivityName=".activities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="activities.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

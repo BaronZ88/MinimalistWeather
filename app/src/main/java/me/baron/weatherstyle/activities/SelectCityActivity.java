@@ -4,15 +4,10 @@ import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.annimon.stream.Stream;
-import com.jakewharton.rxbinding.support.v7.widget.RxRecyclerView;
 import com.jakewharton.rxbinding.support.v7.widget.RxSearchView;
-import com.jakewharton.rxbinding.support.v7.widget.SearchViewQueryTextEvent;
 
 import java.util.concurrent.TimeUnit;
 
@@ -24,8 +19,6 @@ import me.baron.weatherstyle.fragments.SelectCityFragment;
 import me.baron.weatherstyle.presenter.SelectCityPresenter;
 import me.baron.weatherstyle.utils.ActivityUtils;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="me.baron.weatherstyle.fragments.CityManagerFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_city_manager"
+        android:name="me.baron.weatherstyle.fragments.CityManagerFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        tools:listitem="@layout/item_city_manager" />
+</FrameLayout>

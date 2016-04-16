@@ -10,8 +10,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import me.baron.androidlibrary.activity.BaseActivity;
 import me.baron.weatherstyle.R;
+import me.baron.weatherstyle.fragments.CityManagerFragment;
 import me.baron.weatherstyle.fragments.HomePageFragment;
 import me.baron.weatherstyle.presenter.HomePagePresenter;
 import me.baron.weatherstyle.utils.ActivityUtils;
@@ -22,18 +25,22 @@ import me.baron.weatherstyle.utils.ActivityUtils;
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
+    @Bind(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        assert drawer != null;
-        drawer.addDrawerListener(toggle);
+                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        assert drawerLayout != null;
+        drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -66,8 +73,12 @@ public class MainActivity extends BaseActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_select_city) {
             Intent intent = new Intent(MainActivity.this, SelectCityActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (id == R.id.action_city_manager) {
+            Intent intent = new Intent(MainActivity.this, CityManagerActivity.class);
             startActivity(intent);
             return true;
         }

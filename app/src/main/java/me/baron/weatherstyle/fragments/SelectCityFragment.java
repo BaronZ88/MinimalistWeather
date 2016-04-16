@@ -7,11 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.Toast;
-
-import com.annimon.stream.Stream;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,12 +18,8 @@ import me.baron.androidlibrary.fragment.BaseFragment;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.adapters.CityListAdapter;
 import me.baron.weatherstyle.contract.SelectCityContract;
-import me.baron.weatherstyle.database.dao.CityDao;
 import me.baron.weatherstyle.models.City;
 import me.baron.weatherstyle.widget.DividerItemDecoration;
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
@@ -70,14 +62,8 @@ public class SelectCityFragment extends BaseFragment implements SelectCityContra
         cityListAdapter.setOnItemClickListener((parent, view, position, id) -> Toast.makeText(this.getActivity(), cities.get(position).getCityName(), Toast.LENGTH_LONG).show());
         recyclerView.setAdapter(cityListAdapter);
 
-        return rootView;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
         this.presenter.start();
+        return rootView;
     }
 
     @Override

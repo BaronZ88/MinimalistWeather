@@ -4,7 +4,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
@@ -16,6 +15,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import me.baron.androidlibrary.adapter.BaseRecyclerViewAdapter;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.models.City;
 
@@ -23,31 +23,15 @@ import me.baron.weatherstyle.models.City;
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         16/3/16
  */
-public class CityListAdapter extends RecyclerView.Adapter<CityListAdapter.ViewHolder> implements Filterable {
+public class CityListAdapter extends BaseRecyclerViewAdapter<CityListAdapter.ViewHolder> implements Filterable {
 
     private List<City> cities;
     public static List<City> mFilterData;//过滤后的数据
-
-    private AdapterView.OnItemClickListener onItemClickListener;
 
     private RecyclerViewFilter filter;
 
     public CityListAdapter(List<City> cities) {
         this.cities = cities;
-    }
-
-    public void setOnItemClickListener(AdapterView.OnItemClickListener onItemClickListener) {
-
-        this.onItemClickListener = onItemClickListener;
-    }
-
-    void onItemHolderClick(RecyclerView.ViewHolder itemHolder) {
-        if (onItemClickListener != null) {
-            onItemClickListener.onItemClick(null, itemHolder.itemView,
-                    itemHolder.getAdapterPosition(), itemHolder.getItemId());
-        } else {
-            throw new IllegalStateException("Please call setOnItemClickListener method set the click event listeners");
-        }
     }
 
     @Override

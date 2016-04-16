@@ -37,5 +37,4 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(':androidlibrary')
     compile project(':api')
-    compile 'com.android.support:support-v4:23.3.0'
 }

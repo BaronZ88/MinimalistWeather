@@ -8,6 +8,7 @@ import me.baron.weatherstyle.models.style.Forecast;
 import me.baron.weatherstyle.models.style.LifeIndex;
 import me.baron.weatherstyle.models.style.RealTime;
 import me.baron.weatherstyle.models.style.Weather;
+
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.misc.TransactionManager;
 
@@ -41,18 +42,16 @@ public class WeatherDao {
 
     public Weather queryWeather(int cityId) throws SQLException {
 
-        final Weather[] weather = new Weather[1];
-        TransactionManager.callInTransaction(WeatherDatabaseHelper.getInstance(context).getConnectionSource(), (Callable<Void>) () -> {
-            weather[0] = weatherDaoOperation.queryForId(cityId);
-            if (weather[0] != null) {
-                weather[0].setAqi(apiDaoOperation.queryForId(cityId));
-                weather[0].setForecasts(forecastDaoOperation.queryForEq(Forecast.CITY_ID_FIELD_NAME, cityId));
-                weather[0].setLifeIndexes(lifeIndexesDaoOperation.queryForEq(Forecast.CITY_ID_FIELD_NAME, cityId));
-                weather[0].setRealTime(realTimeDaoOperation.queryForId(cityId));
+        return TransactionManager.callInTransaction(WeatherDatabaseHelper.getInstance(context).getConnectionSource(), (Callable<Weather>) () -> {
+            Weather weather = weatherDaoOperation.queryForId(cityId);
+            if (weather != null) {
+                weather.setAqi(apiDaoOperation.queryForId(cityId));
+                weather.setForecasts(forecastDaoOperation.queryForEq(Forecast.CITY_ID_FIELD_NAME, cityId));
+                weather.setLifeIndexes(lifeIndexesDaoOperation.queryForEq(Forecast.CITY_ID_FIELD_NAME, cityId));
+                weather.setRealTime(realTimeDaoOperation.queryForId(cityId));
             }
-            return null;
+            return weather;
         });
-        return weather[0];
     }
 
     public void insertWeather(Weather weather) throws SQLException {
@@ -87,6 +86,17 @@ public class WeatherDao {
      */
     public List<Weather> queryAllSaveCity() throws SQLException {
 
-        return weatherDaoOperation.queryForAll();
+        return TransactionManager.callInTransaction(WeatherDatabaseHelper.getInstance(context).getConnectionSource(), () -> {
+
+            List<Weather> weatherList = weatherDaoOperation.queryForAll();
+            for (Weather weather : weatherList) {
+                int cityId = weather.getCityId();
+                weather.setAqi(apiDaoOperation.queryForId(cityId));
+                weather.setForecasts(forecastDaoOperation.queryForEq(Forecast.CITY_ID_FIELD_NAME, cityId));
+                weather.setLifeIndexes(lifeIndexesDaoOperation.queryForEq(Forecast.CITY_ID_FIELD_NAME, cityId));
+                weather.setRealTime(realTimeDaoOperation.queryForId(cityId));
+            }
+            return weatherList;
+        });
     }
 }

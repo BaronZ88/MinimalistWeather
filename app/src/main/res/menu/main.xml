@@ -6,4 +6,15 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_select_city"
+        android:orderInCategory="100"
+        android:title="@string/action_select_city"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_city_manager"
+        android:orderInCategory="100"
+        android:title="@string/action_city_manager"
+        app:showAsAction="never" />
 </menu>
