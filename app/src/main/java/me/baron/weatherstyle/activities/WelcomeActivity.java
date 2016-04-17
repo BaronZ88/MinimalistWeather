@@ -48,10 +48,13 @@ public class WelcomeActivity extends BaseActivity {
     private String initAppData() {
         Preferences.loadDefaults();
         //TODO 测试，待删除
-        try {
-            Preferences.savePreference(WeatherSettings.SETTINGS_CURRENT_CITY_ID, "101020100");
-        } catch (InvalidClassException e) {
-            e.printStackTrace();
+        if (Preferences.getSharedPreferences().getBoolean(WeatherSettings.SETTINGS_FIRST_USE.getId(), false)) {
+            try {
+                Preferences.savePreference(WeatherSettings.SETTINGS_CURRENT_CITY_ID, "101020100");
+                Preferences.savePreference(WeatherSettings.SETTINGS_FIRST_USE, false);
+            } catch (InvalidClassException e) {
+                e.printStackTrace();
+            }
         }
         Log.d(TAG, "importCityData start");
         CommonUtil.importCityData();

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.io.InvalidClassException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,8 @@ import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.adapters.CityListAdapter;
 import me.baron.weatherstyle.contract.SelectCityContract;
 import me.baron.weatherstyle.models.City;
+import me.baron.weatherstyle.preferences.Preferences;
+import me.baron.weatherstyle.preferences.WeatherSettings;
 import me.baron.weatherstyle.widget.DividerItemDecoration;
 
 /**
@@ -59,11 +62,24 @@ public class SelectCityFragment extends BaseFragment implements SelectCityContra
 
         cities = new ArrayList<>();
         cityListAdapter = new CityListAdapter(cities);
-        cityListAdapter.setOnItemClickListener((parent, view, position, id) -> Toast.makeText(this.getActivity(), cities.get(position).getCityName(), Toast.LENGTH_LONG).show());
+        cityListAdapter.setOnItemClickListener((parent, view, position, id) -> {
+            try {
+                Preferences.savePreference(WeatherSettings.SETTINGS_CURRENT_CITY_ID, cities.get(position).getCityId() + "");
+                Toast.makeText(this.getActivity(), cities.get(position).getCityName(), Toast.LENGTH_LONG).show();
+                getActivity().finish();
+            } catch (InvalidClassException e) {
+                e.printStackTrace();
+            }
+        });
         recyclerView.setAdapter(cityListAdapter);
 
-        this.presenter.start();
         return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        this.presenter.start();
     }
 
     @Override
