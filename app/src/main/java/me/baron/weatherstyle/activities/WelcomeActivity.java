@@ -28,6 +28,12 @@ public class WelcomeActivity extends BaseActivity {
         setContentView(R.layout.activity_welcome);
         Log.d(TAG, "onCreate start");
 
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         Observable.just(initAppData())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -37,9 +43,9 @@ public class WelcomeActivity extends BaseActivity {
     }
 
     private void gotoMainPage() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
+//        Intent intent = new Intent(this, MainActivity.class);
+//        startActivity(intent);
+//        finish();
     }
 
     /**

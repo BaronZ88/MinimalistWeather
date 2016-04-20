@@ -6,10 +6,10 @@
     android:fitsSystemWindows="true"
     tools:context="me.baron.weatherstyle.activities.SelectCityActivity">
 
-    <include layout="@layout/layout_app_bar"
+    <include
+        layout="@layout/layout_app_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-25dp"/>
+        android:layout_height="wrap_content" />
 
     <FrameLayout
         android:id="@+id/fragment_container"
