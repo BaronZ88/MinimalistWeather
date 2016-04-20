@@ -1,4 +1,4 @@
-def supportVersion = "23.2.1"
+def supportVersion = "23.3.0"
 def rxBindingVersion = "0.4.0"
 def retrofitVersion = "2.0.1"
 

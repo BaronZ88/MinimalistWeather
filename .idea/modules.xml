@@ -3,9 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/WeatherStyle.iml" filepath="$PROJECT_DIR$/WeatherStyle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/androidlibrary.iml" filepath="$PROJECT_DIR$/library/androidlibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/api/api.iml" filepath="$PROJECT_DIR$/api/api.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/androidlibrary.iml" filepath="$PROJECT_DIR$/library/androidlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
     </modules>
   </component>
 </project>
