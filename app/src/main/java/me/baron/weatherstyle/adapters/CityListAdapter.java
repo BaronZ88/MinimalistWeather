@@ -26,12 +26,13 @@ import me.baron.weatherstyle.models.City;
 public class CityListAdapter extends BaseRecyclerViewAdapter<CityListAdapter.ViewHolder> implements Filterable {
 
     private List<City> cities;
-    public static List<City> mFilterData;//过滤后的数据
+    private List<City> mFilterData;//过滤后的数据
 
     private RecyclerViewFilter filter;
 
     public CityListAdapter(List<City> cities) {
         this.cities = cities;
+        mFilterData = cities;
     }
 
     @Override
