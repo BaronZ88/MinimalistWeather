@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import me.baron.androidlibrary.activity.BaseActivity;
+import me.baron.library.activity.BaseActivity;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.fragments.SelectCityFragment;
 import me.baron.weatherstyle.presenter.SelectCityPresenter;

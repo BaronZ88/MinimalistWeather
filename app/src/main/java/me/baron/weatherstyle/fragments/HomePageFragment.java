@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import me.baron.androidlibrary.fragment.BaseFragment;
+import me.baron.library.fragment.BaseFragment;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.contract.HomePageContract;
 import me.baron.weatherstyle.models.adapter.WeatherAdapter;

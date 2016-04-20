@@ -12,9 +12,8 @@ import android.view.MenuItem;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import me.baron.androidlibrary.activity.BaseActivity;
+import me.baron.library.activity.BaseActivity;
 import me.baron.weatherstyle.R;
-import me.baron.weatherstyle.fragments.CityManagerFragment;
 import me.baron.weatherstyle.fragments.HomePageFragment;
 import me.baron.weatherstyle.presenter.HomePagePresenter;
 import me.baron.weatherstyle.utils.ActivityUtils;

@@ -1,4 +1,4 @@
-package me.baron.androidlibrary.activity;
+package me.baron.library.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

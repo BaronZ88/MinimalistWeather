@@ -1,4 +1,4 @@
-package me.baron.androidlibrary;
+package me.baron.library;
 
 import org.junit.Test;
 

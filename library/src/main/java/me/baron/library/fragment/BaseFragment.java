@@ -1,4 +1,4 @@
-package me.baron.androidlibrary.fragment;
+package me.baron.library.fragment;
 
 
 import android.app.Fragment;

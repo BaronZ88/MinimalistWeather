@@ -15,7 +15,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import me.baron.androidlibrary.fragment.BaseFragment;
+import me.baron.library.fragment.BaseFragment;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.adapters.CityManagerAdapter;
 import me.baron.weatherstyle.contract.CityManagerContract;

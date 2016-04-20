@@ -15,7 +15,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import me.baron.androidlibrary.adapter.BaseRecyclerViewAdapter;
+import me.baron.library.adapter.BaseRecyclerViewAdapter;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.models.City;
 

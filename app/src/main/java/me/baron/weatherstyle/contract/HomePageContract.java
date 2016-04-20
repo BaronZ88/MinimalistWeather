@@ -1,7 +1,7 @@
 package me.baron.weatherstyle.contract;
 
-import me.baron.androidlibrary.presenter.BasePresenter;
-import me.baron.androidlibrary.view.BaseView;
+import me.baron.library.presenter.BasePresenter;
+import me.baron.library.view.BaseView;
 import me.baron.weatherstyle.models.adapter.WeatherAdapter;
 
 /**

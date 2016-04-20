@@ -6,7 +6,7 @@ import android.util.Log;
 
 import java.io.InvalidClassException;
 
-import me.baron.androidlibrary.activity.BaseActivity;
+import me.baron.library.activity.BaseActivity;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.preferences.Preferences;
 import me.baron.weatherstyle.preferences.WeatherSettings;
