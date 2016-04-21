@@ -21,7 +21,6 @@ public class WeatherApp extends Application {
         return weatherAppInstance;
     }
 
-
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);

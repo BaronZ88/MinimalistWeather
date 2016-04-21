@@ -58,7 +58,7 @@ public class WeatherDao {
 
         TransactionManager.callInTransaction(WeatherDatabaseHelper.getInstance(context).getConnectionSource(), (Callable<Void>) () -> {
             if (weatherDaoOperation.queryForId(weather.getCityId()) != null) {
-                deleteWeather(weather.getCityId());
+                delete(weather);
             }
             weatherDaoOperation.create(weather);
             apiDaoOperation.create(weather.getAqi());
@@ -73,9 +73,14 @@ public class WeatherDao {
         });
     }
 
-    public void deleteWeather(int cityId) throws SQLException {
+    public void deleteById(int cityId) throws SQLException {
 
         weatherDaoOperation.deleteById(cityId);
+    }
+
+    public void delete(Weather data) throws SQLException {
+
+        weatherDaoOperation.delete(data);
     }
 
     /**

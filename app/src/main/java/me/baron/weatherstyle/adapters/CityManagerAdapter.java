@@ -1,9 +1,11 @@
 package me.baron.weatherstyle.adapters;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.List;
@@ -35,6 +37,11 @@ public class CityManagerAdapter extends BaseRecyclerViewAdapter<CityManagerAdapt
         holder.city.setText(weatherList.get(position).getCityName());
         holder.weather.setText(weatherList.get(position).getRealTime().getWeather());
         holder.aqi.setText(String.valueOf(weatherList.get(position).getAqi().getAqi()));
+        holder.deleteButton.setOnClickListener(v -> {
+            weatherList.remove(holder.getAdapterPosition());
+            notifyItemRemoved(holder.getAdapterPosition());
+            Log.d("CityManagerAdapter", ""+holder.getAdapterPosition());
+        });
     }
 
     @Override
@@ -44,6 +51,8 @@ public class CityManagerAdapter extends BaseRecyclerViewAdapter<CityManagerAdapt
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
+        @Bind(R.id.item_delete)
+        ImageButton deleteButton;
         @Bind(R.id.item_tv_city)
         TextView city;
         @Bind(R.id.item_tv_weather)
