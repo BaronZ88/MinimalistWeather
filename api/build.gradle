@@ -16,6 +16,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
@@ -25,4 +29,5 @@ dependencies {
     compile rootProject.ext.dependencies.getAt("adapter-rxjava")
     compile rootProject.ext.dependencies.getAt("fastjson")
     compile rootProject.ext.dependencies.getAt("okhttp3-logging-interceptor")
+//    compile rootProject.ext.dependencies.getAt("retrofit2-fastjson-converter")
 }

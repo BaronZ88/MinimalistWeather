@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
     android:foreground="?android:attr/selectableItemBackground"
-    app:cardCornerRadius="4dp"
+    app:cardCornerRadius="0dp"
+    app:cardElevation="8dp"
     app:contentPadding="8dp">
 
     <ImageButton

@@ -1,6 +1,6 @@
 def supportVersion = "23.3.0"
 def rxBindingVersion = "0.4.0"
-def retrofitVersion = "2.0.1"
+def retrofitVersion = "2.0.2"
 
 project.ext {
     android = [
@@ -15,32 +15,33 @@ project.ext {
 
     dependencies = [
             //android-support
-            "support-v4"                 : "com.android.support:support-v4:${supportVersion}",
-            "appcompat-v7"               : "com.android.support:appcompat-v7:${supportVersion}",
-            "design"                     : "com.android.support:design:${supportVersion}",
-            "recyclerview"               : "com.android.support:recyclerview-v7:${supportVersion}",
-            "cardview"                   : "com.android.support:cardview-v7:${supportVersion}",
+            "support-v4"                  : "com.android.support:support-v4:${supportVersion}",
+            "appcompat-v7"                : "com.android.support:appcompat-v7:${supportVersion}",
+            "design"                      : "com.android.support:design:${supportVersion}",
+            "recyclerview"                : "com.android.support:recyclerview-v7:${supportVersion}",
+            "cardview"                    : "com.android.support:cardview-v7:${supportVersion}",
 
             //java8-support
-            "gradle-retrolambda"         : "me.tatarka:gradle-retrolambda:3.3.0-beta4",
-            "stream"                     : "com.annimon:stream:1.0.8",
+            "gradle-retrolambda"          : "me.tatarka:gradle-retrolambda:3.3.0-beta4",
+            "stream"                      : "com.annimon:stream:1.0.8",
 
             //rx
-            "rxandroid"                  : "io.reactivex:rxandroid:1.1.0",
-            "rxbinding"                  : "com.jakewharton.rxbinding:rxbinding:${rxBindingVersion}",
-            "rxbinding-support-v4"       : "com.jakewharton.rxbinding:rxbinding-support-v4:${rxBindingVersion}",
-            "rxbinding-appcompat-v7"     : "com.jakewharton.rxbinding:rxbinding-appcompat-v7:${rxBindingVersion}",
-            "rxbinding-design"           : "com.jakewharton.rxbinding:rxbinding-design:${rxBindingVersion}",
-            "rxbinding-recyclerview-v7"  : "com.jakewharton.rxbinding:rxbinding-recyclerview-v7:${rxBindingVersion}",
+            "rxandroid"                   : "io.reactivex:rxandroid:1.1.0",
+            "rxbinding"                   : "com.jakewharton.rxbinding:rxbinding:${rxBindingVersion}",
+            "rxbinding-support-v4"        : "com.jakewharton.rxbinding:rxbinding-support-v4:${rxBindingVersion}",
+            "rxbinding-appcompat-v7"      : "com.jakewharton.rxbinding:rxbinding-appcompat-v7:${rxBindingVersion}",
+            "rxbinding-design"            : "com.jakewharton.rxbinding:rxbinding-design:${rxBindingVersion}",
+            "rxbinding-recyclerview-v7"   : "com.jakewharton.rxbinding:rxbinding-recyclerview-v7:${rxBindingVersion}",
 
             //retrofit
-            "retrofit"                   : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
-            "adapter-rxjava"             : "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}",
+            "retrofit"                    : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            "adapter-rxjava"              : "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}",
 
             //others
-            "okhttp3-logging-interceptor": "com.squareup.okhttp3:logging-interceptor:3.1.2",
-            "ormlite-android"            : "com.j256.ormlite:ormlite-android:4.48",
-            "fastjson"                   : "com.alibaba:fastjson:1.2.7",
-            "butterknife"                : "com.jakewharton:butterknife:7.0.1",
+            "okhttp3-logging-interceptor" : "com.squareup.okhttp3:logging-interceptor:3.1.2",
+            "ormlite-android"             : "com.j256.ormlite:ormlite-android:4.48",
+            "fastjson"                    : "com.alibaba:fastjson:1.2.10",
+            "butterknife"                 : "com.jakewharton:butterknife:7.0.1",
+//            "retrofit2-fastjson-converter": "me.baron.retrofit2.converter:Retrofit2-FastJson-Converter:1.0.0"
     ]
 }

@@ -18,7 +18,7 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
 
     @Bind(R.id.tv_city_name)
     TextView tvCityName;
-    @Bind(R.id.tv_weather)
+    @Bind(R.id.tv_weather_name)
     TextView tvWeather;
     @Bind(R.id.tv_real_time)
     TextView tvRealTime;
