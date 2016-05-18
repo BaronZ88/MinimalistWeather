@@ -1,5 +1,7 @@
 package me.baron.weatherapi;
 
+import com.facebook.stetho.okhttp3.StethoInterceptor;
+
 import me.baron.weatherapi.converter.FastJsonConverterFactory;
 import me.baron.weatherapi.services.WeatherService;
 
@@ -28,7 +30,7 @@ public final class ApiClient {
 
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .addInterceptor(httpLoggingInterceptor)
-//                .addNetworkInterceptor(new HttpRequestInterceptor())
+                .addNetworkInterceptor(new StethoInterceptor())
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()

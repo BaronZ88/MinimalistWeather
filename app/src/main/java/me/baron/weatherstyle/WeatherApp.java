@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+import com.facebook.stetho.Stetho;
+
 import me.baron.weatherapi.ApiClient;
 
 /**
@@ -16,7 +18,7 @@ public class WeatherApp extends Application {
 
     private static WeatherApp weatherAppInstance;
 
-    public static WeatherApp getInstance(){
+    public static WeatherApp getInstance() {
 
         return weatherAppInstance;
     }
@@ -31,6 +33,8 @@ public class WeatherApp extends Application {
     public void onCreate() {
         super.onCreate();
         Log.d(TAG, "onCreate start");
+        Stetho.initializeWithDefaults(this.getApplicationContext());
+
         weatherAppInstance = this;
 
         //init retrofit2
