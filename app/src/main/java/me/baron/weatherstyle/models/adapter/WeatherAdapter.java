@@ -14,7 +14,7 @@ import java.util.List;
  */
 public abstract class WeatherAdapter {
 
-    public abstract int getCityId();
+    public abstract String getCityId();
 
     public abstract String getCityName();
 

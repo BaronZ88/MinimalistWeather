@@ -24,11 +24,11 @@ public class WeatherDao {
 
     private Context context;
 
-    private Dao<AQI, Integer> apiDaoOperation;
+    private Dao<AQI, String> apiDaoOperation;
     private Dao<Forecast, Long> forecastDaoOperation;
     private Dao<LifeIndex, Long> lifeIndexesDaoOperation;
-    private Dao<RealTime, Integer> realTimeDaoOperation;
-    private Dao<Weather, Integer> weatherDaoOperation;
+    private Dao<RealTime, String> realTimeDaoOperation;
+    private Dao<Weather, String> weatherDaoOperation;
 
     public WeatherDao(Context context) {
 
@@ -40,7 +40,7 @@ public class WeatherDao {
         this.weatherDaoOperation = WeatherDatabaseHelper.getInstance(context).getWeatherDao(Weather.class);
     }
 
-    public Weather queryWeather(int cityId) throws SQLException {
+    public Weather queryWeather(String cityId) throws SQLException {
 
         return TransactionManager.callInTransaction(WeatherDatabaseHelper.getInstance(context).getConnectionSource(), (Callable<Weather>) () -> {
             Weather weather = weatherDaoOperation.queryForId(cityId);
@@ -73,7 +73,7 @@ public class WeatherDao {
         });
     }
 
-    public void deleteById(int cityId) throws SQLException {
+    public void deleteById(String cityId) throws SQLException {
 
         weatherDaoOperation.deleteById(cityId);
     }
@@ -95,7 +95,7 @@ public class WeatherDao {
 
             List<Weather> weatherList = weatherDaoOperation.queryForAll();
             for (Weather weather : weatherList) {
-                int cityId = weather.getCityId();
+                String cityId = weather.getCityId();
                 weather.setAqi(apiDaoOperation.queryForId(cityId));
                 weather.setForecasts(forecastDaoOperation.queryForEq(Forecast.CITY_ID_FIELD_NAME, cityId));
                 weather.setLifeIndexes(lifeIndexesDaoOperation.queryForEq(Forecast.CITY_ID_FIELD_NAME, cityId));

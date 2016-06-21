@@ -90,7 +90,7 @@ public class CityManagerFragment extends BaseFragment implements CityManagerCont
             }
 
             @Override
-            public void onDeleteClick(int cityId) {
+            public void onDeleteClick(String cityId) {
                 presenter.deleteCity(cityId);
             }
         });

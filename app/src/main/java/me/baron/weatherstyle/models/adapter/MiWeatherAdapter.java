@@ -25,7 +25,7 @@ public class MiWeatherAdapter extends WeatherAdapter {
     }
 
     @Override
-    public int getCityId() {
+    public String getCityId() {
         return miWeather.getForecast().getCityId();
     }
 
@@ -92,7 +92,7 @@ public class MiWeatherAdapter extends WeatherAdapter {
     public List<LifeIndex> getLifeIndexes() {
 
         List<LifeIndex> lifeIndexes = new ArrayList<>();
-        int cityId = miWeather.getForecast().getCityId();
+        String cityId = miWeather.getForecast().getCityId();
 
         for (MiIndex miIndex : miWeather.getIndexList()) {
             lifeIndexes.add(new LifeIndex(cityId, miIndex.getName(), miIndex.getIndex(), miIndex.getDetails()));

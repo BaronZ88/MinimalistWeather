@@ -20,7 +20,7 @@ public class AQI {
     public static final String SRC_FIELD_NAME = "src";
 
     @DatabaseField(columnName = CITY_ID_FIELD_NAME, id = true)
-    private int cityId;
+    private String cityId;
     @DatabaseField(columnName = AQI_FIELD_NAME)
     private int aqi;
     @DatabaseField(columnName = PM25_FIELD_NAME)
@@ -39,7 +39,7 @@ public class AQI {
     public AQI() {
     }
 
-    public AQI(int cityId, int aqi, int pm25, int pm10, String publishTime, int so2, int no3, String src) {
+    public AQI(String cityId, int aqi, int pm25, int pm10, String publishTime, int so2, int no3, String src) {
 
         this.cityId = cityId;
         this.aqi = aqi;
@@ -59,11 +59,11 @@ public class AQI {
         this.aqi = aqi;
     }
 
-    public int getCityId() {
+    public String getCityId() {
         return cityId;
     }
 
-    public void setCityId(int cityId) {
+    public void setCityId(String cityId) {
         this.cityId = cityId;
     }
 

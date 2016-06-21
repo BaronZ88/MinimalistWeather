@@ -22,6 +22,6 @@ public interface CityManagerContract {
 
         void loadSavedCities();
 
-        void deleteCity(int cityId);
+        void deleteCity(String cityId);
     }
 }

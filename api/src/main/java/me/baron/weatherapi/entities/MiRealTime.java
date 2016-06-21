@@ -15,16 +15,16 @@ public class MiRealTime {
     @JSONField(name = "WS")
     private String windSpeed;//风速
     @JSONField(name = "cityid")
-    private int cityId;
+    private String cityId;
     private String temp;//温度
     private String time;//发布时间
     private String weather;//天气情况
 
-    public int getCityId() {
+    public String getCityId() {
         return cityId;
     }
 
-    public void setCityId(int cityId) {
+    public void setCityId(String cityId) {
         this.cityId = cityId;
     }
 

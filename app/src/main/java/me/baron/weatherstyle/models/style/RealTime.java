@@ -19,7 +19,7 @@ public class RealTime {
     public static final String TIME_FIELD_NAME = "time";
 
     @DatabaseField(columnName = CITY_ID_FIELD_NAME, id = true)
-    private int cityId;
+    private String cityId;
     @DatabaseField(columnName = WEATHER_FIELD_NAME)
     private String weather;//天气情况
     @DatabaseField(columnName = TEMP_FIELD_NAME)
@@ -36,7 +36,7 @@ public class RealTime {
     public RealTime() {
     }
 
-    public RealTime(int cityId, String weather, String temp, String humidity, String wind, String windSpeed, String time) {
+    public RealTime(String cityId, String weather, String temp, String humidity, String wind, String windSpeed, String time) {
 
         this.cityId = cityId;
         this.weather = weather;
@@ -47,11 +47,11 @@ public class RealTime {
         this.time = time;
     }
 
-    public int getCityId() {
+    public String getCityId() {
         return cityId;
     }
 
-    public void setCityId(int cityId) {
+    public void setCityId(String cityId) {
         this.cityId = cityId;
     }
 

@@ -24,7 +24,7 @@ public class Forecast {
     @DatabaseField(columnName = ID_FIELD_NAME, generatedId = true)
     private long id;//数据库自增长ID
     @DatabaseField(columnName = CITY_ID_FIELD_NAME)
-    private int cityId;
+    private String cityId;
     @DatabaseField(columnName = WEATHER_FIELD_NAME)
     private String weather;
     @DatabaseField(columnName = WEATHER_DAY_FIELD_NAME)
@@ -45,7 +45,7 @@ public class Forecast {
     public Forecast() {
     }
 
-    public Forecast(int cityId, String weather, String weatherDay, String weatherNight,
+    public Forecast(String cityId, String weather, String weatherDay, String weatherNight,
                     int tempMax, int tempMin, String wind, String data, String week) {
 
         this.cityId = cityId;
@@ -67,11 +67,11 @@ public class Forecast {
         this.id = id;
     }
 
-    public int getCityId() {
+    public String getCityId() {
         return cityId;
     }
 
-    public void setCityId(int cityId) {
+    public void setCityId(String cityId) {
         this.cityId = cityId;
     }
 

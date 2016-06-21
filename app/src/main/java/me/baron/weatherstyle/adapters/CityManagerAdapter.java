@@ -80,7 +80,7 @@ public class CityManagerAdapter extends BaseRecyclerViewAdapter<CityManagerAdapt
 
     public interface OnCityManagerItemClickListener extends AdapterView.OnItemClickListener {
 
-        void onDeleteClick(int cityId);
+        void onDeleteClick(String cityId);
     }
 
 }

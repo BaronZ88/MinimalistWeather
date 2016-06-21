@@ -21,7 +21,7 @@ public class Weather {
 //    public static final String LIFE_INDEXES_FIELD_NAME = "life_indexes_city_id";
 
     @DatabaseField(columnName = CITY_ID_FIELD_NAME, id = true)
-    private int cityId;
+    private String cityId;
     @DatabaseField(columnName = CITY_NAME_FIELD_NAME)
     private String cityName;
     @DatabaseField(columnName = CITY_NAME_EN_FIELD_NAME)
@@ -43,11 +43,11 @@ public class Weather {
         this.aqi = aqi;
     }
 
-    public int getCityId() {
+    public String getCityId() {
         return cityId;
     }
 
-    public void setCityId(int cityId) {
+    public void setCityId(String cityId) {
         this.cityId = cityId;
     }
 

@@ -19,7 +19,7 @@ public class LifeIndex {
     @DatabaseField(columnName = ID_FIELD_NAME, generatedId = true)
     private long id;//数据库自增长ID
     @DatabaseField(columnName = CITY_ID_FIELD_NAME)
-    private int cityId;
+    private String cityId;
     @DatabaseField(columnName = NAME_ID_FIELD_NAME)
     private String name;
     @DatabaseField(columnName = INDEX_ID_FIELD_NAME)
@@ -30,7 +30,7 @@ public class LifeIndex {
     public LifeIndex() {
     }
 
-    public LifeIndex(int cityId, String name, String index, String details) {
+    public LifeIndex(String cityId, String name, String index, String details) {
 
         this.cityId = cityId;
         this.name = name;
@@ -46,11 +46,11 @@ public class LifeIndex {
         this.id = id;
     }
 
-    public int getCityId() {
+    public String getCityId() {
         return cityId;
     }
 
-    public void setCityId(int cityId) {
+    public void setCityId(String cityId) {
         this.cityId = cityId;
     }
 
