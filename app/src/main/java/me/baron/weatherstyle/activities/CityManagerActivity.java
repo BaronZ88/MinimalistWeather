@@ -32,7 +32,7 @@ public class CityManagerActivity extends BaseActivity {
         }
 
         CityManagerFragment cityManagerFragment = CityManagerFragment.newInstance(3);
-        ActivityUtils.addFragmentToActivity(getFragmentManager(), cityManagerFragment, R.id.fragment_container);
+        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), cityManagerFragment, R.id.fragment_container);
 
         new CityManagerPresenter(this, cityManagerFragment);
     }

@@ -10,7 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.AdapterView;
 
 import java.io.InvalidClassException;
 import java.util.ArrayList;
@@ -77,12 +77,21 @@ public class CityManagerFragment extends BaseFragment implements CityManagerCont
         cmRecyclerView.setItemAnimator(new DefaultItemAnimator());
         weatherList = new ArrayList<>();
         cityManagerAdapter = new CityManagerAdapter(weatherList);
-        cityManagerAdapter.setOnItemClickListener((parent, view, position, id) -> {
-            try {
-                Preferences.savePreference(WeatherSettings.SETTINGS_CURRENT_CITY_ID, weatherList.get(position).getCityId() + "");
-                CityManagerFragment.this.getActivity().finish();
-            } catch (InvalidClassException e) {
-                e.printStackTrace();
+        cityManagerAdapter.setOnItemClickListener(new CityManagerAdapter.OnCityManagerItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                try {
+                    Preferences.savePreference(WeatherSettings.SETTINGS_CURRENT_CITY_ID, weatherList.get(position).getCityId() + "");
+                    CityManagerFragment.this.getActivity().finish();
+                } catch (InvalidClassException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onDeleteClick(int cityId) {
+                presenter.deleteCity(cityId);
             }
         });
         cmRecyclerView.setAdapter(cityManagerAdapter);

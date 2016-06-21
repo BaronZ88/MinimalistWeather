@@ -18,11 +18,13 @@ public class CityManagerPresenter implements CityManagerContract.Presenter {
 
     private Context context;
     private CityManagerContract.View view;
+    private WeatherDao weatherDao;
 
     public CityManagerPresenter(Context context, CityManagerContract.View view) {
 
         this.context = context;
         this.view = view;
+        this.weatherDao = new WeatherDao(context);
         view.setPresenter(this);
     }
 
@@ -46,5 +48,14 @@ public class CityManagerPresenter implements CityManagerContract.Presenter {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public void deleteCity(int cityId) {
+        try {
+            weatherDao.deleteById(cityId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

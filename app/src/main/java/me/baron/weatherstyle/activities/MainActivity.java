@@ -47,7 +47,7 @@ public class MainActivity extends BaseActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         HomePageFragment homePageFragment = HomePageFragment.newInstance();
-        ActivityUtils.addFragmentToActivity(getFragmentManager(), homePageFragment, R.id.fragment_container);
+        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), homePageFragment, R.id.fragment_container);
 
         new HomePagePresenter(this, homePageFragment);
     }

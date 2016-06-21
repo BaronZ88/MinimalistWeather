@@ -21,5 +21,7 @@ public interface CityManagerContract {
     interface Presenter extends BasePresenter {
 
         void loadSavedCities();
+
+        void deleteCity(int cityId);
     }
 }

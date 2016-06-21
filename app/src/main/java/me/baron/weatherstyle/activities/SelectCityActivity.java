@@ -43,7 +43,7 @@ public class SelectCityActivity extends BaseActivity {
         }
 
         selectCityFragment = SelectCityFragment.newInstance();
-        ActivityUtils.addFragmentToActivity(getFragmentManager(), selectCityFragment, R.id.fragment_container);
+        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), selectCityFragment, R.id.fragment_container);
 
         new SelectCityPresenter(this, selectCityFragment);
     }

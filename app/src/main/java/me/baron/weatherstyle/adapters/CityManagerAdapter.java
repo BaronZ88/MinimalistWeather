@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -16,7 +17,12 @@ import me.baron.library.adapter.BaseRecyclerViewAdapter;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.models.style.Weather;
 
-
+/**
+ * 城市管理页面Adapter
+ *
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
+ *         16/3/16
+ */
 public class CityManagerAdapter extends BaseRecyclerViewAdapter<CityManagerAdapter.ViewHolder> {
 
     private final List<Weather> weatherList;
@@ -38,9 +44,13 @@ public class CityManagerAdapter extends BaseRecyclerViewAdapter<CityManagerAdapt
         holder.weather.setText(weatherList.get(position).getRealTime().getWeather());
         holder.aqi.setText(String.valueOf(weatherList.get(position).getAqi().getAqi()));
         holder.deleteButton.setOnClickListener(v -> {
-            weatherList.remove(holder.getAdapterPosition());
+            Weather removeWeather = weatherList.get(holder.getAdapterPosition());
+            weatherList.remove(removeWeather);
             notifyItemRemoved(holder.getAdapterPosition());
-            Log.d("CityManagerAdapter", ""+holder.getAdapterPosition());
+
+            if (onItemClickListener != null && onItemClickListener instanceof OnCityManagerItemClickListener) {
+                ((OnCityManagerItemClickListener) onItemClickListener).onDeleteClick(removeWeather.getCityId());
+            }
         });
     }
 
@@ -66,4 +76,11 @@ public class CityManagerAdapter extends BaseRecyclerViewAdapter<CityManagerAdapt
             itemView.setOnClickListener(v -> adapter.onItemHolderClick(ViewHolder.this));
         }
     }
+
+
+    public interface OnCityManagerItemClickListener extends AdapterView.OnItemClickListener {
+
+        void onDeleteClick(int cityId);
+    }
+
 }
