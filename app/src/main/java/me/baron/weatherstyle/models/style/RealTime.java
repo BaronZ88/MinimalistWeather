@@ -7,7 +7,7 @@ import com.j256.ormlite.table.DatabaseTable;
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         16/2/25
  */
-@DatabaseTable(tableName = "real_time")
+@DatabaseTable(tableName = "RealTime")
 public class RealTime {
 
     public static final String CITY_ID_FIELD_NAME = "cityId";

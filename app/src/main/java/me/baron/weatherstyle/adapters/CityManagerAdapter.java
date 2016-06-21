@@ -40,9 +40,10 @@ public class CityManagerAdapter extends BaseRecyclerViewAdapter<CityManagerAdapt
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.city.setText(weatherList.get(position).getCityName());
-        holder.weather.setText(weatherList.get(position).getRealTime().getWeather());
-        holder.aqi.setText(String.valueOf(weatherList.get(position).getAqi().getAqi()));
+        Weather weather = weatherList.get(position);
+        holder.city.setText(weather.getCityName());
+        holder.weather.setText(weather.getRealTime().getWeather());
+        holder.temp.setText(new StringBuilder().append(weather.getForecasts().get(0).getTempMin()).append("~").append(weather.getForecasts().get(0).getTempMax()).append("℃").toString());
         holder.deleteButton.setOnClickListener(v -> {
             Weather removeWeather = weatherList.get(holder.getAdapterPosition());
             weatherList.remove(removeWeather);
@@ -67,8 +68,8 @@ public class CityManagerAdapter extends BaseRecyclerViewAdapter<CityManagerAdapt
         TextView city;
         @Bind(R.id.item_tv_weather)
         TextView weather;
-        @Bind(R.id.item_tv_aqi)
-        TextView aqi;
+        @Bind(R.id.item_tv_temp)
+        TextView temp;
 
         ViewHolder(View itemView, CityManagerAdapter adapter) {
             super(itemView);
@@ -76,8 +77,7 @@ public class CityManagerAdapter extends BaseRecyclerViewAdapter<CityManagerAdapt
             itemView.setOnClickListener(v -> adapter.onItemHolderClick(ViewHolder.this));
         }
     }
-
-
+    
     public interface OnCityManagerItemClickListener extends AdapterView.OnItemClickListener {
 
         void onDeleteClick(String cityId);

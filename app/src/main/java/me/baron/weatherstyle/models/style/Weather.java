@@ -9,7 +9,7 @@ import java.util.List;
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         16/2/25
  */
-@DatabaseTable(tableName = "weather")
+@DatabaseTable(tableName = "Weather")
 public class Weather {
 
     public static final String CITY_ID_FIELD_NAME = "cityId";

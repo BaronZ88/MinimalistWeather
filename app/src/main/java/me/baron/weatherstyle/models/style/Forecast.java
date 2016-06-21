@@ -7,7 +7,7 @@ import com.j256.ormlite.table.DatabaseTable;
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         16/2/25
  */
-@DatabaseTable(tableName = "forecast")
+@DatabaseTable(tableName = "Forecast")
 public class Forecast {
 
     public static final String ID_FIELD_NAME = "_id";

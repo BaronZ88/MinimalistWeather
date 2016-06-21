@@ -1,4 +1,4 @@
-package me.baron.weatherstyle.presenter;
+package me.baron.weatherstyle.presenters;
 
 import android.content.Context;
 

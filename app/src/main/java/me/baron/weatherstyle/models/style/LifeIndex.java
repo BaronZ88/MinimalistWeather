@@ -7,7 +7,7 @@ import com.j256.ormlite.table.DatabaseTable;
  * @author baron (baronzhang[at]anjuke[dot]com)
  *         16/2/25
  */
-@DatabaseTable(tableName = "life_index")
+@DatabaseTable(tableName = "LifeIndex")
 public class LifeIndex {
 
     public static final String ID_FIELD_NAME = "_id";

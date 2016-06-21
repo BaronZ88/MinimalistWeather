@@ -7,7 +7,7 @@ import com.j256.ormlite.table.DatabaseTable;
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         16/3/11
  */
-@DatabaseTable(tableName = "city")
+@DatabaseTable(tableName = "City")
 public class City {
 
     public static final String ID_FIELD_NAME = "_id";
@@ -15,8 +15,6 @@ public class City {
     public static final String PARENT_FIELD_NAME = "parent";
     public static final String CITY_NAME_FIELD_NAME = "name";
     public static final String CITY_NAME_EN_FIELD_NAME = "pinyin";
-    public static final String PHONE_CODE_FIELD_NAME = "phone_code";
-    public static final String AREA_CODE_FIELD_NAME = "area_code";
     public static final String LON_FIELD_NAME = "x";
     public static final String LAT_FIELD_NAME = "y";
     public static final String CITY_ID_FIELD_NAME = "posID";
@@ -33,10 +31,6 @@ public class City {
     private String cityName;
     @DatabaseField(columnName = CITY_NAME_EN_FIELD_NAME)
     private String cityNameEn;
-    @DatabaseField(columnName = PHONE_CODE_FIELD_NAME)
-    private String phoneCode;
-    @DatabaseField(columnName = AREA_CODE_FIELD_NAME)
-    private String areaCode;
     @DatabaseField(columnName = LON_FIELD_NAME)
     private String lon;
     @DatabaseField(columnName = LAT_FIELD_NAME)
@@ -82,22 +76,6 @@ public class City {
         this.cityNameEn = cityNameEn;
     }
 
-    public String getPhoneCode() {
-        return phoneCode;
-    }
-
-    public void setPhoneCode(String phoneCode) {
-        this.phoneCode = phoneCode;
-    }
-
-    public String getAreaCode() {
-        return areaCode;
-    }
-
-    public void setAreaCode(String areaCode) {
-        this.areaCode = areaCode;
-    }
-
     public String getLon() {
         return lon;
     }
@@ -123,8 +101,6 @@ public class City {
                 ", cityId='" + cityId + '\'' +
                 ", cityName='" + cityName + '\'' +
                 ", cityNameEn='" + cityNameEn + '\'' +
-                ", phoneCode='" + phoneCode + '\'' +
-                ", areaCode='" + areaCode + '\'' +
                 ", lon='" + lon + '\'' +
                 ", lat='" + lat + '\'' +
                 '}';

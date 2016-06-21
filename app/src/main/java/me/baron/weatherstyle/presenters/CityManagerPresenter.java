@@ -1,4 +1,4 @@
-package me.baron.weatherstyle.presenter;
+package me.baron.weatherstyle.presenters;
 
 import android.content.Context;
 
@@ -12,11 +12,7 @@ import me.baron.weatherstyle.models.style.Weather;
 import me.baron.weatherstyle.preferences.Preferences;
 import me.baron.weatherstyle.preferences.WeatherSettings;
 import rx.Observable;
-import rx.Scheduler;
-import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**

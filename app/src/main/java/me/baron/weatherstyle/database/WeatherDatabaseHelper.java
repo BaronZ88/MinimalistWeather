@@ -48,10 +48,10 @@ public final class WeatherDatabaseHelper extends OrmLiteSqliteOpenHelper {
                     "ON weather " +
                     "FOR EACH ROW " +
                     "BEGIN " +
-                    "DELETE FROM aqi WHERE cityId = OLD.cityId; " +
-                    "DELETE FROM real_time WHERE cityId = OLD.cityId; " +
-                    "DELETE FROM forecast WHERE cityId = OLD.cityId; " +
-                    "DELETE FROM life_index WHERE cityId = OLD.cityId; " +
+                    "DELETE FROM AQI WHERE cityId = OLD.cityId; " +
+                    "DELETE FROM RealTime WHERE cityId = OLD.cityId; " +
+                    "DELETE FROM Forecast WHERE cityId = OLD.cityId; " +
+                    "DELETE FROM LifeIndex WHERE cityId = OLD.cityId; " +
                     "END;";
             database.execSQL(weatherTrigger);
 

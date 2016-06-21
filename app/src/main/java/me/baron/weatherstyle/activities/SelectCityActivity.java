@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
 import me.baron.library.activity.BaseActivity;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.fragments.SelectCityFragment;
-import me.baron.weatherstyle.presenter.SelectCityPresenter;
+import me.baron.weatherstyle.presenters.SelectCityPresenter;
 import me.baron.weatherstyle.utils.ActivityUtils;
 import rx.android.schedulers.AndroidSchedulers;
 

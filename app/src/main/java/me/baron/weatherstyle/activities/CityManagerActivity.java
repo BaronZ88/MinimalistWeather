@@ -8,7 +8,7 @@ import butterknife.ButterKnife;
 import me.baron.library.activity.BaseActivity;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.fragments.CityManagerFragment;
-import me.baron.weatherstyle.presenter.CityManagerPresenter;
+import me.baron.weatherstyle.presenters.CityManagerPresenter;
 import me.baron.weatherstyle.utils.ActivityUtils;
 
 /**

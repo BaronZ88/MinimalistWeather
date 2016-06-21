@@ -27,7 +27,7 @@ import me.baron.weatherstyle.contract.CityManagerContract;
 import me.baron.weatherstyle.models.style.Weather;
 import me.baron.weatherstyle.preferences.Preferences;
 import me.baron.weatherstyle.preferences.WeatherSettings;
-import me.baron.weatherstyle.presenter.CityManagerPresenter;
+import me.baron.weatherstyle.presenters.CityManagerPresenter;
 
 public class CityManagerFragment extends BaseFragment implements CityManagerContract.View {
 
