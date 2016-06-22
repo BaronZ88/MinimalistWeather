@@ -77,7 +77,7 @@ public class CityManagerAdapter extends BaseRecyclerViewAdapter<CityManagerAdapt
             itemView.setOnClickListener(v -> adapter.onItemHolderClick(ViewHolder.this));
         }
     }
-    
+
     public interface OnCityManagerItemClickListener extends AdapterView.OnItemClickListener {
 
         void onDeleteClick(String cityId);
