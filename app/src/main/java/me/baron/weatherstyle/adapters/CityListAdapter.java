@@ -45,7 +45,12 @@ public class CityListAdapter extends BaseRecyclerViewAdapter<CityListAdapter.Vie
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         City city = mFilterData.get(position);
-        holder.cityNameTextView.setText(city.getRoot() + "·" + city.getParent() + "·" + city.getCityName());
+        String cityName = city.getCityName();
+        String parentName = city.getParent();
+        if (!cityName.equals(parentName)) {
+            cityName = parentName + "." + cityName;
+        }
+        holder.cityNameTextView.setText(cityName);
     }
 
     @Override

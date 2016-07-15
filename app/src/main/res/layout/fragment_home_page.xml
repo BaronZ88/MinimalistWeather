@@ -59,12 +59,14 @@
                 android:layout_margin="4dp"
                 android:background="@android:color/darker_gray" />
 
-            <LinearLayout
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_forecast"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/line"
+                android:layout_margin="4dp"
                 android:layout_marginTop="4dp"
-                android:orientation="horizontal" />
+                tools:listitem="@layout/item_forecast" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>

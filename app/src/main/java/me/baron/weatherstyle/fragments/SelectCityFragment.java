@@ -72,14 +72,13 @@ public class SelectCityFragment extends BaseFragment implements SelectCityContra
             }
         });
         recyclerView.setAdapter(cityListAdapter);
-
+        this.presenter.start();
         return rootView;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        this.presenter.start();
     }
 
     @Override
