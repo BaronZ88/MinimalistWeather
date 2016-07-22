@@ -4,8 +4,10 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+import com.crashlytics.android.Crashlytics;
 import com.facebook.stetho.Stetho;
 
+import io.fabric.sdk.android.Fabric;
 import me.baron.weatherapi.ApiClient;
 
 /**
@@ -33,6 +35,7 @@ public class WeatherApp extends Application {
     public void onCreate() {
         super.onCreate();
         Log.d(TAG, "onCreate start");
+        Fabric.with(this, new Crashlytics());
         Stetho.initializeWithDefaults(this.getApplicationContext());
 
         weatherAppInstance = this;
