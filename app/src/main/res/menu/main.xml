@@ -17,4 +17,10 @@
         android:orderInCategory="100"
         android:title="@string/action_city_manager"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_fabric_test"
+        android:orderInCategory="100"
+        android:title="@string/action_fabric_test"
+        app:showAsAction="never" />
 </menu>

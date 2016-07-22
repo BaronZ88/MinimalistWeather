@@ -20,9 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activities.MainActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".activities.SelectCityActivity"
             android:label="@string/title_activity_select_city"
@@ -32,6 +34,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="activities.MainActivity" />
         </activity>
+
         <activity
             android:name=".activities.CityManagerActivity"
             android:label="@string/title_activity_city_manager"
@@ -41,6 +44,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="activities.MainActivity" />
         </activity>
+
+        <activity
+            android:name=".activities.FabricTestActivity"
+            android:label="@string/title_activity_fabric_test"
+            android:parentActivityName=".activities.MainActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="activities.MainActivity" />
+        </activity>
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="e6eaabb81f90778f04a9c8207635e6e32212f279" />

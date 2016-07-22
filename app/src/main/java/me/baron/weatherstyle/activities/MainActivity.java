@@ -80,6 +80,10 @@ public class MainActivity extends BaseActivity
             Intent intent = new Intent(MainActivity.this, CityManagerActivity.class);
             startActivity(intent);
             return true;
+        } else if (id == R.id.action_fabric_test) {
+            Intent intent = new Intent(MainActivity.this, FabricTestActivity.class);
+            startActivity(intent);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
