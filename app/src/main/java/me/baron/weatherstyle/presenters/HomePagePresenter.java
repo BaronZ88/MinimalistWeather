@@ -39,20 +39,18 @@ public class HomePagePresenter implements HomePageContract.Presenter {
     @Override
     public void loadWeather(String cityId) {
 
-        if (NetworkUtil.isNetworkConnected(context)) {
-            ApiClient.weatherService.getMiWeather(cityId)
-                    .map(miWeather -> {
-                        WeatherAdapter weather = new MiWeatherAdapter(miWeather);
-                        try {
-                            new WeatherDao(context).insertWeather(weather.getWeather());
-                        } catch (SQLException e) {
-                            e.printStackTrace();
-                        }
-                        return weather;
-                    })
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(weatherView::displayWeatherInformation);
-        }
+        if (NetworkUtil.isNetworkConnected(context)) ApiClient.weatherService.getMiWeather(cityId)
+                .map(miWeather -> {
+                    WeatherAdapter weather = new MiWeatherAdapter(miWeather);
+                    try {
+                        new WeatherDao(context).insertWeather(weather.getWeather());
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                    return weather;
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(weatherView::displayWeatherInformation);
     }
 }

@@ -2,6 +2,9 @@ package me.baron.weatherstyle;
 
 import android.app.Application;
 import android.content.Context;
+import android.os.StrictMode;
+import android.support.design.*;
+import android.support.design.BuildConfig;
 import android.util.Log;
 
 import com.crashlytics.android.Crashlytics;
@@ -35,6 +38,11 @@ public class WeatherApp extends Application {
     public void onCreate() {
         super.onCreate();
         Log.d(TAG, "onCreate start");
+        if(BuildConfig.DEBUG){
+            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build());
+            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyLog().build());
+        }
+
         Fabric.with(this, new Crashlytics());
         Stetho.initializeWithDefaults(this.getApplicationContext());
 
