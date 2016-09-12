@@ -1,14 +1,14 @@
-def supportVersion = "23.3.0"
+def supportVersion = "24.2.0"
 def rxBindingVersion = "0.4.0"
 def retrofitVersion = "2.0.2"
 
 project.ext {
     android = [
-            compileSdkVersion: 23,
-            buildToolsVersion: "23.0.3",
+            compileSdkVersion: 24,
+            buildToolsVersion: "24.0.1",
             applicationId    : "me.baron.weatherstyle",
             minSdkVersion    : 16,
-            targetSdkVersion : 23,
+            targetSdkVersion : 24,
             versionCode      : 1,
             versionName      : "1.0"
     ]
