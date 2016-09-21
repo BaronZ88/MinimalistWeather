@@ -3,7 +3,7 @@ package me.baron.weatherstyle.activities;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.baron.library.activity.BaseActivity;
 import me.baron.weatherstyle.R;
@@ -16,7 +16,7 @@ import me.baron.weatherstyle.utils.ActivityUtils;
  */
 public class CityManagerActivity extends BaseActivity {
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
 
     @Override

@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.baron.library.adapter.BaseRecyclerViewAdapter;
 import me.baron.weatherstyle.R;
@@ -21,7 +21,7 @@ import me.baron.weatherstyle.models.style.Forecast;
  */
 public class ForecastAdapter extends BaseRecyclerViewAdapter<ForecastAdapter.ViewHolder> {
 
-    List<Forecast> forecasts;
+    private List<Forecast> forecasts;
 
     public ForecastAdapter(List<Forecast> forecasts) {
         this.forecasts = forecasts;
@@ -49,11 +49,11 @@ public class ForecastAdapter extends BaseRecyclerViewAdapter<ForecastAdapter.Vie
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        @Bind(R.id.item_date_tv)
+        @BindView(R.id.item_date_tv)
         TextView dateTextView;
-        @Bind(R.id.item_weather_icon_iv)
+        @BindView(R.id.item_weather_icon_iv)
         ImageView weatherIconImageView;
-        @Bind(R.id.item_temp_tv)
+        @BindView(R.id.item_temp_tv)
         TextView tempTextView;
 
         ViewHolder(View itemView, ForecastAdapter adapter) {

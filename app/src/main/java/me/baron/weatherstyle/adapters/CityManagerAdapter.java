@@ -1,7 +1,6 @@
 package me.baron.weatherstyle.adapters;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.baron.library.adapter.BaseRecyclerViewAdapter;
 import me.baron.weatherstyle.R;
@@ -62,13 +61,13 @@ public class CityManagerAdapter extends BaseRecyclerViewAdapter<CityManagerAdapt
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        @Bind(R.id.item_delete)
+        @BindView(R.id.item_delete)
         ImageButton deleteButton;
-        @Bind(R.id.item_tv_city)
+        @BindView(R.id.item_tv_city)
         TextView city;
-        @Bind(R.id.item_tv_weather)
+        @BindView(R.id.item_tv_weather)
         TextView weather;
-        @Bind(R.id.item_tv_temp)
+        @BindView(R.id.item_tv_temp)
         TextView temp;
 
         ViewHolder(View itemView, CityManagerAdapter adapter) {

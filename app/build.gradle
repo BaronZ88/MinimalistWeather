@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
-apply plugin: 'me.tatarka.retrolambda'
+
 
 buildscript {
     repositories {
@@ -17,10 +17,9 @@ repositories {
 }
 
 
-
 android {
-    compileSdkVersion 23
-    buildToolsVersion '23.0.3'
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -33,6 +32,10 @@ android {
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
+
+        jackOptions {
+            enabled true
+        }
     }
     buildTypes {
         release {
@@ -59,4 +62,6 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.6.1@aar') {
         transitive = true;
     }
+    compile rootProject.ext.dependencies.getAt("butterknife")
+    annotationProcessor rootProject.ext.dependencies.getAt("butterknife-compiler")
 }

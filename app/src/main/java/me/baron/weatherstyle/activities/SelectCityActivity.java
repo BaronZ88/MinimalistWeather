@@ -11,7 +11,7 @@ import com.jakewharton.rxbinding.support.v7.widget.RxSearchView;
 
 import java.util.concurrent.TimeUnit;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.baron.library.activity.BaseActivity;
 import me.baron.weatherstyle.R;
@@ -25,7 +25,7 @@ import rx.android.schedulers.AndroidSchedulers;
  */
 public class SelectCityActivity extends BaseActivity {
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
 
     SelectCityFragment selectCityFragment;
@@ -70,10 +70,5 @@ public class SelectCityActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        ButterKnife.unbind(this);
-    }
 
 }

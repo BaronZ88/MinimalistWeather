@@ -13,8 +13,9 @@ import java.io.InvalidClassException;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import me.baron.library.fragment.BaseFragment;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.adapters.CityListAdapter;
@@ -32,8 +33,9 @@ public class SelectCityFragment extends BaseFragment implements SelectCityContra
     public List<City> cities;
     public CityListAdapter cityListAdapter;
 
-    @Bind(R.id.rv_city_list)
+    @BindView(R.id.rv_city_list)
     RecyclerView recyclerView;
+    private Unbinder unbinder;
 
     private SelectCityContract.Presenter presenter;
 
@@ -53,7 +55,7 @@ public class SelectCityFragment extends BaseFragment implements SelectCityContra
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_select_city, container, false);
-        ButterKnife.bind(this, rootView);
+        unbinder = ButterKnife.bind(this, rootView);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -84,7 +86,7 @@ public class SelectCityFragment extends BaseFragment implements SelectCityContra
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
+        unbinder.unbind();
     }
 
     @Override

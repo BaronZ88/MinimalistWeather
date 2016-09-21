@@ -1,14 +1,14 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
     }
     buildTypes {
         release {
@@ -29,7 +29,6 @@ dependencies {
     compile rootProject.ext.dependencies.getAt("adapter-rxjava")
     compile rootProject.ext.dependencies.getAt("fastjson")
     compile rootProject.ext.dependencies.getAt("okhttp3-logging-interceptor")
-//    compile rootProject.ext.dependencies.getAt("retrofit2-fastjson-converter")
-    compile 'com.facebook.stetho:stetho:1.3.1'
-    compile 'com.facebook.stetho:stetho-okhttp3:1.3.1'
+    compile rootProject.ext.dependencies.getAt("stetho")
+    compile rootProject.ext.dependencies.getAt("stetho-okhttp3")
 }

@@ -13,8 +13,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import me.baron.library.fragment.BaseFragment;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.adapters.ForecastAdapter;
@@ -24,16 +25,17 @@ import me.baron.weatherstyle.models.style.Forecast;
 
 public class HomePageFragment extends BaseFragment implements HomePageContract.View {
 
-    @Bind(R.id.tv_city_name)
+    @BindView(R.id.tv_city_name)
     TextView tvCityName;
-    @Bind(R.id.tv_weather_name)
+    @BindView(R.id.tv_weather_name)
     TextView tvWeather;
-    @Bind(R.id.tv_real_time)
+    @BindView(R.id.tv_real_time)
     TextView tvRealTime;
-    @Bind(R.id.tv_aqi)
+    @BindView(R.id.tv_aqi)
     TextView tvAqi;
-    @Bind(R.id.rv_forecast)
+    @BindView(R.id.rv_forecast)
     RecyclerView forecastRecyclerView;
+    private Unbinder unbinder;
 
     private List<Forecast> forecasts;
     private ForecastAdapter forecastAdapter;
@@ -53,7 +55,7 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home_page, container, false);
-        ButterKnife.bind(this, rootView);
+        unbinder = ButterKnife.bind(this, rootView);
 
         forecastRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 5));
         forecasts = new ArrayList<>();
@@ -76,7 +78,7 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         tvCityName.setText(weather.getCityName());
         tvWeather.setText(weather.getWeather().getRealTime().getWeather());
         tvRealTime.setText(weather.getRealTime().getTime());
-        tvAqi.setText("空气污染指数：" + weather.getAQI().getAqi());
+        tvAqi.setText(new StringBuilder("空气污染指数：").append(weather.getAQI().getAqi()).toString());
 
         forecasts.addAll(weather.getForecasts());
         forecastAdapter.notifyDataSetChanged();
@@ -90,6 +92,6 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
+        unbinder.unbind();
     }
 }

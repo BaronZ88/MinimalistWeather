@@ -1,9 +1,7 @@
 package me.baron.weatherapi.services;
 
 import me.baron.weatherapi.entities.MiWeather;
-
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -21,6 +19,4 @@ public interface WeatherService {
     @GET("weather")
     Observable<MiWeather> getMiWeather(@Query("cityId") String cityId);
 
-    @GET("users/{user}/repos")
-    Observable<String> listRepos(@Path("user") String user);
 }

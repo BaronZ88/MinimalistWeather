@@ -13,7 +13,7 @@ import com.annimon.stream.Stream;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.baron.library.adapter.BaseRecyclerViewAdapter;
 import me.baron.weatherstyle.R;
@@ -60,10 +60,10 @@ public class CityListAdapter extends BaseRecyclerViewAdapter<CityListAdapter.Vie
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        @Bind(R.id.tv_city_name)
+        @BindView(R.id.tv_city_name)
         TextView cityNameTextView;
 
-        public ViewHolder(View itemView, CityListAdapter cityListAdapter) {
+        ViewHolder(View itemView, CityListAdapter cityListAdapter) {
             super(itemView);
             ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(v -> cityListAdapter.onItemHolderClick(this));

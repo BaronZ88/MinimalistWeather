@@ -16,9 +16,10 @@ import java.io.InvalidClassException;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 import me.baron.library.fragment.BaseFragment;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.activities.SelectCityActivity;
@@ -34,8 +35,9 @@ public class CityManagerFragment extends BaseFragment implements CityManagerCont
 
     private static final String ARG_COLUMN_COUNT = "column-count";
 
-    @Bind(R.id.rv_city_manager)
+    @BindView(R.id.rv_city_manager)
     RecyclerView cmRecyclerView;
+    private Unbinder unbinder;
 
     private int columnCount = 3;
     private List<Weather> weatherList;
@@ -67,7 +69,7 @@ public class CityManagerFragment extends BaseFragment implements CityManagerCont
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_city_manager, container, false);
-        ButterKnife.bind(this, rootView);
+        unbinder = ButterKnife.bind(this, rootView);
         Context context = rootView.getContext();
         if (columnCount <= 1) {
             cmRecyclerView.setLayoutManager(new LinearLayoutManager(context));
@@ -105,7 +107,7 @@ public class CityManagerFragment extends BaseFragment implements CityManagerCont
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
+        unbinder.unbind();
     }
 
     @Override
