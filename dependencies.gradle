@@ -9,7 +9,7 @@ project.ext {
             compileSdkVersion: 24,
             buildToolsVersion: "24.0.1",
             applicationId    : "me.baron.weatherstyle",
-            minSdkVersion    : 16,
+            minSdkVersion    : 14,
             targetSdkVersion : 24,
             versionCode      : 1,
             versionName      : "1.0"
