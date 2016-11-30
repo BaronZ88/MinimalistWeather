@@ -7,7 +7,7 @@ import dagger.Provides;
 import me.baron.weatherstyle.contract.SelectCityContract;
 
 /**
- * @author 张磊 (baronzhang[at]anjuke[dot]com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         2016/11/30
  */
 @Module

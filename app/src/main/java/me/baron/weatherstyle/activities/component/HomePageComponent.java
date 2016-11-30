@@ -5,7 +5,7 @@ import me.baron.weatherstyle.activities.MainActivity;
 import me.baron.weatherstyle.presenter.module.HomePagePresenterModule;
 
 /**
- * @author 张磊 (baronzhang[at]anjuke[dot]com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         2016/11/29
  */
 @Component(modules = HomePagePresenterModule.class)

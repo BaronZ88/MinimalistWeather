@@ -5,7 +5,7 @@ import me.baron.weatherstyle.activities.SelectCityActivity;
 import me.baron.weatherstyle.presenter.module.SelectCityPresenterModule;
 
 /**
- * @author 张磊 (baronzhang[at]anjuke[dot]com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         2016/11/30
  */
 @Component(modules = SelectCityPresenterModule.class)
