@@ -6,6 +6,8 @@ import java.io.InvalidClassException;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import me.baron.weatherstyle.contract.CityManagerContract;
 import me.baron.weatherstyle.database.dao.WeatherDao;
 import me.baron.weatherstyle.models.style.Weather;
@@ -19,13 +21,14 @@ import rx.schedulers.Schedulers;
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         16/4/16
  */
-public class CityManagerPresenter implements CityManagerContract.Presenter {
+public final class CityManagerPresenter implements CityManagerContract.Presenter {
 
     private Context context;
     private CityManagerContract.View view;
     private WeatherDao weatherDao;
 
-    public CityManagerPresenter(Context context, CityManagerContract.View view) {
+    @Inject
+    CityManagerPresenter(Context context, CityManagerContract.View view) {
 
         this.context = context;
         this.view = view;

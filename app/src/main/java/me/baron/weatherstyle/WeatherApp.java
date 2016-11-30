@@ -3,7 +3,6 @@ package me.baron.weatherstyle;
 import android.app.Application;
 import android.content.Context;
 import android.os.StrictMode;
-import android.support.design.*;
 import android.support.design.BuildConfig;
 import android.util.Log;
 
@@ -38,7 +37,7 @@ public class WeatherApp extends Application {
     public void onCreate() {
         super.onCreate();
         Log.d(TAG, "onCreate start");
-        if(BuildConfig.DEBUG){
+        if (BuildConfig.DEBUG) {
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build());
             StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyLog().build());
         }
@@ -52,4 +51,5 @@ public class WeatherApp extends Application {
         ApiClient.init();
         Log.d(TAG, "onCreate end");
     }
+
 }

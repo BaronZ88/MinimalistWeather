@@ -37,17 +37,17 @@ android {
 
     }
     buildTypes {
+        debug {
+            buildConfigField("boolean", "LOG_DEBUG", "true")
+        }
+
         release {
+            buildConfigField("boolean", "LOG_DEBUG", "false")
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
-    dexOptions {
-        incremental = true;
-        preDexLibraries = false
-        javaMaxHeapSize "4g"
-    }
     lintOptions {
         abortOnError false
     }
@@ -63,4 +63,7 @@ dependencies {
     }
     compile rootProject.ext.dependencies.getAt("butterknife")
     annotationProcessor rootProject.ext.dependencies.getAt("butterknife-compiler")
+
+    compile rootProject.ext.dependencies.getAt("dagger")
+    annotationProcessor rootProject.ext.dependencies.getAt("dagger-compiler")
 }

@@ -2,6 +2,8 @@ package me.baron.weatherstyle.presenters;
 
 import android.content.Context;
 
+import javax.inject.Inject;
+
 import me.baron.weatherstyle.contract.SelectCityContract;
 import me.baron.weatherstyle.database.dao.CityDao;
 import rx.Observable;
@@ -11,13 +13,13 @@ import rx.schedulers.Schedulers;
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  */
-public class SelectCityPresenter implements SelectCityContract.Presenter {
+public final class SelectCityPresenter implements SelectCityContract.Presenter {
 
     private final Context context;
     private final SelectCityContract.View cityListView;
 
-
-    public SelectCityPresenter(Context context, SelectCityContract.View view) {
+    @Inject
+    SelectCityPresenter(Context context, SelectCityContract.View view) {
 
         this.context = context;
         this.cityListView = view;

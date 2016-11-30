@@ -2,7 +2,8 @@ def supportVersion = "24.2.1"
 def rxBindingVersion = "0.4.0"
 def retrofitVersion = "2.0.2"
 def stethoVersion = "1.3.1"
-def butterKnifeVersion = "8.3.0"
+def butterKnifeVersion = "8.4.0"
+def daggerVersion = "2.8"
 
 project.ext {
     android = [
@@ -37,6 +38,10 @@ project.ext {
             //retrofit
             "retrofit"                   : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
             "adapter-rxjava"             : "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}",
+
+            //dagger
+            "dagger"                     : "com.google.dagger:dagger:${daggerVersion}",
+            "dagger-compiler"            : "com.google.dagger:dagger-compiler:${daggerVersion}",
 
             //facebook
             "stetho"                     : "com.facebook.stetho:stetho:${stethoVersion}",

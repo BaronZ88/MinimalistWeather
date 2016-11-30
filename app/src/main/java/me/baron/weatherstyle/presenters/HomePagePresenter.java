@@ -4,6 +4,8 @@ import android.content.Context;
 
 import java.sql.SQLException;
 
+import javax.inject.Inject;
+
 import me.baron.weatherapi.ApiClient;
 import me.baron.weatherstyle.database.dao.WeatherDao;
 import me.baron.weatherstyle.contract.HomePageContract;
@@ -18,12 +20,13 @@ import rx.schedulers.Schedulers;
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  */
-public class HomePagePresenter implements HomePageContract.Presenter {
+public final class HomePagePresenter implements HomePageContract.Presenter {
 
     private final Context context;
     private final HomePageContract.View weatherView;
 
-    public HomePagePresenter(Context context, HomePageContract.View view) {
+    @Inject
+    HomePagePresenter(Context context, HomePageContract.View view) {
 
         this.context = context;
         this.weatherView = view;

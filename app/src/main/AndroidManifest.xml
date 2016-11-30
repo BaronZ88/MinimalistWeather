@@ -46,16 +46,6 @@
                 android:value="activities.MainActivity" />
         </activity>
 
-        <activity
-            android:name=".activities.FabricTestActivity"
-            android:label="@string/title_activity_fabric_test"
-            android:parentActivityName=".activities.MainActivity"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="activities.MainActivity" />
-        </activity>
-
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="e6eaabb81f90778f04a9c8207635e6e32212f279" />

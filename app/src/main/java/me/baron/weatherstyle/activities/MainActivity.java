@@ -10,11 +10,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.baron.library.activity.BaseActivity;
 import me.baron.weatherstyle.R;
+import me.baron.weatherstyle.WeatherApp;
+import me.baron.weatherstyle.component.DaggerHomePageComponent;
 import me.baron.weatherstyle.fragments.HomePageFragment;
+import me.baron.weatherstyle.module.HomePagePresenterModule;
 import me.baron.weatherstyle.presenters.HomePagePresenter;
 import me.baron.weatherstyle.utils.ActivityUtils;
 
@@ -28,6 +33,9 @@ public class MainActivity extends BaseActivity
     Toolbar toolbar;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
+
+    @Inject
+    HomePagePresenter homePagePresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +57,9 @@ public class MainActivity extends BaseActivity
         HomePageFragment homePageFragment = HomePageFragment.newInstance();
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), homePageFragment, R.id.fragment_container);
 
-        new HomePagePresenter(this, homePageFragment);
+        DaggerHomePageComponent.builder()
+                .homePagePresenterModule(new HomePagePresenterModule(WeatherApp.getInstance(), homePageFragment))
+                .build().inject(this);
     }
 
     @Override
