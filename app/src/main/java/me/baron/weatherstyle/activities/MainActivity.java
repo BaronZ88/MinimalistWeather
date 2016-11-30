@@ -15,13 +15,13 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.baron.library.activity.BaseActivity;
+import me.baron.library.utils.ActivityUtils;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.WeatherApp;
-import me.baron.weatherstyle.component.DaggerHomePageComponent;
-import me.baron.weatherstyle.fragments.HomePageFragment;
-import me.baron.weatherstyle.module.HomePagePresenterModule;
-import me.baron.weatherstyle.presenters.HomePagePresenter;
-import me.baron.weatherstyle.utils.ActivityUtils;
+import me.baron.weatherstyle.activities.component.DaggerHomePageComponent;
+import me.baron.weatherstyle.presenter.HomePagePresenter;
+import me.baron.weatherstyle.presenter.module.HomePagePresenterModule;
+import me.baron.weatherstyle.view.fragments.HomePageFragment;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
@@ -88,10 +88,6 @@ public class MainActivity extends BaseActivity
             return true;
         } else if (id == R.id.action_city_manager) {
             Intent intent = new Intent(MainActivity.this, CityManagerActivity.class);
-            startActivity(intent);
-            return true;
-        } else if (id == R.id.action_fabric_test) {
-            Intent intent = new Intent(MainActivity.this, FabricTestActivity.class);
             startActivity(intent);
             return true;
         }

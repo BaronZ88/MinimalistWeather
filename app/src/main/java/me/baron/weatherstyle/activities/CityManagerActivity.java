@@ -8,12 +8,12 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.baron.library.activity.BaseActivity;
+import me.baron.library.utils.ActivityUtils;
 import me.baron.weatherstyle.R;
-import me.baron.weatherstyle.component.DaggerCityManagerComponent;
-import me.baron.weatherstyle.fragments.CityManagerFragment;
-import me.baron.weatherstyle.module.CityManagerPresentModule;
-import me.baron.weatherstyle.presenters.CityManagerPresenter;
-import me.baron.weatherstyle.utils.ActivityUtils;
+import me.baron.weatherstyle.activities.component.DaggerCityManagerComponent;
+import me.baron.weatherstyle.presenter.CityManagerPresenter;
+import me.baron.weatherstyle.presenter.module.CityManagerPresentModule;
+import me.baron.weatherstyle.view.fragments.CityManagerFragment;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)

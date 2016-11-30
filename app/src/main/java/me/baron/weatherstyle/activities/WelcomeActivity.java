@@ -7,8 +7,8 @@ import android.util.Log;
 import java.io.InvalidClassException;
 
 import me.baron.library.activity.BaseActivity;
-import me.baron.weatherstyle.preferences.Preferences;
-import me.baron.weatherstyle.preferences.WeatherSettings;
+import me.baron.weatherstyle.model.preferences.Preferences;
+import me.baron.weatherstyle.model.preferences.WeatherSettings;
 import me.baron.weatherstyle.utils.CommonUtil;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -24,7 +24,6 @@ public class WelcomeActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_welcome);
         Log.d(TAG, "onCreate start");
 
         Observable.just(initAppData())

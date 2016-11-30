@@ -10,7 +10,7 @@ import com.crashlytics.android.Crashlytics;
 import com.facebook.stetho.Stetho;
 
 import io.fabric.sdk.android.Fabric;
-import me.baron.weatherapi.ApiClient;
+import me.baron.weatherstyle.model.http.ApiClient;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)

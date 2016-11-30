@@ -4,7 +4,7 @@ import java.util.List;
 
 import me.baron.library.presenter.BasePresenter;
 import me.baron.library.view.BaseView;
-import me.baron.weatherstyle.models.City;
+import me.baron.weatherstyle.model.db.models.City;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)

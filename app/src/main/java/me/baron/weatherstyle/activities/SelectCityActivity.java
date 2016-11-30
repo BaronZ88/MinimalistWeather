@@ -16,12 +16,12 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.baron.library.activity.BaseActivity;
+import me.baron.library.utils.ActivityUtils;
 import me.baron.weatherstyle.R;
-import me.baron.weatherstyle.component.DaggerSecectCityComponent;
-import me.baron.weatherstyle.fragments.SelectCityFragment;
-import me.baron.weatherstyle.module.SelectCityPresenterModule;
-import me.baron.weatherstyle.presenters.SelectCityPresenter;
-import me.baron.weatherstyle.utils.ActivityUtils;
+import me.baron.weatherstyle.activities.component.DaggerSelectCityComponent;
+import me.baron.weatherstyle.presenter.SelectCityPresenter;
+import me.baron.weatherstyle.presenter.module.SelectCityPresenterModule;
+import me.baron.weatherstyle.view.fragments.SelectCityFragment;
 import rx.android.schedulers.AndroidSchedulers;
 
 /**
@@ -52,7 +52,7 @@ public class SelectCityActivity extends BaseActivity {
         selectCityFragment = SelectCityFragment.newInstance();
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), selectCityFragment, R.id.fragment_container);
 
-        DaggerSecectCityComponent.builder()
+        DaggerSelectCityComponent.builder()
                 .selectCityPresenterModule(new SelectCityPresenterModule(this, selectCityFragment))
                 .build().inject(this);
     }

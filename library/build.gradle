@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -15,6 +16,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     lintOptions {
@@ -38,4 +44,10 @@ dependencies {
     compile rootProject.ext.dependencies.getAt("rxbinding-recyclerview-v7")
     compile rootProject.ext.dependencies.getAt("ormlite-android")
     compile rootProject.ext.dependencies.getAt("stream")
+    compile rootProject.ext.dependencies.getAt("retrofit")
+    compile rootProject.ext.dependencies.getAt("adapter-rxjava")
+    compile rootProject.ext.dependencies.getAt("fastjson")
+    compile rootProject.ext.dependencies.getAt("okhttp3-logging-interceptor")
+    compile rootProject.ext.dependencies.getAt("stetho")
+    compile rootProject.ext.dependencies.getAt("stetho-okhttp3")
 }

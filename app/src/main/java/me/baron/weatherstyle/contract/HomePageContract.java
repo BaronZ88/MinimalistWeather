@@ -2,7 +2,7 @@ package me.baron.weatherstyle.contract;
 
 import me.baron.library.presenter.BasePresenter;
 import me.baron.library.view.BaseView;
-import me.baron.weatherstyle.models.adapter.WeatherAdapter;
+import me.baron.weatherstyle.model.db.models.adapter.WeatherAdapter;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
