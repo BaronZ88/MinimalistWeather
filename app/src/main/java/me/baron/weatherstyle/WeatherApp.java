@@ -20,6 +20,8 @@ public class WeatherApp extends Application {
 
     private static final String TAG = "WeatherApp";
 
+    private AppComponent appComponent;
+
     private static WeatherApp weatherAppInstance;
 
     public static WeatherApp getInstance() {
@@ -42,6 +44,10 @@ public class WeatherApp extends Application {
             StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyLog().build());
         }
 
+        appComponent = DaggerAppComponent.builder()
+                .appModule(new AppModule(this))
+                .build();
+
         Fabric.with(this, new Crashlytics());
         Stetho.initializeWithDefaults(this.getApplicationContext());
 
@@ -52,4 +58,9 @@ public class WeatherApp extends Application {
         Log.d(TAG, "onCreate end");
     }
 
+
+    public AppComponent getAppComponent() {
+
+        return appComponent;
+    }
 }

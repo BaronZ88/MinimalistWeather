@@ -58,7 +58,8 @@ public class MainActivity extends BaseActivity
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), homePageFragment, R.id.fragment_container);
 
         DaggerHomePageComponent.builder()
-                .homePagePresenterModule(new HomePagePresenterModule(WeatherApp.getInstance(), homePageFragment))
+                .appComponent(WeatherApp.getInstance().getAppComponent())
+                .homePagePresenterModule(new HomePagePresenterModule(homePageFragment))
                 .build().inject(this);
     }
 
