@@ -8,6 +8,8 @@ import com.j256.ormlite.stmt.QueryBuilder;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import me.baron.weatherstyle.model.db.CityDatabaseHelper;
 import me.baron.weatherstyle.model.db.models.City;
 import me.baron.weatherstyle.model.db.models.HotCity;
@@ -23,7 +25,8 @@ public class CityDao {
     private Dao<City, Integer> cityDaoOperation;
     private Dao<HotCity, Integer> hotCityDaoOperation;
 
-    public CityDao(Context context) {
+    @Inject
+    CityDao(Context context) {
 
         this.cityDaoOperation = CityDatabaseHelper.getInstance(context).getCityDao(City.class);
         this.hotCityDaoOperation = CityDatabaseHelper.getInstance(context).getCityDao(HotCity.class);

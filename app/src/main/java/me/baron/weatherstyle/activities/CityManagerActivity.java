@@ -43,7 +43,7 @@ public class CityManagerActivity extends BaseActivity {
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), cityManagerFragment, R.id.fragment_container);
 
         DaggerCityManagerComponent.builder()
-                .appComponent(WeatherApp.getInstance().getAppComponent())
+                .applicationComponent(WeatherApp.getInstance().getApplicationComponent())
                 .cityManagerPresentModule(new CityManagerPresentModule(cityManagerFragment))
                 .build().inject(this);
     }

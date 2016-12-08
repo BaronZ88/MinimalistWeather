@@ -4,8 +4,10 @@ import android.content.Context;
 
 import javax.inject.Inject;
 
+import me.baron.weatherstyle.WeatherApp;
 import me.baron.weatherstyle.contract.SelectCityContract;
 import me.baron.weatherstyle.model.db.dao.CityDao;
+import me.baron.weatherstyle.model.db.dao.DaggerCityDaoComponent;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -15,15 +17,20 @@ import rx.schedulers.Schedulers;
  */
 public final class SelectCityPresenter implements SelectCityContract.Presenter {
 
-    private final Context context;
     private final SelectCityContract.View cityListView;
+
+    @Inject
+    CityDao cityDao;
 
     @Inject
     SelectCityPresenter(Context context, SelectCityContract.View view) {
 
-        this.context = context;
         this.cityListView = view;
         cityListView.setPresenter(this);
+
+        DaggerCityDaoComponent.builder()
+                .applicationComponent(WeatherApp.getInstance().getApplicationComponent())
+                .build().inject(this);
     }
 
     @Override
@@ -33,7 +40,7 @@ public final class SelectCityPresenter implements SelectCityContract.Presenter {
 
     @Override
     public void loadCities() {
-        Observable.just(new CityDao(context).queryCityList())
+        Observable.just(cityDao.queryCityList())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(cityListView::displayCities);

@@ -54,7 +54,7 @@ public class SelectCityActivity extends BaseActivity {
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), selectCityFragment, R.id.fragment_container);
 
         DaggerSelectCityComponent.builder()
-                .appComponent(WeatherApp.getInstance().getAppComponent())
+                .applicationComponent(WeatherApp.getInstance().getApplicationComponent())
                 .selectCityPresenterModule(new SelectCityPresenterModule(selectCityFragment))
                 .build().inject(this);
     }
