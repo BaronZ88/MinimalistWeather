@@ -6,14 +6,16 @@ import java.sql.SQLException;
 
 import javax.inject.Inject;
 
-import me.baron.weatherstyle.model.http.ApiClient;
-import me.baron.weatherstyle.model.db.dao.WeatherDao;
+import me.baron.library.utils.NetworkUtil;
+import me.baron.weatherstyle.WeatherApp;
 import me.baron.weatherstyle.contract.HomePageContract;
+import me.baron.weatherstyle.model.db.dao.WeatherDao;
+import me.baron.weatherstyle.model.db.dao.component.DaggerWeatherDaoComponent;
 import me.baron.weatherstyle.model.db.models.adapter.MiWeatherAdapter;
 import me.baron.weatherstyle.model.db.models.adapter.WeatherAdapter;
+import me.baron.weatherstyle.model.http.ApiClient;
 import me.baron.weatherstyle.model.preferences.Preferences;
 import me.baron.weatherstyle.model.preferences.WeatherSettings;
-import me.baron.library.utils.NetworkUtil;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -26,11 +28,18 @@ public final class HomePagePresenter implements HomePageContract.Presenter {
     private final HomePageContract.View weatherView;
 
     @Inject
+    WeatherDao weatherDao;
+
+    @Inject
     HomePagePresenter(Context context, HomePageContract.View view) {
 
         this.context = context;
         this.weatherView = view;
         weatherView.setPresenter(this);
+
+        DaggerWeatherDaoComponent.builder()
+                .applicationComponent(WeatherApp.getInstance().getApplicationComponent())
+                .build().inject(this);
     }
 
     @Override
@@ -46,7 +55,7 @@ public final class HomePagePresenter implements HomePageContract.Presenter {
                 .map(miWeather -> {
                     WeatherAdapter weather = new MiWeatherAdapter(miWeather);
                     try {
-                        new WeatherDao(context).insertWeather(weather.getWeather());
+                        weatherDao.insertWeather(weather.getWeather());
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }

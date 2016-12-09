@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+import javax.inject.Inject;
+
 import me.baron.weatherstyle.model.db.WeatherDatabaseHelper;
 import me.baron.weatherstyle.model.db.models.style.AQI;
 import me.baron.weatherstyle.model.db.models.style.Forecast;
@@ -30,7 +32,8 @@ public class WeatherDao {
     private Dao<RealTime, String> realTimeDaoOperation;
     private Dao<Weather, String> weatherDaoOperation;
 
-    public WeatherDao(Context context) {
+    @Inject
+    WeatherDao(Context context) {
 
         this.context = context;
         this.apiDaoOperation = WeatherDatabaseHelper.getInstance(context).getWeatherDao(AQI.class);

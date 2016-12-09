@@ -10,7 +10,6 @@ import butterknife.ButterKnife;
 import me.baron.library.activity.BaseActivity;
 import me.baron.library.utils.ActivityUtils;
 import me.baron.weatherstyle.R;
-import me.baron.weatherstyle.WeatherApp;
 import me.baron.weatherstyle.activities.component.DaggerCityManagerComponent;
 import me.baron.weatherstyle.presenter.CityManagerPresenter;
 import me.baron.weatherstyle.presenter.module.CityManagerPresentModule;
@@ -43,7 +42,6 @@ public class CityManagerActivity extends BaseActivity {
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), cityManagerFragment, R.id.fragment_container);
 
         DaggerCityManagerComponent.builder()
-                .applicationComponent(WeatherApp.getInstance().getApplicationComponent())
                 .cityManagerPresentModule(new CityManagerPresentModule(cityManagerFragment))
                 .build().inject(this);
     }

@@ -1,15 +1,15 @@
 package me.baron.weatherstyle.presenter;
 
-import android.content.Context;
-
 import java.io.InvalidClassException;
 import java.sql.SQLException;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import me.baron.weatherstyle.WeatherApp;
 import me.baron.weatherstyle.contract.CityManagerContract;
 import me.baron.weatherstyle.model.db.dao.WeatherDao;
+import me.baron.weatherstyle.model.db.dao.component.DaggerWeatherDaoComponent;
 import me.baron.weatherstyle.model.db.models.style.Weather;
 import me.baron.weatherstyle.model.preferences.Preferences;
 import me.baron.weatherstyle.model.preferences.WeatherSettings;
@@ -23,17 +23,20 @@ import rx.schedulers.Schedulers;
  */
 public final class CityManagerPresenter implements CityManagerContract.Presenter {
 
-    private Context context;
     private CityManagerContract.View view;
-    private WeatherDao weatherDao;
 
     @Inject
-    CityManagerPresenter(Context context, CityManagerContract.View view) {
+    WeatherDao weatherDao;
 
-        this.context = context;
+    @Inject
+    CityManagerPresenter(CityManagerContract.View view) {
+
         this.view = view;
-        this.weatherDao = new WeatherDao(context);
         view.setPresenter(this);
+
+        DaggerWeatherDaoComponent.builder()
+                .applicationComponent(WeatherApp.getInstance().getApplicationComponent())
+                .build().inject(this);
     }
 
     @Override
@@ -46,7 +49,7 @@ public final class CityManagerPresenter implements CityManagerContract.Presenter
     public void loadSavedCities() {
 
         try {
-            Observable.just(new WeatherDao(context).queryAllSaveCity())
+            Observable.just(weatherDao.queryAllSaveCity())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(weathers -> {

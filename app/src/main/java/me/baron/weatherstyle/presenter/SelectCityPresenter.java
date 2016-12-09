@@ -1,13 +1,11 @@
 package me.baron.weatherstyle.presenter;
 
-import android.content.Context;
-
 import javax.inject.Inject;
 
 import me.baron.weatherstyle.WeatherApp;
 import me.baron.weatherstyle.contract.SelectCityContract;
 import me.baron.weatherstyle.model.db.dao.CityDao;
-import me.baron.weatherstyle.model.db.dao.DaggerCityDaoComponent;
+import me.baron.weatherstyle.model.db.dao.component.DaggerCityDaoComponent;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -23,7 +21,7 @@ public final class SelectCityPresenter implements SelectCityContract.Presenter {
     CityDao cityDao;
 
     @Inject
-    SelectCityPresenter(Context context, SelectCityContract.View view) {
+    SelectCityPresenter(SelectCityContract.View view) {
 
         this.cityListView = view;
         cityListView.setPresenter(this);
