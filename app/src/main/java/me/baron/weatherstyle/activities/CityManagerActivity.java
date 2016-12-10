@@ -13,7 +13,7 @@ import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.WeatherApp;
 import me.baron.weatherstyle.activities.component.DaggerCityManagerComponent;
 import me.baron.weatherstyle.presenter.CityManagerPresenter;
-import me.baron.weatherstyle.presenter.module.CityManagerPresentModule;
+import me.baron.weatherstyle.activities.module.CityManagerModule;
 import me.baron.weatherstyle.view.fragments.CityManagerFragment;
 
 /**
@@ -44,7 +44,7 @@ public class CityManagerActivity extends BaseActivity {
 
         DaggerCityManagerComponent.builder()
                 .applicationComponent(WeatherApp.getInstance().getApplicationComponent())
-                .cityManagerPresentModule(new CityManagerPresentModule(cityManagerFragment))
+                .cityManagerModule(new CityManagerModule(cityManagerFragment))
                 .build().inject(this);
     }
 }

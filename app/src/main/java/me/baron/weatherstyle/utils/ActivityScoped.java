@@ -1,5 +1,6 @@
 package me.baron.weatherstyle.utils;
 
+import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
@@ -10,6 +11,7 @@ import javax.inject.Scope;
  *         2016/12/1
  */
 @Scope
-@Retention(RetentionPolicy.CLASS)
-public @interface ApplicationScoped {
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+public @interface ActivityScoped {
 }

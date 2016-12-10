@@ -1,18 +1,21 @@
 package me.baron.weatherstyle.presenter;
 
+import android.content.Context;
+
 import java.io.InvalidClassException;
 import java.sql.SQLException;
 import java.util.List;
 
 import javax.inject.Inject;
 
-import me.baron.weatherstyle.WeatherApp;
+import me.baron.weatherstyle.ApplicationModule;
 import me.baron.weatherstyle.contract.CityManagerContract;
 import me.baron.weatherstyle.model.db.dao.WeatherDao;
-import me.baron.weatherstyle.model.db.dao.component.DaggerWeatherDaoComponent;
 import me.baron.weatherstyle.model.db.models.style.Weather;
 import me.baron.weatherstyle.model.preferences.Preferences;
 import me.baron.weatherstyle.model.preferences.WeatherSettings;
+import me.baron.weatherstyle.presenter.component.DaggerPresenterComponent;
+import me.baron.weatherstyle.utils.ActivityScoped;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -21,6 +24,7 @@ import rx.schedulers.Schedulers;
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         16/4/16
  */
+@ActivityScoped
 public final class CityManagerPresenter implements CityManagerContract.Presenter {
 
     private CityManagerContract.View view;
@@ -29,13 +33,13 @@ public final class CityManagerPresenter implements CityManagerContract.Presenter
     WeatherDao weatherDao;
 
     @Inject
-    CityManagerPresenter(CityManagerContract.View view) {
+    CityManagerPresenter(Context context, CityManagerContract.View view) {
 
         this.view = view;
         view.setPresenter(this);
 
-        DaggerWeatherDaoComponent.builder()
-                .applicationComponent(WeatherApp.getInstance().getApplicationComponent())
+        DaggerPresenterComponent.builder()
+                .applicationModule(new ApplicationModule(context))
                 .build().inject(this);
     }
 

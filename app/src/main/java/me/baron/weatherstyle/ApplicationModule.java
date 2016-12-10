@@ -1,6 +1,5 @@
 package me.baron.weatherstyle;
 
-import android.app.Application;
 import android.content.Context;
 
 import javax.inject.Singleton;
@@ -15,24 +14,24 @@ import dagger.Provides;
 @Module
 public class ApplicationModule {
 
-    private Application application;
+    private Context context;
 
-    ApplicationModule(Application application) {
+    public ApplicationModule(Context context) {
 
-        this.application = application;
+        this.context = context;
     }
 
     @Provides
     @Singleton
-    Application provideApplication() {
+    WeatherApp provideApplication() {
 
-        return application;
+        return (WeatherApp) context.getApplicationContext();
     }
 
     @Provides
     @Singleton
-    Context provideApplicationContext() {
+    Context provideContext() {
 
-        return application.getApplicationContext();
+        return context;
     }
 }

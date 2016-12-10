@@ -1,4 +1,4 @@
-package me.baron.weatherstyle.presenter.module;
+package me.baron.weatherstyle.activities.module;
 
 import dagger.Module;
 import dagger.Provides;
@@ -12,11 +12,11 @@ import me.baron.weatherstyle.contract.HomePageContract;
  *         2016/11/30
  */
 @Module
-public class HomePagePresenterModule {
+public class HomePageModule {
 
     private HomePageContract.View view;
 
-    public HomePagePresenterModule(HomePageContract.View view) {
+    public HomePageModule(HomePageContract.View view) {
 
         this.view = view;
     }

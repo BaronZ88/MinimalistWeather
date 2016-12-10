@@ -20,7 +20,7 @@ import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.WeatherApp;
 import me.baron.weatherstyle.activities.component.DaggerHomePageComponent;
 import me.baron.weatherstyle.presenter.HomePagePresenter;
-import me.baron.weatherstyle.presenter.module.HomePagePresenterModule;
+import me.baron.weatherstyle.activities.module.HomePageModule;
 import me.baron.weatherstyle.view.fragments.HomePageFragment;
 
 /**
@@ -59,7 +59,7 @@ public class MainActivity extends BaseActivity
 
         DaggerHomePageComponent.builder()
                 .applicationComponent(WeatherApp.getInstance().getApplicationComponent())
-                .homePagePresenterModule(new HomePagePresenterModule(homePageFragment))
+                .homePageModule(new HomePageModule(homePageFragment))
                 .build().inject(this);
     }
 

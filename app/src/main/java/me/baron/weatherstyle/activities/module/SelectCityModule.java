@@ -1,4 +1,4 @@
-package me.baron.weatherstyle.presenter.module;
+package me.baron.weatherstyle.activities.module;
 
 import dagger.Module;
 import dagger.Provides;
@@ -9,11 +9,11 @@ import me.baron.weatherstyle.contract.SelectCityContract;
  *         2016/11/30
  */
 @Module
-public class SelectCityPresenterModule {
+public class SelectCityModule {
 
     private SelectCityContract.View view;
 
-    public SelectCityPresenterModule(SelectCityContract.View view) {
+    public SelectCityModule(SelectCityContract.View view) {
         this.view = view;
     }
 
