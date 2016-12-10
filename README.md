@@ -1,9 +1,20 @@
-# WeatherStyle
+# WeatherStyle（待完善）
 
 
-**WeatherStyle是Android平台上一款开源天气App，目前还在开发中。**
+## 简介
 
-> 项目基于MVP架构，采用RxJava、Retrofit2、OKHttp3、ORMLite、ButterKnife、RetroLambda等开源框架来实现，后期还会引入Dragger2进一步将框架解耦。
+**WeatherStyle是Android平台上一款开源天气App，目前还在开发中。项目基于MVP架构，采用时下各主流开源库实现。开发此项目的主要是为展示各种开源库的使用方式以及Android项目的架构方案，并作为团队项目开发规范的一部分。**
+
+采用的开源库主要包括：
+
+* RxJava
+* Retrofit2
+* OKHttp3
+* ORMLite
+* Dragger2
+* ButterKnife
+* RetroLambda
+* Stetho
 
 **从这个项目中你能学到什么？**
 
@@ -16,3 +27,14 @@
 * 如何更好的管理Gradle依赖库的版本；
 * 代码混淆配置；
 * 怎样快速开发架构一款Android App。
+
+## 项目架构设计图
+
+##### 初始版
+![初始版](1.png)
+
+
+##### 演进版
+![演进版](2.png)
+
+
