@@ -7,7 +7,7 @@ import me.baron.weatherstyle.models.db.entities.style.AQI;
 import me.baron.weatherstyle.models.db.entities.style.Forecast;
 import me.baron.weatherstyle.models.db.entities.style.LifeIndex;
 import me.baron.weatherstyle.models.db.entities.style.RealTime;
-import me.baron.weatherstyle.models.db.entities.style.Weather;
+import me.baron.weatherstyle.models.http.entities.mi.MiAQI;
 import me.baron.weatherstyle.models.http.entities.mi.MiForecast;
 import me.baron.weatherstyle.models.http.entities.mi.MiIndex;
 import me.baron.weatherstyle.models.http.entities.mi.MiWeather;
@@ -103,23 +103,15 @@ public class MiWeatherAdapter extends WeatherAdapter {
 
     @Override
     public AQI getAQI() {
-        return new AQI(miWeather.getForecast().getCityId(), miWeather.getAqi().getAqi(),
-                miWeather.getAqi().getPm25(), miWeather.getAqi().getPm10(),
-                miWeather.getAqi().getPublishTime(), miWeather.getAqi().getSo2(),
-                miWeather.getAqi().getNo3(), miWeather.getAqi().getSrc());
-    }
-
-    @Override
-    public Weather getWeather() {
-        Weather weather = new Weather();
-        weather.setCityId(getCityId());
-        weather.setCityName(getCityName());
-        weather.setCityNameEn(getCityNameEn());
-        weather.setAqi(getAQI());
-        weather.setForecasts(getForecasts());
-        weather.setLifeIndexes(getLifeIndexes());
-        weather.setRealTime(getRealTime());
-        return weather;
+        MiAQI aqiEntity = miWeather.getAqi();
+        AQI aqi = new AQI();
+        aqi.setCityId(miWeather.getRealTime().getCityId());
+        aqi.setAqi(aqiEntity.getAqi());
+        aqi.setPm25(aqiEntity.getPm25());
+        aqi.setPm10(aqiEntity.getPm10());
+        aqi.setAdvice(aqiEntity.getSrc());
+        aqi.setCityRank("");
+        return aqi;
     }
 
     /**

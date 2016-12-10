@@ -2,6 +2,7 @@ package me.baron.weatherstyle.models.http;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
+import me.baron.weatherstyle.BuildConfig;
 import me.baron.weatherstyle.models.http.configuration.ApiConfiguration;
 import me.baron.weatherstyle.models.http.converter.FastJsonConverterFactory;
 import me.baron.weatherstyle.models.http.services.WeatherService;
@@ -18,8 +19,11 @@ public final class ApiClient {
 
     public static WeatherService weatherService;
 
-    public static void init(ApiConfiguration configuration) {
+    public static ApiConfiguration configuration;
 
+    public static void init(ApiConfiguration apiConfiguration) {
+
+        configuration = apiConfiguration;
         String weatherApiHost = "";
         switch (configuration.getDataSourceType()) {
             case ApiConstants.WEATHER_DATA_SOURCE_TYPE_KNOW:
@@ -34,13 +38,13 @@ public final class ApiClient {
 
     private static <T> T initWeatherService(String baseUrl, Class<T> clazz) {
 
-        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-        OkHttpClient client = new OkHttpClient().newBuilder()
-                .addInterceptor(httpLoggingInterceptor)
-                .addNetworkInterceptor(new StethoInterceptor())
-                .build();
+        OkHttpClient.Builder builder = new OkHttpClient().newBuilder();
+        if (BuildConfig.DEBUG) {
+            HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+            httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            builder.addInterceptor(httpLoggingInterceptor).addNetworkInterceptor(new StethoInterceptor());
+        }
+        OkHttpClient client = builder.build();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)

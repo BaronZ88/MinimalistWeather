@@ -57,7 +57,7 @@ public class WeatherApp extends Application {
 
         //初始化ApiClient
         ApiConfiguration apiConfiguration = ApiConfiguration.builder()
-                .dataSourceType(ApiConstants.WEATHER_DATA_SOURCE_TYPE_MI)
+                .dataSourceType(ApiConstants.WEATHER_DATA_SOURCE_TYPE_KNOW)
                 .build();
         ApiClient.init(apiConfiguration);
         Log.d(TAG, "onCreate end");

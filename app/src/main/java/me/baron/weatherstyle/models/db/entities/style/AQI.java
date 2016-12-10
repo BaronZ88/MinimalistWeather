@@ -15,9 +15,8 @@ public class AQI {
     public static final String PM25_FIELD_NAME = "pm25";
     public static final String PM10_FIELD_NAME = "pm10";
     public static final String PUBLISH_TIME_FIELD_NAME = "publishTime";
-    public static final String SO2_FIELD_NAME = "so2";
-    public static final String NO3_FIELD_NAME = "no3";
-    public static final String SRC_FIELD_NAME = "src";
+    public static final String ADVICE_FIELD_NAME = "advice";
+    public static final String CITY_RANK_FIELD_NAME = "cityRank";
 
     @DatabaseField(columnName = CITY_ID_FIELD_NAME, id = true)
     private String cityId;
@@ -29,26 +28,12 @@ public class AQI {
     private int pm10;
     @DatabaseField(columnName = PUBLISH_TIME_FIELD_NAME)
     private String publishTime;
-    @DatabaseField(columnName = SO2_FIELD_NAME)
-    private int so2;
-    @DatabaseField(columnName = NO3_FIELD_NAME)
-    private int no3;
-    @DatabaseField(columnName = SRC_FIELD_NAME)
-    private String src;
+    @DatabaseField(columnName = ADVICE_FIELD_NAME)
+    private String advice;
+    @DatabaseField(columnName = CITY_RANK_FIELD_NAME)
+    private String cityRank;
 
     public AQI() {
-    }
-
-    public AQI(String cityId, int aqi, int pm25, int pm10, String publishTime, int so2, int no3, String src) {
-
-        this.cityId = cityId;
-        this.aqi = aqi;
-        this.pm25 = pm25;
-        this.pm10 = pm10;
-        this.publishTime = publishTime;
-        this.so2 = so2;
-        this.no3 = no3;
-        this.src = src;
     }
 
     public int getAqi() {
@@ -65,14 +50,6 @@ public class AQI {
 
     public void setCityId(String cityId) {
         this.cityId = cityId;
-    }
-
-    public int getNo3() {
-        return no3;
-    }
-
-    public void setNo3(int no3) {
-        this.no3 = no3;
     }
 
     public int getPm10() {
@@ -99,33 +76,19 @@ public class AQI {
         this.publishTime = publishTime;
     }
 
-    public int getSo2() {
-        return so2;
+    public String getAdvice() {
+        return advice;
     }
 
-    public void setSo2(int so2) {
-        this.so2 = so2;
+    public void setAdvice(String advice) {
+        this.advice = advice;
     }
 
-    public String getSrc() {
-        return src;
+    public String getCityRank() {
+        return cityRank;
     }
 
-    public void setSrc(String src) {
-        this.src = src;
-    }
-
-    @Override
-    public String toString() {
-        return "AQI{" +
-                "cityId=" + cityId +
-                ", aqi=" + aqi +
-                ", pm25=" + pm25 +
-                ", pm10=" + pm10 +
-                ", publishTime='" + publishTime + '\'' +
-                ", so2=" + so2 +
-                ", no3=" + no3 +
-                ", src='" + src + '\'' +
-                '}';
+    public void setCityRank(String cityRank) {
+        this.cityRank = cityRank;
     }
 }

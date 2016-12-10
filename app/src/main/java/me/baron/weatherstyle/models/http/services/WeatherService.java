@@ -3,6 +3,7 @@ package me.baron.weatherstyle.models.http.services;
 import me.baron.weatherstyle.models.http.entities.know.KnowWeather;
 import me.baron.weatherstyle.models.http.entities.mi.MiWeather;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -29,5 +30,5 @@ public interface WeatherService {
      * @return 天气数据
      */
     @GET("v1.0/weather/{cityId}")
-    Observable<KnowWeather> getKnowWeather(@Query("cityId") String cityId);
+    Observable<KnowWeather> getKnowWeather(@Path("cityId") String cityId);
 }

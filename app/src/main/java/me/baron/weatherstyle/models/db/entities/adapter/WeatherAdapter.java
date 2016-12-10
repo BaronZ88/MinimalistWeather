@@ -28,5 +28,16 @@ public abstract class WeatherAdapter {
 
     public abstract AQI getAQI();
 
-    public abstract Weather getWeather();
+    public Weather getWeather() {
+
+        Weather weather = new Weather();
+        weather.setCityId(getCityId());
+        weather.setCityName(getCityName());
+        weather.setCityNameEn(getCityNameEn());
+        weather.setAqi(getAQI());
+        weather.setForecasts(getForecasts());
+        weather.setLifeIndexes(getLifeIndexes());
+        weather.setRealTime(getRealTime());
+        return weather;
+    }
 }

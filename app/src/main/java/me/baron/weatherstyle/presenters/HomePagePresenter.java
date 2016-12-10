@@ -1,8 +1,7 @@
 package me.baron.weatherstyle.presenters;
 
 import android.content.Context;
-
-import java.sql.SQLException;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -10,11 +9,9 @@ import me.baron.library.utils.NetworkUtil;
 import me.baron.weatherstyle.ApplicationModule;
 import me.baron.weatherstyle.contracts.HomePageContract;
 import me.baron.weatherstyle.models.db.dao.WeatherDao;
-import me.baron.weatherstyle.models.db.entities.adapter.MiWeatherAdapter;
-import me.baron.weatherstyle.models.db.entities.adapter.WeatherAdapter;
-import me.baron.weatherstyle.models.http.ApiClient;
 import me.baron.weatherstyle.models.preferences.Preferences;
 import me.baron.weatherstyle.models.preferences.WeatherSettings;
+import me.baron.weatherstyle.models.repository.WeatherRepository;
 import me.baron.weatherstyle.presenters.component.DaggerPresenterComponent;
 import me.baron.weatherstyle.utils.ActivityScoped;
 import rx.android.schedulers.AndroidSchedulers;
@@ -52,19 +49,12 @@ public final class HomePagePresenter implements HomePageContract.Presenter {
 
     @Override
     public void loadWeather(String cityId) {
-
-        if (NetworkUtil.isNetworkConnected(context)) ApiClient.weatherService.getMiWeather(cityId)
-                .map(miWeather -> {
-                    WeatherAdapter weather = new MiWeatherAdapter(miWeather);
-                    try {
-                        weatherDao.insertWeather(weather.getWeather());
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                    return weather;
-                })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(weatherView::displayWeatherInformation);
+        if (NetworkUtil.isNetworkConnected(context))
+            WeatherRepository.getWeather(cityId, weatherDao)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(weatherView::displayWeatherInformation, throwable -> {
+                        Toast.makeText(context, throwable.getMessage(), Toast.LENGTH_LONG).show();
+                    });
     }
 }
