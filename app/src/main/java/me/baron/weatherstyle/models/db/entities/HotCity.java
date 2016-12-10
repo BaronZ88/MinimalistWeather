@@ -1,4 +1,4 @@
-package me.baron.weatherstyle.models.db.models;
+package me.baron.weatherstyle.models.db.entities;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;

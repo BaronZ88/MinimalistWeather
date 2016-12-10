@@ -25,7 +25,7 @@ import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.activities.SelectCityActivity;
 import me.baron.weatherstyle.views.adapters.CityManagerAdapter;
 import me.baron.weatherstyle.contracts.CityManagerContract;
-import me.baron.weatherstyle.models.db.models.style.Weather;
+import me.baron.weatherstyle.models.db.entities.style.Weather;
 import me.baron.weatherstyle.models.preferences.Preferences;
 import me.baron.weatherstyle.models.preferences.WeatherSettings;
 import me.baron.weatherstyle.presenters.CityManagerPresenter;

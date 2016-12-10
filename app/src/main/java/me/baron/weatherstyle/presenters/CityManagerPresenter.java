@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import me.baron.weatherstyle.ApplicationModule;
 import me.baron.weatherstyle.contracts.CityManagerContract;
 import me.baron.weatherstyle.models.db.dao.WeatherDao;
-import me.baron.weatherstyle.models.db.models.style.Weather;
+import me.baron.weatherstyle.models.db.entities.style.Weather;
 import me.baron.weatherstyle.models.preferences.Preferences;
 import me.baron.weatherstyle.models.preferences.WeatherSettings;
 import me.baron.weatherstyle.presenters.component.DaggerPresenterComponent;

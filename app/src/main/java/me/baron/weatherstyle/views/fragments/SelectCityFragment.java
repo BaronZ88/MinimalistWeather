@@ -20,7 +20,7 @@ import me.baron.library.fragment.BaseFragment;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.views.adapters.CityListAdapter;
 import me.baron.weatherstyle.contracts.SelectCityContract;
-import me.baron.weatherstyle.models.db.models.City;
+import me.baron.weatherstyle.models.db.entities.City;
 import me.baron.weatherstyle.models.preferences.Preferences;
 import me.baron.weatherstyle.models.preferences.WeatherSettings;
 import me.baron.weatherstyle.views.widget.DividerItemDecoration;

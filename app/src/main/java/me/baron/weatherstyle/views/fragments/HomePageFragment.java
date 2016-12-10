@@ -20,8 +20,8 @@ import me.baron.library.fragment.BaseFragment;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.views.adapters.ForecastAdapter;
 import me.baron.weatherstyle.contracts.HomePageContract;
-import me.baron.weatherstyle.models.db.models.adapter.WeatherAdapter;
-import me.baron.weatherstyle.models.db.models.style.Forecast;
+import me.baron.weatherstyle.models.db.entities.adapter.WeatherAdapter;
+import me.baron.weatherstyle.models.db.entities.style.Forecast;
 
 public class HomePageFragment extends BaseFragment implements HomePageContract.View {
 

@@ -1,12 +1,12 @@
-package me.baron.weatherstyle.models.db.models.adapter;
-
-import me.baron.weatherstyle.models.db.models.style.AQI;
-import me.baron.weatherstyle.models.db.models.style.Forecast;
-import me.baron.weatherstyle.models.db.models.style.LifeIndex;
-import me.baron.weatherstyle.models.db.models.style.RealTime;
-import me.baron.weatherstyle.models.db.models.style.Weather;
+package me.baron.weatherstyle.models.db.entities.adapter;
 
 import java.util.List;
+
+import me.baron.weatherstyle.models.db.entities.style.AQI;
+import me.baron.weatherstyle.models.db.entities.style.Forecast;
+import me.baron.weatherstyle.models.db.entities.style.LifeIndex;
+import me.baron.weatherstyle.models.db.entities.style.RealTime;
+import me.baron.weatherstyle.models.db.entities.style.Weather;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)

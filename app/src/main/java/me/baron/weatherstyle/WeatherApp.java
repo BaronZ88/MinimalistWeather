@@ -11,6 +11,8 @@ import com.facebook.stetho.Stetho;
 
 import io.fabric.sdk.android.Fabric;
 import me.baron.weatherstyle.models.http.ApiClient;
+import me.baron.weatherstyle.models.http.configuration.ApiConfiguration;
+import me.baron.weatherstyle.models.http.ApiConstants;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
@@ -53,8 +55,11 @@ public class WeatherApp extends Application {
 
         weatherAppInstance = this;
 
-        //init retrofit2
-        ApiClient.init();
+        //初始化ApiClient
+        ApiConfiguration apiConfiguration = ApiConfiguration.builder()
+                .dataSourceType(ApiConstants.WEATHER_DATA_SOURCE_TYPE_MI)
+                .build();
+        ApiClient.init(apiConfiguration);
         Log.d(TAG, "onCreate end");
     }
 

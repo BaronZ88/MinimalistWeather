@@ -1,4 +1,4 @@
-package me.baron.weatherstyle.models.http.entities;
+package me.baron.weatherstyle.models.http.entities.mi;
 
 /**
  * 小米天气生活指数

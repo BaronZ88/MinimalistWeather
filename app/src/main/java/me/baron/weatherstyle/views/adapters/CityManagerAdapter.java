@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.baron.library.adapter.BaseRecyclerViewAdapter;
 import me.baron.weatherstyle.R;
-import me.baron.weatherstyle.models.db.models.style.Weather;
+import me.baron.weatherstyle.models.db.entities.style.Weather;
 
 /**
  * 城市管理页面Adapter

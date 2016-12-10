@@ -1,4 +1,4 @@
-package me.baron.weatherstyle.models.http.entities;
+package me.baron.weatherstyle.models.http.entities.mi;
 
 import com.alibaba.fastjson.annotation.JSONField;
 

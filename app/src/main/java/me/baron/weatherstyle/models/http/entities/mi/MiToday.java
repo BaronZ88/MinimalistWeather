@@ -1,4 +1,4 @@
-package me.baron.weatherstyle.models.http.entities;
+package me.baron.weatherstyle.models.http.entities.mi;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)

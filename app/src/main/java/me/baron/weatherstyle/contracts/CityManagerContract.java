@@ -4,7 +4,7 @@ import java.util.List;
 
 import me.baron.library.presenter.BasePresenter;
 import me.baron.library.view.BaseView;
-import me.baron.weatherstyle.models.db.models.style.Weather;
+import me.baron.weatherstyle.models.db.entities.style.Weather;
 import me.baron.weatherstyle.presenters.CityManagerPresenter;
 
 /**

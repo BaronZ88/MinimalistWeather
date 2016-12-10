@@ -11,8 +11,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import me.baron.weatherstyle.models.db.CityDatabaseHelper;
-import me.baron.weatherstyle.models.db.models.City;
-import me.baron.weatherstyle.models.db.models.HotCity;
+import me.baron.weatherstyle.models.db.entities.City;
+import me.baron.weatherstyle.models.db.entities.HotCity;
 
 /**
  * City表操作类

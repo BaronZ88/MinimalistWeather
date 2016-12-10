@@ -2,6 +2,7 @@ package me.baron.weatherstyle.models.http;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
+import me.baron.weatherstyle.models.http.configuration.ApiConfiguration;
 import me.baron.weatherstyle.models.http.converter.FastJsonConverterFactory;
 import me.baron.weatherstyle.models.http.services.WeatherService;
 import okhttp3.OkHttpClient;
@@ -17,12 +18,18 @@ public final class ApiClient {
 
     public static WeatherService weatherService;
 
-//    @Inject
-//    OkHttpClient client;
+    public static void init(ApiConfiguration configuration) {
 
-    public static void init() {
-
-        weatherService = initWeatherService(ApiConstants.MI_WEATHER_API_HOST, WeatherService.class);
+        String weatherApiHost = "";
+        switch (configuration.getDataSourceType()) {
+            case ApiConstants.WEATHER_DATA_SOURCE_TYPE_KNOW:
+                weatherApiHost = ApiConstants.KNOW_WEATHER_API_HOST;
+                break;
+            case ApiConstants.WEATHER_DATA_SOURCE_TYPE_MI:
+                weatherApiHost = ApiConstants.MI_WEATHER_API_HOST;
+                break;
+        }
+        weatherService = initWeatherService(weatherApiHost, WeatherService.class);
     }
 
     private static <T> T initWeatherService(String baseUrl, Class<T> clazz) {

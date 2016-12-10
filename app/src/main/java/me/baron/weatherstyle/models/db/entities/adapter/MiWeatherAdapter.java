@@ -1,16 +1,16 @@
-package me.baron.weatherstyle.models.db.models.adapter;
+package me.baron.weatherstyle.models.db.entities.adapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import me.baron.weatherstyle.models.db.models.style.AQI;
-import me.baron.weatherstyle.models.db.models.style.Forecast;
-import me.baron.weatherstyle.models.db.models.style.LifeIndex;
-import me.baron.weatherstyle.models.db.models.style.RealTime;
-import me.baron.weatherstyle.models.db.models.style.Weather;
-import me.baron.weatherstyle.models.http.entities.MiForecast;
-import me.baron.weatherstyle.models.http.entities.MiIndex;
-import me.baron.weatherstyle.models.http.entities.MiWeather;
+import me.baron.weatherstyle.models.db.entities.style.AQI;
+import me.baron.weatherstyle.models.db.entities.style.Forecast;
+import me.baron.weatherstyle.models.db.entities.style.LifeIndex;
+import me.baron.weatherstyle.models.db.entities.style.RealTime;
+import me.baron.weatherstyle.models.db.entities.style.Weather;
+import me.baron.weatherstyle.models.http.entities.mi.MiForecast;
+import me.baron.weatherstyle.models.http.entities.mi.MiIndex;
+import me.baron.weatherstyle.models.http.entities.mi.MiWeather;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)

@@ -13,7 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.baron.library.adapter.BaseRecyclerViewAdapter;
 import me.baron.weatherstyle.R;
-import me.baron.weatherstyle.models.db.models.style.Forecast;
+import me.baron.weatherstyle.models.db.entities.style.Forecast;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)

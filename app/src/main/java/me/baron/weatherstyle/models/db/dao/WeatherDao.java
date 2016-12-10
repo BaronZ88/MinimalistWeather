@@ -12,11 +12,11 @@ import java.util.concurrent.Callable;
 import javax.inject.Inject;
 
 import me.baron.weatherstyle.models.db.WeatherDatabaseHelper;
-import me.baron.weatherstyle.models.db.models.style.AQI;
-import me.baron.weatherstyle.models.db.models.style.Forecast;
-import me.baron.weatherstyle.models.db.models.style.LifeIndex;
-import me.baron.weatherstyle.models.db.models.style.RealTime;
-import me.baron.weatherstyle.models.db.models.style.Weather;
+import me.baron.weatherstyle.models.db.entities.style.AQI;
+import me.baron.weatherstyle.models.db.entities.style.Forecast;
+import me.baron.weatherstyle.models.db.entities.style.LifeIndex;
+import me.baron.weatherstyle.models.db.entities.style.RealTime;
+import me.baron.weatherstyle.models.db.entities.style.Weather;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)

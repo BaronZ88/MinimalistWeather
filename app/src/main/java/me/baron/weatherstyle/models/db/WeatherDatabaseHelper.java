@@ -4,11 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import me.baron.weatherstyle.models.db.models.style.AQI;
-import me.baron.weatherstyle.models.db.models.style.Forecast;
-import me.baron.weatherstyle.models.db.models.style.LifeIndex;
-import me.baron.weatherstyle.models.db.models.style.RealTime;
-import me.baron.weatherstyle.models.db.models.style.Weather;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
@@ -16,6 +11,12 @@ import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
 import java.sql.SQLException;
+
+import me.baron.weatherstyle.models.db.entities.style.AQI;
+import me.baron.weatherstyle.models.db.entities.style.Forecast;
+import me.baron.weatherstyle.models.db.entities.style.LifeIndex;
+import me.baron.weatherstyle.models.db.entities.style.RealTime;
+import me.baron.weatherstyle.models.db.entities.style.Weather;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
