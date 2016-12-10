@@ -7,8 +7,8 @@ import android.util.Log;
 import java.io.InvalidClassException;
 
 import me.baron.library.activity.BaseActivity;
-import me.baron.weatherstyle.model.preferences.Preferences;
-import me.baron.weatherstyle.model.preferences.WeatherSettings;
+import me.baron.weatherstyle.models.preferences.Preferences;
+import me.baron.weatherstyle.models.preferences.WeatherSettings;
 import me.baron.weatherstyle.utils.CommonUtil;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;

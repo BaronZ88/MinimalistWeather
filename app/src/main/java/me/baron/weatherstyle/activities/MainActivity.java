@@ -19,9 +19,9 @@ import me.baron.library.utils.ActivityUtils;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.WeatherApp;
 import me.baron.weatherstyle.activities.component.DaggerHomePageComponent;
-import me.baron.weatherstyle.presenter.HomePagePresenter;
+import me.baron.weatherstyle.presenters.HomePagePresenter;
 import me.baron.weatherstyle.activities.module.HomePageModule;
-import me.baron.weatherstyle.view.fragments.HomePageFragment;
+import me.baron.weatherstyle.views.fragments.HomePageFragment;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)

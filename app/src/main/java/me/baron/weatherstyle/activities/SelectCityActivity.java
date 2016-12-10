@@ -20,9 +20,9 @@ import me.baron.library.utils.ActivityUtils;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.WeatherApp;
 import me.baron.weatherstyle.activities.component.DaggerSelectCityComponent;
-import me.baron.weatherstyle.presenter.SelectCityPresenter;
+import me.baron.weatherstyle.presenters.SelectCityPresenter;
 import me.baron.weatherstyle.activities.module.SelectCityModule;
-import me.baron.weatherstyle.view.fragments.SelectCityFragment;
+import me.baron.weatherstyle.views.fragments.SelectCityFragment;
 import rx.android.schedulers.AndroidSchedulers;
 
 /**

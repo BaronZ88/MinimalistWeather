@@ -1,13 +1,13 @@
 package me.baron.weatherstyle.utils;
 
-import me.baron.weatherstyle.AppConstants;
-import me.baron.weatherstyle.R;
-import me.baron.weatherstyle.WeatherApp;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import me.baron.weatherstyle.AppConstants;
+import me.baron.weatherstyle.R;
+import me.baron.weatherstyle.WeatherApp;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
@@ -15,6 +15,9 @@ import java.io.InputStream;
  */
 public class CommonUtil {
 
+    /**
+     * 导入城市数据库
+     */
     public static void importCityData() {
 
         // 判断保持城市的数据库文件是否存在

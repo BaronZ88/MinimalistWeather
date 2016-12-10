@@ -12,9 +12,9 @@ import me.baron.library.utils.ActivityUtils;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.WeatherApp;
 import me.baron.weatherstyle.activities.component.DaggerCityManagerComponent;
-import me.baron.weatherstyle.presenter.CityManagerPresenter;
+import me.baron.weatherstyle.presenters.CityManagerPresenter;
 import me.baron.weatherstyle.activities.module.CityManagerModule;
-import me.baron.weatherstyle.view.fragments.CityManagerFragment;
+import me.baron.weatherstyle.views.fragments.CityManagerFragment;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)

@@ -2,11 +2,11 @@ package me.baron.weatherstyle.activities.module;
 
 import dagger.Module;
 import dagger.Provides;
-import me.baron.weatherstyle.contract.HomePageContract;
+import me.baron.weatherstyle.contracts.HomePageContract;
 
 /**
  * This is a Dagger module. We use this to pass in the View dependency to the
- * {@link me.baron.weatherstyle.presenter.HomePagePresenter}
+ * {@link me.baron.weatherstyle.presenters.HomePagePresenter}
  *
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         2016/11/30

@@ -2,7 +2,7 @@ package me.baron.weatherstyle.activities.module;
 
 import dagger.Module;
 import dagger.Provides;
-import me.baron.weatherstyle.contract.SelectCityContract;
+import me.baron.weatherstyle.contracts.SelectCityContract;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
