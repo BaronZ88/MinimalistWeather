@@ -38,7 +38,7 @@ public class ApiConfiguration {
         public ApiConfiguration build() {
             if (dataSourceType != ApiConstants.WEATHER_DATA_SOURCE_TYPE_KNOW
                     && dataSourceType != ApiConstants.WEATHER_DATA_SOURCE_TYPE_MI) {
-                throw new IllegalStateException(dataSourceType + " error!");
+                throw new IllegalStateException("The dataSourceType does not support!");
             }
             return new ApiConfiguration(this);
         }
