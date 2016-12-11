@@ -17,6 +17,7 @@ public class AQI {
     public static final String PUBLISH_TIME_FIELD_NAME = "publishTime";
     public static final String ADVICE_FIELD_NAME = "advice";
     public static final String CITY_RANK_FIELD_NAME = "cityRank";
+    public static final String QUALITY_FIELD_NAME = "quality";
 
     @DatabaseField(columnName = CITY_ID_FIELD_NAME, id = true)
     private String cityId;
@@ -32,6 +33,8 @@ public class AQI {
     private String advice;
     @DatabaseField(columnName = CITY_RANK_FIELD_NAME)
     private String cityRank;
+    @DatabaseField(columnName = QUALITY_FIELD_NAME)
+    private String quality;
 
     public AQI() {
     }
@@ -90,5 +93,13 @@ public class AQI {
 
     public void setCityRank(String cityRank) {
         this.cityRank = cityRank;
+    }
+
+    public String getQuality() {
+        return quality;
+    }
+
+    public void setQuality(String quality) {
+        this.quality = quality;
     }
 }

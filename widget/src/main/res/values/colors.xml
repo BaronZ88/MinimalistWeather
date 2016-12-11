@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="indicator_text_color">#E54B00</color>
+
+    <color name="indicator_color_1">#FADBCC</color>
+    <color name="indicator_color_2">#F8CDB8</color>
+    <color name="indicator_color_3">#F6C0A6</color>
+    <color name="indicator_color_4">#FADBCC</color>
+    <color name="indicator_color_5">#FADBCC</color>
+
+</resources>

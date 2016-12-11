@@ -1,5 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:indicatorView="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -81,18 +82,62 @@
         app:cardElevation="6dp"
         app:contentPadding="8dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/tv_aqi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp" />
+                android:textSize="42sp"
+                tools:text="29" />
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/tv_quality"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/tv_aqi"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_toEndOf="@id/tv_aqi"
+                android:layout_toRightOf="@id/tv_aqi"
+                android:textSize="22sp"
+                tools:text="优" />
+
+            <me.baron.widget.IndicatorView
+                android:id="@+id/indicator_view_aqi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/tv_aqi"
+                android:layout_alignStart="@id/tv_aqi"
+                android:layout_below="@id/tv_aqi"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="16dp"
+                indicatorView:indicatorValue="150"
+                indicatorView:intervalSize="0dp"/>
+
+            <TextView
+                android:id="@+id/tv_advice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/tv_aqi"
+                android:layout_alignStart="@id/tv_aqi"
+                android:layout_below="@id/indicator_view_aqi"
+                android:textSize="14sp"
+                tools:text="气象条件不利于空气污染物稀释、扩散和清除，请尽量避免在室外长时间活动。" />
+
+            <TextView
+                android:id="@+id/tv_city_rank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/tv_aqi"
+                android:layout_alignStart="@id/tv_aqi"
+                android:layout_below="@id/tv_advice"
+                android:textSize="12sp"
+                tools:text="空气质量超过全国4%的城市或地区" />
+
+        </RelativeLayout>
 
     </android.support.v7.widget.CardView>
 

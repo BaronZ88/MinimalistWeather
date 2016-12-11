@@ -99,6 +99,7 @@ public class KnowWeatherAdapter extends WeatherAdapter {
         aqi.setPm10(Integer.parseInt(aqiEntity.getPm10()));
         aqi.setAdvice(aqiEntity.getAdvice());
         aqi.setCityRank(aqiEntity.getCityRank());
+        aqi.setQuality(aqiEntity.getQuality());
         return aqi;
     }
 
