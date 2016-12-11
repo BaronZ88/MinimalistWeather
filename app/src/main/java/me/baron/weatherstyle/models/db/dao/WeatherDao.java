@@ -45,7 +45,7 @@ public class WeatherDao {
 
     public Weather queryWeather(String cityId) throws SQLException {
 
-        return TransactionManager.callInTransaction(WeatherDatabaseHelper.getInstance(context).getConnectionSource(), (Callable<Weather>) () -> {
+        return TransactionManager.callInTransaction(WeatherDatabaseHelper.getInstance(context).getConnectionSource(), () -> {
             Weather weather = weatherDaoOperation.queryForId(cityId);
             if (weather != null) {
                 weather.setAqi(apiDaoOperation.queryForId(cityId));
@@ -81,7 +81,7 @@ public class WeatherDao {
         weatherDaoOperation.deleteById(cityId);
     }
 
-    public void delete(Weather data) throws SQLException {
+    private void delete(Weather data) throws SQLException {
 
         weatherDaoOperation.delete(data);
     }

@@ -10,6 +10,7 @@ import me.baron.weatherstyle.models.http.ApiClient;
 import me.baron.weatherstyle.models.http.ApiConstants;
 import rx.Observable;
 import rx.exceptions.Exceptions;
+import rx.schedulers.Schedulers;
 
 import static me.baron.weatherstyle.models.http.ApiClient.configuration;
 
@@ -33,13 +34,13 @@ public class WeatherRepository {
                 break;
         }
         assert observable != null;
-        observable.doOnNext(weatherAdapter -> {
+        observable = observable.doOnNext(weatherAdapter -> Schedulers.io().createWorker().schedule(() -> {
             try {
                 weatherDao.insertWeather(weatherAdapter.getWeather());
             } catch (SQLException e) {
                 throw Exceptions.propagate(new Throwable(e.getMessage()));
             }
-        });
+        }));
         return observable;
     }
 }

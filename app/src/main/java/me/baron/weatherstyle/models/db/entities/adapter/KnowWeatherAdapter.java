@@ -62,6 +62,11 @@ public class KnowWeatherAdapter extends WeatherAdapter {
             forecast.setWeather(dailyForecastEntity.getWeather());
             forecast.setWeek(dailyForecastEntity.getWeek());
             forecast.setData(dailyForecastEntity.getDate());
+            int[] temperature = splitTemperature(dailyForecastEntity.getTemp_range());
+            if (temperature != null) {
+                forecast.setTempMax(temperature[1]);
+                forecast.setTempMin(temperature[0]);
+            }
             forecasts.add(forecast);
         }
         return forecasts;
@@ -95,5 +100,23 @@ public class KnowWeatherAdapter extends WeatherAdapter {
         aqi.setAdvice(aqiEntity.getAdvice());
         aqi.setCityRank(aqiEntity.getCityRank());
         return aqi;
+    }
+
+    /**
+     * 拆分气温
+     *
+     * @param temperatureRange 如：-6~2°
+     * @return {-6, 2}
+     */
+    private int[] splitTemperature(String temperatureRange) {
+        if (temperatureRange != null && temperatureRange.contains("~")) {
+            if (temperatureRange.contains("°")) {
+                temperatureRange = temperatureRange.replaceAll("°", "");
+            }
+            String[] temps = temperatureRange.split("~");
+            return new int[]{Integer.parseInt(temps[0]), Integer.parseInt(temps[1])};
+        } else {
+            return null;
+        }
     }
 }
