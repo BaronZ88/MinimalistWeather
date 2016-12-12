@@ -66,8 +66,9 @@ public class SelectCityFragment extends BaseFragment implements SelectCityContra
         cityListAdapter = new CityListAdapter(cities);
         cityListAdapter.setOnItemClickListener((parent, view, position, id) -> {
             try {
-                Preferences.savePreference(WeatherSettings.SETTINGS_CURRENT_CITY_ID, cityListAdapter.mFilterData.get(position).getCityId() + "");
-                Toast.makeText(this.getActivity(), cities.get(position).getCityName(), Toast.LENGTH_LONG).show();
+                City selectedCity = cityListAdapter.mFilterData.get(position);
+                Preferences.savePreference(WeatherSettings.SETTINGS_CURRENT_CITY_ID, selectedCity.getCityId() + "");
+                Toast.makeText(this.getActivity(), selectedCity.getCityName(), Toast.LENGTH_LONG).show();
                 getActivity().finish();
             } catch (InvalidClassException e) {
                 e.printStackTrace();
