@@ -68,6 +68,6 @@ public class WeatherDataRepository {
 
         return Observable.concat(observableForGetWeatherFromDB, observableForGetWeatherFromNetWork)
                 .filter(weather -> weather != null && !TextUtils.isEmpty(weather.getCityId()))
-                .takeUntil(weather -> System.currentTimeMillis() - Long.parseLong(weather.getRealTime().getTime()) <= 60 * 60 * 1000);
+                .takeUntil(weather -> System.currentTimeMillis() - weather.getRealTime().getTime() <= 60 * 60 * 1000);
     }
 }

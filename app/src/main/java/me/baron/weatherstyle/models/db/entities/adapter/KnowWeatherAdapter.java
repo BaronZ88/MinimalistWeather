@@ -44,7 +44,7 @@ public class KnowWeatherAdapter extends WeatherAdapter {
         realTime.setCityId(knowWeather.getCityId());
         realTime.setHumidity("");
         realTime.setTemp(knowWeather.getBasic().getTemp());
-        realTime.setTime(DateConvertUtils.dateToTimeStamp(knowWeather.getBasic().getTime()));
+        realTime.setTime(DateConvertUtils.dateToTimeStamp(knowWeather.getBasic().getTime(),DateConvertUtils.DATA_FORMAT_PATTEN_YYYY_MMMM_DD_HH_MM_SS));
         realTime.setWeather(knowWeather.getBasic().getWeather());
         realTime.setWind("");
         realTime.setWindSpeed("");

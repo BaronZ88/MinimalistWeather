@@ -18,6 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import me.baron.library.fragment.BaseFragment;
+import me.baron.library.utils.DateConvertUtils;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.contracts.HomePageContract;
 import me.baron.weatherstyle.models.db.entities.style.AQI;
@@ -112,7 +113,7 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         this.weather = weather;
         cityNameTextView.setText(weather.getCityName());
         weatherNameTextView.setText(weather.getRealTime().getWeather());
-        realTimeTextView.setText(weather.getRealTime().getTime());
+        realTimeTextView.setText(DateConvertUtils.timeStampToDate(weather.getRealTime().getTime(), DateConvertUtils.DATA_FORMAT_PATTEN_YYYY_MMMM_DD_HH_MM));
 
         AQI aqi = weather.getAqi();
         aqiIndicatorView.setIndicatorValue(aqi.getAqi());

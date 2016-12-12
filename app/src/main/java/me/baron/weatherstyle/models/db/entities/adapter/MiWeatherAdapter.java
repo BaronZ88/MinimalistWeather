@@ -3,6 +3,7 @@ package me.baron.weatherstyle.models.db.entities.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.baron.library.utils.DateConvertUtils;
 import me.baron.weatherstyle.models.db.entities.style.AQI;
 import me.baron.weatherstyle.models.db.entities.style.Forecast;
 import me.baron.weatherstyle.models.db.entities.style.LifeIndex;
@@ -26,12 +27,12 @@ public class MiWeatherAdapter extends WeatherAdapter {
 
     @Override
     public String getCityId() {
-        return miWeather.getForecast().getCityId();
+        return String.valueOf(miWeather.getAqi().getCityId());
     }
 
     @Override
     public String getCityName() {
-        return miWeather.getForecast().getCityName();
+        return miWeather.getAqi().getCityName();
     }
 
     @Override
@@ -44,14 +45,13 @@ public class MiWeatherAdapter extends WeatherAdapter {
         return new RealTime(miWeather.getRealTime().getCityId(),
                 miWeather.getRealTime().getWeather(), miWeather.getRealTime().getTemp(),
                 miWeather.getRealTime().getHumidity(), miWeather.getRealTime().getWind(),
-                miWeather.getRealTime().getWindSpeed(), miWeather.getRealTime().getTime());
+                miWeather.getRealTime().getWindSpeed(), DateConvertUtils.dateToTimeStamp(miWeather.getRealTime().getTime(), DateConvertUtils.DATA_FORMAT_PATTEN_YYYY_MMMM_DD_HH_MM));
     }
 
     @Override
     public List<Forecast> getForecasts() {
 
         List<Forecast> forecasts = new ArrayList<>();
-
         MiForecast miForecast = miWeather.getForecast();
 
         //TODO Forecast中的日期和星期还需要修改
@@ -90,14 +90,11 @@ public class MiWeatherAdapter extends WeatherAdapter {
 
     @Override
     public List<LifeIndex> getLifeIndexes() {
-
         List<LifeIndex> lifeIndexes = new ArrayList<>();
         String cityId = miWeather.getForecast().getCityId();
-
         for (MiIndex miIndex : miWeather.getIndexList()) {
             lifeIndexes.add(new LifeIndex(cityId, miIndex.getName(), miIndex.getIndex(), miIndex.getDetails()));
         }
-
         return lifeIndexes;
     }
 
@@ -105,7 +102,7 @@ public class MiWeatherAdapter extends WeatherAdapter {
     public AQI getAQI() {
         MiAQI aqiEntity = miWeather.getAqi();
         AQI aqi = new AQI();
-        aqi.setCityId(miWeather.getRealTime().getCityId());
+        aqi.setCityId(String.valueOf(miWeather.getAqi().getCityId()));
         aqi.setAqi(aqiEntity.getAqi());
         aqi.setPm25(aqiEntity.getPm25());
         aqi.setPm10(aqiEntity.getPm10());

@@ -31,12 +31,12 @@ public class RealTime {
     @DatabaseField(columnName = WIND_SPEED_FIELD_NAME)
     private String windSpeed;//风速
     @DatabaseField(columnName = TIME_FIELD_NAME)
-    private String time;//发布时间
+    private long time;//发布时间（时间戳）
 
     public RealTime() {
     }
 
-    public RealTime(String cityId, String weather, String temp, String humidity, String wind, String windSpeed, String time) {
+    public RealTime(String cityId, String weather, String temp, String humidity, String wind, String windSpeed, long time) {
 
         this.cityId = cityId;
         this.weather = weather;
@@ -71,11 +71,11 @@ public class RealTime {
         this.temp = temp;
     }
 
-    public String getTime() {
+    public long getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(long time) {
         this.time = time;
     }
 

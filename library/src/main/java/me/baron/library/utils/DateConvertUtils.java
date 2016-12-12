@@ -12,12 +12,18 @@ import java.util.Date;
  */
 public class DateConvertUtils {
 
-    /*
+    public static final String DATA_FORMAT_PATTEN_YYYY_MMMM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
+    public static final String DATA_FORMAT_PATTEN_YYYY_MMMM_DD_HH_MM = "yyyy-MM-dd HH:mm";
+
+    /**
      * 将时间转换为时间戳
+     *
+     * @param data             待转换的日期
+     * @param dataFormatPatten 待转换日期格式
      */
-    public static String dateToTimeStamp(String data) {
+    public static long dateToTimeStamp(String data, String dataFormatPatten) {
         @SuppressLint("SimpleDateFormat")
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dataFormatPatten);
         Date date = null;
         try {
             date = simpleDateFormat.parse(data);
@@ -25,19 +31,19 @@ public class DateConvertUtils {
             e.printStackTrace();
         }
         assert date != null;
-        return String.valueOf(date.getTime());
+        return date.getTime();
     }
 
-    /*
-     * 将时间戳转换为时间
+    /**
+     * 将时间戳转换为日期
+     *
+     * @param time             待转换的时间戳
+     * @param dataFormatPatten 转换出的日期格式
      */
-    public static String timeStampToDate(String time) {
-        String res;
+    public static String timeStampToDate(long time, String dataFormatPatten) {
         @SuppressLint("SimpleDateFormat")
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        long lt = Long.valueOf(time);
-        Date date = new Date(lt);
-        res = simpleDateFormat.format(date);
-        return res;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dataFormatPatten);
+        Date date = new Date(time);
+        return simpleDateFormat.format(date);
     }
 }
