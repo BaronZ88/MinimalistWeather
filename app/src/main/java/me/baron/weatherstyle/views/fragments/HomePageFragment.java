@@ -1,6 +1,7 @@
 package me.baron.weatherstyle.views.fragments;
 
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,41 +20,46 @@ import butterknife.Unbinder;
 import me.baron.library.fragment.BaseFragment;
 import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.contracts.HomePageContract;
-import me.baron.weatherstyle.models.db.entities.adapter.WeatherAdapter;
 import me.baron.weatherstyle.models.db.entities.style.AQI;
 import me.baron.weatherstyle.models.db.entities.style.Forecast;
+import me.baron.weatherstyle.models.db.entities.style.Weather;
 import me.baron.weatherstyle.views.adapters.ForecastAdapter;
 import me.baron.widget.IndicatorView;
 
 public class HomePageFragment extends BaseFragment implements HomePageContract.View {
 
     //基本天气信息
+    @BindView(R.id.cv_weather_information)
+    CardView weatherInformationCardView;
     @BindView(R.id.tv_city_name)
-    TextView tvCityName;
+    TextView cityNameTextView;
     @BindView(R.id.tv_weather_name)
-    TextView tvWeather;
+    TextView weatherNameTextView;
     @BindView(R.id.tv_real_time)
-    TextView tvRealTime;
+    TextView realTimeTextView;
 
     //AQI
+    @BindView(R.id.cv_aqi)
+    CardView aqiCardView;
     @BindView(R.id.tv_aqi)
-    TextView tvAqi;
+    TextView aqiTextView;
     @BindView(R.id.tv_quality)
-    TextView tvQuality;
+    TextView qualityTextView;
     @BindView(R.id.indicator_view_aqi)
-    IndicatorView indicatorView;
+    IndicatorView aqiIndicatorView;
     @BindView(R.id.tv_advice)
-    TextView tvAdvice;
+    TextView adviceTextView;
     @BindView(R.id.tv_city_rank)
-    TextView tvCityRank;
+    TextView cityRankTextView;
 
     //预报
     @BindView(R.id.rv_forecast)
     RecyclerView forecastRecyclerView;
 
+
     private Unbinder unbinder;
 
-    private WeatherAdapter weather;
+    private Weather weather;
     private List<Forecast> forecasts;
     private ForecastAdapter forecastAdapter;
 
@@ -80,15 +86,15 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         forecastRecyclerView.setItemAnimator(new DefaultItemAnimator());
         forecastRecyclerView.setAdapter(forecastAdapter);
 
-        indicatorView.setIndicatorValueChangeListener((currentIndicatorValue, stateDescription, indicatorTextColor) -> {
-            tvAqi.setText(String.valueOf(currentIndicatorValue));
-            if (TextUtils.isEmpty(weather.getAQI().getQuality())) {
-                tvQuality.setText(stateDescription);
+        aqiIndicatorView.setIndicatorValueChangeListener((currentIndicatorValue, stateDescription, indicatorTextColor) -> {
+            aqiTextView.setText(String.valueOf(currentIndicatorValue));
+            if (TextUtils.isEmpty(weather.getAqi().getQuality())) {
+                qualityTextView.setText(stateDescription);
             } else {
-                tvQuality.setText(weather.getAQI().getQuality());
+                qualityTextView.setText(weather.getAqi().getQuality());
             }
-            tvAqi.setTextColor(indicatorTextColor);
-            tvQuality.setTextColor(indicatorTextColor);
+            aqiTextView.setTextColor(indicatorTextColor);
+            qualityTextView.setTextColor(indicatorTextColor);
         });
 
         return rootView;
@@ -101,17 +107,17 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     }
 
     @Override
-    public void displayWeatherInformation(WeatherAdapter weather) {
+    public void displayWeatherInformation(Weather weather) {
 
         this.weather = weather;
-        tvCityName.setText(weather.getCityName());
-        tvWeather.setText(weather.getWeather().getRealTime().getWeather());
-        tvRealTime.setText(weather.getRealTime().getTime());
+        cityNameTextView.setText(weather.getCityName());
+        weatherNameTextView.setText(weather.getRealTime().getWeather());
+        realTimeTextView.setText(weather.getRealTime().getTime());
 
-        AQI aqi = weather.getAQI();
-        indicatorView.setIndicatorValue(aqi.getAqi());
-        tvAdvice.setText(aqi.getAdvice());
-        tvCityRank.setText(aqi.getCityRank());
+        AQI aqi = weather.getAqi();
+        aqiIndicatorView.setIndicatorValue(aqi.getAqi());
+        adviceTextView.setText(aqi.getAdvice());
+        cityRankTextView.setText(aqi.getCityRank());
 
         forecasts.addAll(weather.getForecasts());
         forecastAdapter.notifyDataSetChanged();

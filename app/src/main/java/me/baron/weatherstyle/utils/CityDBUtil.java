@@ -13,7 +13,7 @@ import me.baron.weatherstyle.WeatherApp;
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         16/3/14
  */
-public class CommonUtil {
+public class CityDBUtil {
 
     /**
      * 导入城市数据库

@@ -3,6 +3,7 @@ package me.baron.weatherstyle.models.db.entities.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.baron.library.utils.DateConvertUtils;
 import me.baron.weatherstyle.models.db.entities.style.AQI;
 import me.baron.weatherstyle.models.db.entities.style.Forecast;
 import me.baron.weatherstyle.models.db.entities.style.LifeIndex;
@@ -43,7 +44,7 @@ public class KnowWeatherAdapter extends WeatherAdapter {
         realTime.setCityId(knowWeather.getCityId());
         realTime.setHumidity("");
         realTime.setTemp(knowWeather.getBasic().getTemp());
-        realTime.setTime(knowWeather.getBasic().getTime());
+        realTime.setTime(DateConvertUtils.dateToTimeStamp(knowWeather.getBasic().getTime()));
         realTime.setWeather(knowWeather.getBasic().getWeather());
         realTime.setWind("");
         realTime.setWindSpeed("");

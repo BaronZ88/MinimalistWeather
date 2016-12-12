@@ -9,7 +9,7 @@ import java.io.InvalidClassException;
 import me.baron.library.activity.BaseActivity;
 import me.baron.weatherstyle.models.preferences.Preferences;
 import me.baron.weatherstyle.models.preferences.WeatherSettings;
-import me.baron.weatherstyle.utils.CommonUtil;
+import me.baron.weatherstyle.utils.CityDBUtil;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -55,7 +55,7 @@ public class WelcomeActivity extends BaseActivity {
             }
         }
         Log.d(TAG, "importCityData start");
-        CommonUtil.importCityData();
+        CityDBUtil.importCityData();
         Log.d(TAG, "importCityData end");
         return null;
     }
