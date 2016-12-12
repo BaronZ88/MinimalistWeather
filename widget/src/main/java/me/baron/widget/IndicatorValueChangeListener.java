@@ -7,5 +7,5 @@ package me.baron.widget;
  */
 public interface IndicatorValueChangeListener {
 
-    void onChange(int currentHotDegreeValue, String stateDescription);
+    void onChange(int currentIndicatorValue, String stateDescription, int indicatorTextColor);
 }

@@ -7,6 +7,7 @@
         <item name="indicator_string_3">轻度污染</item>
         <item name="indicator_string_4">中度污染</item>
         <item name="indicator_string_5">重度污染</item>
+        <item name="indicator_string_5">严重污染</item>
     </string-array>
 
     <integer-array name="indicator_colors">
@@ -15,6 +16,7 @@
         <item name="indicator_color_3">@color/indicator_color_3</item>
         <item name="indicator_color_4">@color/indicator_color_4</item>
         <item name="indicator_color_5">@color/indicator_color_5</item>
+        <item name="indicator_color_6">@color/indicator_color_6</item>
     </integer-array>
 
 </resources>

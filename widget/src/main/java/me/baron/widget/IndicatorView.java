@@ -5,10 +5,14 @@ package me.baron.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.graphics.drawable.VectorDrawableCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -26,10 +30,11 @@ public class IndicatorView extends LinearLayout {
 
     private Context context;
     private Paint paint;
+    private int markerId;
     private Bitmap marker = null;
 
     private int indicatorValue = 0;// 默认AQI值
-    private int textSize = 12;// 默认文字大小
+    private int textSize = 6;// 默认文字大小
     private int intervalValue = 1;// TextView之间的间隔大小，单位dp
     private int textColorId = R.color.indicator_text_color;// 默认文字颜色
     private int textColor;
@@ -66,7 +71,7 @@ public class IndicatorView extends LinearLayout {
 
         this.paddingTopInXML = this.getPaddingTop();
         this.setPadding(this.getPaddingLeft() + this.marker.getWidth() / 2,
-                this.getPaddingTop() + this.marker.getHeight() / 4 * 3,
+                this.getPaddingTop() + this.marker.getHeight(),
                 this.getPaddingRight() + this.marker.getWidth() / 2,
                 this.getPaddingBottom());
     }
@@ -91,8 +96,8 @@ public class IndicatorView extends LinearLayout {
         this.intervalValue = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, intervalValue, dm);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.IndicatorView);
-        int markerId = typedArray.getResourceId(R.styleable.IndicatorView_marker, R.drawable.housekeeper_hotdegree_mark);
-        this.marker = BitmapFactory.decodeResource(context.getResources(), markerId);
+        this.markerId = typedArray.getResourceId(R.styleable.IndicatorView_marker, R.drawable.ic_vector_indicator_down);
+        this.marker = drawableToBitmap(createVectorDrawable(markerId, R.color.indicator_color_1));
         this.indicatorValue = typedArray.getInt(R.styleable.IndicatorView_indicatorValue, indicatorValue);
         this.textSize = typedArray.getDimensionPixelSize(R.styleable.IndicatorView_textSize, textSize);
         this.intervalValue = typedArray.getDimensionPixelSize(R.styleable.IndicatorView_intervalSize, intervalValue);
@@ -106,8 +111,8 @@ public class IndicatorView extends LinearLayout {
      * 想父容器中填充View
      */
     private void fillViewToParent(Context context) {
-        String[] indicatorStrings = context.getResources().getStringArray(indicatorStringsResourceId);
-        int[] indicatorColorIds = context.getResources().getIntArray(indicatorColorsResourceId);
+        indicatorStrings = context.getResources().getStringArray(indicatorStringsResourceId);
+        indicatorColorIds = context.getResources().getIntArray(indicatorColorsResourceId);
         if (indicatorStrings.length != indicatorColorIds.length) {
             throw new IllegalArgumentException("qualities和aqiColors的数组长度不一致！");
         }
@@ -211,21 +216,23 @@ public class IndicatorView extends LinearLayout {
      */
     private void drawMarkView(Canvas canvas) {
 
-        int width = (this.indicatorViewWidth - this.getPaddingLeft() - this.getPaddingRight()) / 500;
+        int width = (this.indicatorViewWidth - this.getPaddingLeft() - this.getPaddingRight());
+
         int left = this.getPaddingLeft();
-        if (indicatorValue >= 0 && indicatorValue < 100) {
-            left += indicatorValue * width;
-        } else if (indicatorValue >= 100 && indicatorValue < 200) {
-            left += indicatorValue * width + intervalValue;
-        } else if (indicatorValue >= 200 && indicatorValue < 300) {
-            left += indicatorValue * width + intervalValue * 2;
-        } else if (indicatorValue >= 300 && indicatorValue < 400) {
-            left += indicatorValue * width + intervalValue * 3;
-        } else if (indicatorValue >= 400 && indicatorValue < 500) {
-            left += indicatorValue * width + intervalValue * 4;
-        } else if (indicatorValue >= 500) {
-            left += width;
+        if (indicatorValue <= 50) {
+            left += indicatorValue * (width * 4 / 6 / 200);
+        } else if (indicatorValue > 50 && indicatorValue <= 100) {
+            left += indicatorValue * (width * 4 / 6 / 200) + intervalValue;
+        } else if (indicatorValue > 100 && indicatorValue <= 150) {
+            left += indicatorValue * (width * 4 / 6 / 200) + intervalValue * 2;
+        } else if (indicatorValue > 150 && indicatorValue <= 200) {
+            left += indicatorValue * (width * 4 / 6 / 200) + intervalValue * 3;
+        } else if (indicatorValue > 200 && indicatorValue <= 300) {
+            left += (width * 4 / 6) + (indicatorValue - 200) * width / 6 / 100 + intervalValue * 4;
+        } else {
+            left += (width * 5 / 6) + (indicatorValue - 300) * width / 6 / 100 + intervalValue * 5;
         }
+
         canvas.drawBitmap(marker, left - marker.getWidth() / 2 - 2, this.paddingTopInXML, paint);
     }
 
@@ -242,20 +249,63 @@ public class IndicatorView extends LinearLayout {
 
         this.indicatorValue = indicatorValue;
         if (indicatorValueChangeListener != null) {
-            String desc;
-            if (indicatorValue < 100) {
-                desc = indicatorStrings[0];
-            } else if (indicatorValue >= 100 && indicatorValue < 200) {
-                desc = indicatorStrings[1];
-            } else if (indicatorValue >= 200 && indicatorValue < 300) {
-                desc = indicatorStrings[2];
-            } else if (indicatorValue >= 300 && indicatorValue < 400) {
-                desc = indicatorStrings[3];
+            String stateDescription;
+            int indicatorTextColor;
+            if (indicatorValue <= 50) {
+                stateDescription = indicatorStrings[0];
+                indicatorTextColor = indicatorColorIds[0];
+            } else if (indicatorValue > 50 && indicatorValue <= 100) {
+                stateDescription = indicatorStrings[1];
+                indicatorTextColor = indicatorColorIds[1];
+            } else if (indicatorValue > 100 && indicatorValue <= 150) {
+                stateDescription = indicatorStrings[2];
+                indicatorTextColor = indicatorColorIds[2];
+            } else if (indicatorValue > 150 && indicatorValue <= 200) {
+                stateDescription = indicatorStrings[3];
+                indicatorTextColor = indicatorColorIds[3];
+            } else if (indicatorValue > 200 && indicatorValue <= 300) {
+                stateDescription = indicatorStrings[4];
+                indicatorTextColor = indicatorColorIds[4];
             } else {
-                desc = indicatorStrings[4];
+                stateDescription = indicatorStrings[5];
+                indicatorTextColor = indicatorColorIds[5];
             }
-            indicatorValueChangeListener.onChange(this.indicatorValue, desc);
+            marker.recycle();
+            marker = drawableToBitmap(createVectorDrawable(markerId, indicatorTextColor));
+            indicatorValueChangeListener.onChange(this.indicatorValue, stateDescription, indicatorTextColor);
         }
         invalidate();
+    }
+
+    private Drawable createVectorDrawable(int drawableId, int color) {
+
+        VectorDrawableCompat vectorDrawableCompat = VectorDrawableCompat.create(getResources(), drawableId, context.getTheme());
+        assert vectorDrawableCompat != null;
+        DrawableCompat.setTint(vectorDrawableCompat, color);
+        DrawableCompat.setTintMode(vectorDrawableCompat, PorterDuff.Mode.SRC_IN);
+
+        return vectorDrawableCompat;
+    }
+
+    private Bitmap drawableToBitmap(Drawable drawable) {
+        Bitmap bitmap;
+
+        if (drawable instanceof BitmapDrawable) {
+            BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
+            if (bitmapDrawable.getBitmap() != null) {
+                return bitmapDrawable.getBitmap();
+            }
+        }
+
+        if (drawable.getIntrinsicWidth() <= 0 || drawable.getIntrinsicHeight() <= 0) {
+            bitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888); // Single color bitmap will be created of 1x1 pixel
+        } else {
+            bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        }
+
+        Canvas canvas = new Canvas(bitmap);
+        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        drawable.draw(canvas);
+        return bitmap;
     }
 }

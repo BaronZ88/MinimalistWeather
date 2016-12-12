@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="LaunchTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/launch_window_bg</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>

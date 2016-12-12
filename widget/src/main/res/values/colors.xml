@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="indicator_text_color">#E54B00</color>
+    <color name="indicator_text_color">#FFFFFF</color>
 
-    <color name="indicator_color_1">#FADBCC</color>
-    <color name="indicator_color_2">#F8CDB8</color>
-    <color name="indicator_color_3">#F6C0A6</color>
-    <color name="indicator_color_4">#FADBCC</color>
-    <color name="indicator_color_5">#FADBCC</color>
+    <!--<color name="indicator_color_1">#17A429</color>-->
+    <!--<color name="indicator_color_2">#B2B124</color>-->
+    <!--<color name="indicator_color_3">#FC8337</color>-->
+    <!--<color name="indicator_color_4">#CA393B</color>-->
+    <!--<color name="indicator_color_5">#6717B0</color>-->
+    <!--<color name="indicator_color_6">#7E0308</color>-->
+
+    <color name="indicator_color_1">#60C2CB</color>
+    <color name="indicator_color_2">#6FB452</color>
+    <color name="indicator_color_3">#F2AC00</color>
+    <color name="indicator_color_4">#DF3000</color>
+    <color name="indicator_color_5">#CA004A</color>
+    <color name="indicator_color_6">#7D0000</color>
 
 </resources>

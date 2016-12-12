@@ -14,7 +14,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="8dp"
-        app:cardElevation="6dp"
+        app:cardElevation="1dp"
         app:contentPadding="8dp">
 
         <RelativeLayout
@@ -79,7 +79,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="4dp"
-        app:cardElevation="6dp"
+        app:cardElevation="1dp"
         app:contentPadding="8dp">
 
         <RelativeLayout
@@ -90,7 +90,8 @@
                 android:id="@+id/tv_aqi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="42sp"
+                android:includeFontPadding="false"
+                android:textSize="48sp"
                 tools:text="29" />
 
             <TextView
@@ -102,7 +103,8 @@
                 android:layout_marginStart="30dp"
                 android:layout_toEndOf="@id/tv_aqi"
                 android:layout_toRightOf="@id/tv_aqi"
-                android:textSize="22sp"
+                android:includeFontPadding="false"
+                android:textSize="26sp"
                 tools:text="优" />
 
             <me.baron.widget.IndicatorView
@@ -114,8 +116,9 @@
                 android:layout_below="@id/tv_aqi"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="16dp"
+                indicatorView:textSize="8sp"
                 indicatorView:indicatorValue="150"
-                indicatorView:intervalSize="0dp"/>
+                indicatorView:intervalSize="0dp" />
 
             <TextView
                 android:id="@+id/tv_advice"

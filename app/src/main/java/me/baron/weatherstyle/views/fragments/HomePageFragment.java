@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,7 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
 
     private Unbinder unbinder;
 
+    private WeatherAdapter weather;
     private List<Forecast> forecasts;
     private ForecastAdapter forecastAdapter;
 
@@ -78,6 +80,17 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         forecastRecyclerView.setItemAnimator(new DefaultItemAnimator());
         forecastRecyclerView.setAdapter(forecastAdapter);
 
+        indicatorView.setIndicatorValueChangeListener((currentIndicatorValue, stateDescription, indicatorTextColor) -> {
+            tvAqi.setText(String.valueOf(currentIndicatorValue));
+            if (TextUtils.isEmpty(weather.getAQI().getQuality())) {
+                tvQuality.setText(stateDescription);
+            } else {
+                tvQuality.setText(weather.getAQI().getQuality());
+            }
+            tvAqi.setTextColor(indicatorTextColor);
+            tvQuality.setTextColor(indicatorTextColor);
+        });
+
         return rootView;
     }
 
@@ -90,13 +103,12 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     @Override
     public void displayWeatherInformation(WeatherAdapter weather) {
 
+        this.weather = weather;
         tvCityName.setText(weather.getCityName());
         tvWeather.setText(weather.getWeather().getRealTime().getWeather());
         tvRealTime.setText(weather.getRealTime().getTime());
 
         AQI aqi = weather.getAQI();
-        tvAqi.setText(String.valueOf(aqi.getAqi()));
-        tvQuality.setText(aqi.getQuality());
         indicatorView.setIndicatorValue(aqi.getAqi());
         tvAdvice.setText(aqi.getAdvice());
         tvCityRank.setText(aqi.getCityRank());
