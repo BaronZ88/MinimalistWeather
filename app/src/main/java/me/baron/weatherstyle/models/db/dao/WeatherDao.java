@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.misc.TransactionManager;
+import com.j256.ormlite.stmt.DeleteBuilder;
+import com.j256.ormlite.stmt.PreparedDelete;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -57,21 +59,14 @@ public class WeatherDao {
         });
     }
 
-    public void insertWeather(Weather weather) throws SQLException {
+    public void insertOrUpdateWeather(Weather weather) throws SQLException {
 
         TransactionManager.callInTransaction(WeatherDatabaseHelper.getInstance(context).getConnectionSource(), (Callable<Void>) () -> {
-            if (weatherDaoOperation.queryForId(weather.getCityId()) != null) {
-                delete(weather);
+            if (weatherDaoOperation.idExists(weather.getCityId())) {
+                updateWeather(weather);
+            } else {
+                insertWeather(weather);
             }
-            weatherDaoOperation.create(weather);
-            apiDaoOperation.create(weather.getAqi());
-            for (Forecast forecast : weather.getForecasts()) {
-                forecastDaoOperation.create(forecast);
-            }
-            for (LifeIndex index : weather.getLifeIndexes()) {
-                lifeIndexesDaoOperation.create(index);
-            }
-            realTimeDaoOperation.create(weather.getRealTime());
             return null;
         });
     }
@@ -106,5 +101,45 @@ public class WeatherDao {
             }
             return weatherList;
         });
+    }
+
+    private void insertWeather(Weather weather) throws SQLException {
+
+        weatherDaoOperation.create(weather);
+        apiDaoOperation.create(weather.getAqi());
+        for (Forecast forecast : weather.getForecasts()) {
+            forecastDaoOperation.create(forecast);
+        }
+        for (LifeIndex index : weather.getLifeIndexes()) {
+            lifeIndexesDaoOperation.create(index);
+        }
+        realTimeDaoOperation.create(weather.getRealTime());
+    }
+
+    private void updateWeather(Weather weather) throws SQLException {
+
+        weatherDaoOperation.update(weather);
+        apiDaoOperation.update(weather.getAqi());
+
+        //先删除旧数据
+        DeleteBuilder<Forecast, Long> forecastDeleteBuilder = forecastDaoOperation.deleteBuilder();
+        forecastDeleteBuilder.where().eq(Forecast.CITY_ID_FIELD_NAME, weather.getCityId());
+        PreparedDelete<Forecast> forecastPrepared = forecastDeleteBuilder.prepare();
+        forecastDaoOperation.delete(forecastPrepared);
+        //再插入新数据
+        for (Forecast forecast : weather.getForecasts()) {
+            forecastDaoOperation.create(forecast);
+        }
+
+        //先删除旧数据
+        DeleteBuilder<LifeIndex, Long> lifeIndexDeleteBuilder = lifeIndexesDaoOperation.deleteBuilder();
+        lifeIndexDeleteBuilder.where().eq(LifeIndex.CITY_ID_FIELD_NAME, weather.getCityId());
+        PreparedDelete<LifeIndex> lifeIndexPrepared = lifeIndexDeleteBuilder.prepare();
+        lifeIndexesDaoOperation.delete(lifeIndexPrepared);
+        //再插入新数据
+        for (LifeIndex index : weather.getLifeIndexes()) {
+            lifeIndexesDaoOperation.create(index);
+        }
+        realTimeDaoOperation.update(weather.getRealTime());
     }
 }

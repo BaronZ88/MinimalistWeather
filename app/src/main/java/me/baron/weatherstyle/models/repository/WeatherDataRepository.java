@@ -60,7 +60,7 @@ public class WeatherDataRepository {
         assert observableForGetWeatherFromNetWork != null;
         observableForGetWeatherFromNetWork = observableForGetWeatherFromNetWork.doOnNext(weather -> Schedulers.io().createWorker().schedule(() -> {
             try {
-                weatherDao.insertWeather(weather);
+                weatherDao.insertOrUpdateWeather(weather);
             } catch (SQLException e) {
                 throw Exceptions.propagate(e);
             }

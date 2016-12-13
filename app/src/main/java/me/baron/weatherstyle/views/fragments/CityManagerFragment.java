@@ -36,7 +36,8 @@ public class CityManagerFragment extends BaseFragment implements CityManagerCont
     private static final String ARG_COLUMN_COUNT = "column-count";
 
     @BindView(R.id.rv_city_manager)
-    RecyclerView cmRecyclerView;
+    RecyclerView cityManagerRecyclerView;
+
     private Unbinder unbinder;
 
     private int columnCount = 3;
@@ -72,11 +73,11 @@ public class CityManagerFragment extends BaseFragment implements CityManagerCont
         unbinder = ButterKnife.bind(this, rootView);
         Context context = rootView.getContext();
         if (columnCount <= 1) {
-            cmRecyclerView.setLayoutManager(new LinearLayoutManager(context));
+            cityManagerRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         } else {
-            cmRecyclerView.setLayoutManager(new GridLayoutManager(context, columnCount));
+            cityManagerRecyclerView.setLayoutManager(new GridLayoutManager(context, columnCount));
         }
-        cmRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        cityManagerRecyclerView.setItemAnimator(new DefaultItemAnimator());
         weatherList = new ArrayList<>();
         cityManagerAdapter = new CityManagerAdapter(weatherList);
         cityManagerAdapter.setOnItemClickListener(new CityManagerAdapter.OnCityManagerItemClickListener() {
@@ -96,7 +97,7 @@ public class CityManagerFragment extends BaseFragment implements CityManagerCont
                 presenter.deleteCity(cityId);
             }
         });
-        cmRecyclerView.setAdapter(cityManagerAdapter);
+        cityManagerRecyclerView.setAdapter(cityManagerAdapter);
 
         presenter.start();
 

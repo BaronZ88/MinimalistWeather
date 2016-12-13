@@ -5,7 +5,7 @@ import dagger.Provides;
 import me.baron.weatherstyle.contracts.CityManagerContract;
 
 /**
- * @author 张磊 (baron[dot]zhanglei[at]gmail[dot]com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         2016/11/30
  */
 @Module
