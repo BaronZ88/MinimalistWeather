@@ -3,6 +3,6 @@
     android:opacity="opaque">
     <item android:drawable="@android:color/background_light" />
     <item
-        android:drawable="@drawable/vector_weather"
+        android:drawable="@drawable/ic_vector_weather"
         android:gravity="center" />
 </layer-list>

@@ -34,7 +34,7 @@ android {
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
 
-
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         debug {

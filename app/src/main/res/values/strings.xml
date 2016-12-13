@@ -16,4 +16,8 @@
 
     <string name="content_description_default">图片描述</string>
 
+    <string name="string_aqi_title">空气污染指数</string>
+    <string name="string_index_title">生活指数</string>
+    <string name="string_publish_time">"发布时间 "</string>
+
 </resources>

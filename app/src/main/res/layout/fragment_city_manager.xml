@@ -8,7 +8,6 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_city_manager"
-        android:name="me.baron.weatherstyle.fragments.CityManagerFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="4dp"

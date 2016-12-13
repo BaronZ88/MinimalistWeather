@@ -60,7 +60,7 @@ public class CityListAdapter extends BaseRecyclerViewAdapter<CityListAdapter.Vie
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.tv_city_name)
+        @BindView(R.id.city_name_text_view)
         TextView cityNameTextView;
 
         ViewHolder(View itemView, CityListAdapter cityListAdapter) {

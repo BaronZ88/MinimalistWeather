@@ -27,7 +27,7 @@ import me.baron.weatherstyle.views.fragments.HomePageFragment;
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  */
 public class MainActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, HomePageFragment.OnFragmentInteractionListener {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -118,5 +118,10 @@ public class MainActivity extends BaseActivity
         assert drawer != null;
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void updatePageTitle(String title) {
+        toolbar.setTitle(title);
     }
 }

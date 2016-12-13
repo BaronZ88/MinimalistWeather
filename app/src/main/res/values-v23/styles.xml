@@ -2,7 +2,7 @@
 <resources>
 
     <style name="LaunchTheme" parent="AppTheme">
-        <item name="android:windowBackground">@drawable/launch_window_bg</item>
+        <item name="android:windowBackground">@drawable/bg_launch_window</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>

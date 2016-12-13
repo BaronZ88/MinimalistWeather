@@ -1,5 +1,7 @@
 package me.baron.weatherstyle.views.fragments;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -10,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +26,10 @@ import me.baron.weatherstyle.R;
 import me.baron.weatherstyle.contracts.HomePageContract;
 import me.baron.weatherstyle.models.db.entities.style.AQI;
 import me.baron.weatherstyle.models.db.entities.style.Forecast;
+import me.baron.weatherstyle.models.db.entities.style.LifeIndex;
 import me.baron.weatherstyle.models.db.entities.style.Weather;
 import me.baron.weatherstyle.views.adapters.ForecastAdapter;
+import me.baron.weatherstyle.views.adapters.LifeIndexAdapter;
 import me.baron.widget.IndicatorView;
 
 public class HomePageFragment extends BaseFragment implements HomePageContract.View {
@@ -32,9 +37,9 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     //基本天气信息
     @BindView(R.id.cv_weather_information)
     CardView weatherInformationCardView;
-    @BindView(R.id.tv_city_name)
-    TextView cityNameTextView;
-    @BindView(R.id.tv_weather_name)
+    @BindView(R.id.temp_text_view)
+    TextView tempTextView;
+    @BindView(R.id.weather_text_view)
     TextView weatherNameTextView;
     @BindView(R.id.tv_real_time)
     TextView realTimeTextView;
@@ -54,15 +59,26 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     TextView cityRankTextView;
 
     //预报
-    @BindView(R.id.rv_forecast)
+    @BindView(R.id.forecast_recycler_view)
     RecyclerView forecastRecyclerView;
 
+    //生活指数
+    @BindView(R.id.index_card_view)
+    CardView indexCardView;
+    @BindView(R.id.life_index_recycler_view)
+    RecyclerView lifeIndexRecyclerView;
+
+    private OnFragmentInteractionListener onFragmentInteractionListener;
 
     private Unbinder unbinder;
 
     private Weather weather;
+
     private List<Forecast> forecasts;
+    private List<LifeIndex> lifeIndices;
+
     private ForecastAdapter forecastAdapter;
+    private LifeIndexAdapter lifeIndexAdapter;
 
     private HomePageContract.Presenter presenter;
 
@@ -76,6 +92,17 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     }
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener) {
+            onFragmentInteractionListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home_page, container, false);
@@ -84,8 +111,17 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         forecastRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 5));
         forecasts = new ArrayList<>();
         forecastAdapter = new ForecastAdapter(forecasts);
+        forecastAdapter.setOnItemClickListener((adapterView, view, i, l) -> {});
         forecastRecyclerView.setItemAnimator(new DefaultItemAnimator());
         forecastRecyclerView.setAdapter(forecastAdapter);
+
+        lifeIndexRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 4));
+        lifeIndices = new ArrayList<>();
+        lifeIndexAdapter = new LifeIndexAdapter(getActivity(), lifeIndices);
+        lifeIndexAdapter.setOnItemClickListener((adapterView, view, i, l) -> Toast.makeText(HomePageFragment.this.getContext(), lifeIndices.get(i).getDetails(), Toast.LENGTH_LONG).show());
+        lifeIndexRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        lifeIndexRecyclerView.setAdapter(lifeIndexAdapter);
+
 
         aqiIndicatorView.setIndicatorValueChangeListener((currentIndicatorValue, stateDescription, indicatorTextColor) -> {
             aqiTextView.setText(String.valueOf(currentIndicatorValue));
@@ -104,24 +140,32 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     @Override
     public void onResume() {
         super.onResume();
+        assert presenter != null;
         presenter.start();
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void displayWeatherInformation(Weather weather) {
 
         this.weather = weather;
-        cityNameTextView.setText(weather.getCityName());
+        onFragmentInteractionListener.updatePageTitle(weather.getCityName());
+        tempTextView.setText(weather.getRealTime().getTemp());
         weatherNameTextView.setText(weather.getRealTime().getWeather());
-        realTimeTextView.setText(DateConvertUtils.timeStampToDate(weather.getRealTime().getTime(), DateConvertUtils.DATA_FORMAT_PATTEN_YYYY_MMMM_DD_HH_MM));
+        realTimeTextView.setText(getString(R.string.string_publish_time) + DateConvertUtils.timeStampToDate(weather.getRealTime().getTime(), DateConvertUtils.DATA_FORMAT_PATTEN_YYYY_MMMM_DD_HH_MM));
 
         AQI aqi = weather.getAqi();
         aqiIndicatorView.setIndicatorValue(aqi.getAqi());
         adviceTextView.setText(aqi.getAdvice());
         cityRankTextView.setText(aqi.getCityRank());
 
+        forecasts.clear();
         forecasts.addAll(weather.getForecasts());
         forecastAdapter.notifyDataSetChanged();
+
+        lifeIndices.clear();
+        lifeIndices.addAll(weather.getLifeIndexes());
+        lifeIndexAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -133,5 +177,9 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    public interface OnFragmentInteractionListener {
+        void updatePageTitle(String title);
     }
 }

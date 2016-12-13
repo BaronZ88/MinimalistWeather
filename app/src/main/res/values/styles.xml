@@ -17,7 +17,7 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="LaunchTheme" parent="AppTheme">
-        <item name="android:windowBackground">@drawable/launch_window_bg</item>
+        <item name="android:windowBackground">@drawable/bg_launch_window</item>
     </style>
 
 </resources>
