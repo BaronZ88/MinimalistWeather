@@ -177,31 +177,23 @@ public class IndicatorView extends LinearLayout {
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         this.indicatorViewHeight = MeasureSpec.getSize(heightMeasureSpec);
 
-        //Measure Width
+        //测量宽度
         if (widthMode == MeasureSpec.EXACTLY) {
-            //Must be this size
             indicatorViewWidth = indicatorViewWidth;
         } else if (widthMode == MeasureSpec.AT_MOST) {
-            //Can't be bigger than...
             indicatorViewWidth = Math.min(desiredWidth, indicatorViewWidth);
         } else {
-            //Be whatever you want
             indicatorViewWidth = desiredWidth;
         }
 
-        //Measure Height
+        //测量高度
         if (heightMode == MeasureSpec.EXACTLY) {
-            //Must be this size
             indicatorViewHeight = indicatorViewHeight;
         } else if (heightMode == MeasureSpec.AT_MOST) {
-            //Can't be bigger than...
             indicatorViewHeight = Math.min(desiredHeight, indicatorViewHeight);
         } else {
-            //Be whatever you want
             indicatorViewHeight = desiredHeight;
         }
-
-        //Must call this
         setMeasuredDimension(indicatorViewWidth, indicatorViewHeight);
     }
 
