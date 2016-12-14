@@ -1,9 +1,9 @@
-# WeatherStyle（待完善）
+# MinimalistWeather（待完善）
 
 
 ## 一、简介
 
-**WeatherStyle是Android平台上一款开源天气App，目前还在开发中。项目基于MVP架构，采用时下各主流开源库实现。开发此项目主要是为展示各种开源库的使用方式以及Android项目的架构方案，并作为团队项目开发规范的一部分。**
+**MinimalistWeather是Android平台上一款开源天气App，目前还在开发中。项目基于MVP架构，采用时下各主流开源库实现。开发此项目主要是为展示各种开源库的使用方式以及Android项目的架构方案，并作为团队项目开发规范的一部分。**
 
 采用的开源库主要包括：
 
