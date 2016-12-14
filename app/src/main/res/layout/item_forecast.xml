@@ -1,28 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_gravity="center"
     android:background="?android:attr/selectableItemBackground"
-    android:orientation="vertical"
-    android:padding="6dp">
+    android:padding="6dp"
+    tools:ignore="RtlHardcoded">
 
     <TextView
-        android:id="@+id/item_date_tv"
+        android:id="@+id/week_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" />
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        tools:text="周五" />
 
     <ImageView
-        android:id="@+id/item_weather_icon_iv"
+        android:id="@+id/weather_icon_image_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:contentDescription="@string/content_description_default" />
+        android:layout_marginLeft="90dp"
+        android:layout_toRightOf="@id/week_text_view"
+        android:contentDescription="@string/content_description_default"
+        tools:src="@mipmap/ic_launcher" />
 
     <TextView
-        android:id="@+id/item_temp_tv"
-        android:layout_width="wrap_content"
+        android:id="@+id/temp_min_text_view"
+        android:layout_width="30dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:textColor="#52D681"
+        android:gravity="center"
+        android:lines="1"
+        tools:text="13°" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/temp_max_text_view"
+        android:layout_width="30dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_toLeftOf="@id/temp_min_text_view"
+        android:gravity="center"
+        android:lines="1"
+        tools:text="19°" />
+
+</RelativeLayout>

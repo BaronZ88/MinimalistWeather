@@ -37,9 +37,10 @@ public class ForecastAdapter extends BaseRecyclerViewAdapter<ForecastAdapter.Vie
     @Override
     public void onBindViewHolder(ForecastAdapter.ViewHolder holder, int position) {
         Forecast forecast = forecasts.get(position);
-        holder.dateTextView.setText(forecast.getWeek());
+        holder.weekTextView.setText(forecast.getWeek());
         holder.weatherIconImageView.setImageResource(R.mipmap.ic_launcher);
-        holder.tempTextView.setText(forecast.getTempMin() + "~" + forecast.getTempMax() + "℃");
+        holder.tempMaxTextView.setText(forecast.getTempMax() + "°");
+        holder.tempMinTextView.setText(forecast.getTempMin()+"°");
     }
 
     @Override
@@ -49,12 +50,14 @@ public class ForecastAdapter extends BaseRecyclerViewAdapter<ForecastAdapter.Vie
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.item_date_tv)
-        TextView dateTextView;
-        @BindView(R.id.item_weather_icon_iv)
+        @BindView(R.id.week_text_view)
+        TextView weekTextView;
+        @BindView(R.id.weather_icon_image_view)
         ImageView weatherIconImageView;
-        @BindView(R.id.item_temp_tv)
-        TextView tempTextView;
+        @BindView(R.id.temp_max_text_view)
+        TextView tempMaxTextView;
+        @BindView(R.id.temp_min_text_view)
+        TextView tempMinTextView;
 
         ViewHolder(View itemView, ForecastAdapter adapter) {
             super(itemView);

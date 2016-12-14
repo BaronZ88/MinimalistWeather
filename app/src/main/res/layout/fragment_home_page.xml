@@ -53,11 +53,19 @@
                     android:layout_below="@id/weather_icon_image_view"
                     android:textSize="20sp" />
 
+                <TextView
+                    android:id="@+id/publish_time_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/weather_text_view" />
+
                 <View
                     android:id="@+id/line"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_below="@id/weather_text_view"
+                    android:layout_below="@id/publish_time_text_view"
                     android:layout_margin="4dp"
                     android:background="@android:color/darker_gray" />
 
@@ -69,15 +77,6 @@
                     android:layout_margin="4dp"
                     android:layout_marginTop="4dp"
                     tools:listitem="@layout/item_forecast" />
-
-                <TextView
-                    android:id="@+id/tv_real_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@id/forecast_recycler_view" />
 
             </RelativeLayout>
         </android.support.v7.widget.CardView>

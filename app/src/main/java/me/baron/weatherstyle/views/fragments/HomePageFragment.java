@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -41,7 +42,7 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     TextView tempTextView;
     @BindView(R.id.weather_text_view)
     TextView weatherNameTextView;
-    @BindView(R.id.tv_real_time)
+    @BindView(R.id.publish_time_text_view)
     TextView realTimeTextView;
 
     //AQI
@@ -108,7 +109,8 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         View rootView = inflater.inflate(R.layout.fragment_home_page, container, false);
         unbinder = ButterKnife.bind(this, rootView);
 
-        forecastRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 5));
+//        forecastRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 5));
+        forecastRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         forecasts = new ArrayList<>();
         forecastAdapter = new ForecastAdapter(forecasts);
         forecastAdapter.setOnItemClickListener((adapterView, view, i, l) -> {});
