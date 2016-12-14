@@ -109,21 +109,36 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         View rootView = inflater.inflate(R.layout.fragment_home_page, container, false);
         unbinder = ButterKnife.bind(this, rootView);
 
-//        forecastRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 5));
-        forecastRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        forecastRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()) {
+            /**
+             * 重写此方法解决ScrollView嵌套RecyclerView滑动卡顿的问题
+             */
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        });
         forecasts = new ArrayList<>();
         forecastAdapter = new ForecastAdapter(forecasts);
-        forecastAdapter.setOnItemClickListener((adapterView, view, i, l) -> {});
+        forecastAdapter.setOnItemClickListener((adapterView, view, i, l) -> {
+        });
         forecastRecyclerView.setItemAnimator(new DefaultItemAnimator());
         forecastRecyclerView.setAdapter(forecastAdapter);
 
-        lifeIndexRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 4));
+        lifeIndexRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 4) {
+            /**
+             * 重写此方法解决ScrollView嵌套RecyclerView滑动卡顿的问题
+             */
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        });
         lifeIndices = new ArrayList<>();
         lifeIndexAdapter = new LifeIndexAdapter(getActivity(), lifeIndices);
         lifeIndexAdapter.setOnItemClickListener((adapterView, view, i, l) -> Toast.makeText(HomePageFragment.this.getContext(), lifeIndices.get(i).getDetails(), Toast.LENGTH_LONG).show());
         lifeIndexRecyclerView.setItemAnimator(new DefaultItemAnimator());
         lifeIndexRecyclerView.setAdapter(lifeIndexAdapter);
-
 
         aqiIndicatorView.setIndicatorValueChangeListener((currentIndicatorValue, stateDescription, indicatorTextColor) -> {
             aqiTextView.setText(String.valueOf(currentIndicatorValue));
