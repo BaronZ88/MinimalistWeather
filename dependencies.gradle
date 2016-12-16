@@ -9,7 +9,7 @@ project.ext {
     android = [
             compileSdkVersion: 24,
             buildToolsVersion: "24.0.1",
-            applicationId    : "me.baron.weatherstyle",
+            applicationId    : "me.baron.weather",
             minSdkVersion    : 14,
             targetSdkVersion : 24,
             versionCode      : 1,

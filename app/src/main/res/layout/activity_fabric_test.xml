@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    tools:context="me.baron.weatherstyle.activities.FabricTestActivity">
+    tools:context="me.baron.weather.activities.FabricTestActivity">
 
     <include
         layout="@layout/layout_app_bar"

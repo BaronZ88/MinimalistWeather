@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="me.baron.weatherstyle.activities.MainActivity">
+    tools:context="me.baron.weather.activities.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
