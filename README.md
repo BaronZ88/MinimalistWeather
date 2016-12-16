@@ -11,7 +11,7 @@
 * Retrofit2
 * OKHttp3
 * ORMLite
-* Dragger2
+* Dagger2
 * ButterKnife
 * RetroLambda
 * Stetho
