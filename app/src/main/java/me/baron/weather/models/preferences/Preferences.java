@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import me.baron.weather.WeatherApp;
-
 import java.io.InvalidClassException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,6 +11,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import me.baron.weather.WeatherApp;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
@@ -23,7 +23,7 @@ public final class Preferences {
     private static final String TAG = "Preferences";
 
 
-    public static final String SETTINGS_FILENAME = "me.baron.weatherstyle";
+    public static final String SETTINGS_FILENAME = "me.baron.weather";
 
     private static final List<ConfigurationListener> CONFIGURATION_LISTENERS = Collections.synchronizedList(new ArrayList<>());
 

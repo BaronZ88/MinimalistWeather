@@ -50,4 +50,6 @@ dependencies {
     compile rootProject.ext.dependencies.getAt("okhttp3-logging-interceptor")
     compile rootProject.ext.dependencies.getAt("stetho")
     compile rootProject.ext.dependencies.getAt("stetho-okhttp3")
+
+    compile 'org.glassfish:javax.annotation:10.0-b28'
 }
