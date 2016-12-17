@@ -22,8 +22,7 @@ public final class Preferences {
 
     private static final String TAG = "Preferences";
 
-
-    public static final String SETTINGS_FILENAME = "me.baron.weather";
+    private static final String SETTINGS_FILENAME = WeatherApp.class.getPackage().getName();
 
     private static final List<ConfigurationListener> CONFIGURATION_LISTENERS = Collections.synchronizedList(new ArrayList<>());
 
