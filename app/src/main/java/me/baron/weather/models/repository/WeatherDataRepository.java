@@ -18,6 +18,7 @@ import rx.exceptions.Exceptions;
 import rx.schedulers.Schedulers;
 
 import static me.baron.weather.models.http.ApiClient.configuration;
+import static rx.Observable.concat;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
@@ -41,9 +42,8 @@ public class WeatherDataRepository {
             }
         });
 
-        if (!NetworkUtils.isNetworkConnected(context)) {
+        if (!NetworkUtils.isNetworkConnected(context))
             return observableForGetWeatherFromDB;
-        }
 
         //从服务端获取天气数据
         Observable<Weather> observableForGetWeatherFromNetWork = null;
@@ -66,8 +66,9 @@ public class WeatherDataRepository {
             }
         }));
 
-        return Observable.concat(observableForGetWeatherFromDB, observableForGetWeatherFromNetWork)
+        return concat(observableForGetWeatherFromDB, observableForGetWeatherFromNetWork)
                 .filter(weather -> weather != null && !TextUtils.isEmpty(weather.getCityId()))
+                .distinct(weather -> weather.getRealTime().getTime())
                 .takeUntil(weather -> System.currentTimeMillis() - weather.getRealTime().getTime() <= 60 * 60 * 1000);
     }
 }

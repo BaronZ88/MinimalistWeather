@@ -28,7 +28,7 @@ android {
     }
 
     defaultConfig {
-        applicationId 'me.baron.weather'
+        applicationId rootProject.ext.android.applicationId
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode rootProject.ext.android.versionCode
