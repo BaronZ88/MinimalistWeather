@@ -7,5 +7,7 @@ package me.baron.library.presenter;
  */
 public interface BasePresenter {
 
-    void start();
+    void subscribe();
+
+    void unSubscribe();
 }

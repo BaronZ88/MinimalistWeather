@@ -10,8 +10,10 @@ import me.baron.weather.models.db.dao.CityDao;
 import me.baron.weather.presenters.component.DaggerPresenterComponent;
 import me.baron.weather.utils.ActivityScoped;
 import rx.Observable;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
@@ -21,6 +23,8 @@ public final class SelectCityPresenter implements SelectCityContract.Presenter {
 
     private final SelectCityContract.View cityListView;
 
+    private CompositeSubscription subscriptions;
+
     @Inject
     CityDao cityDao;
 
@@ -28,6 +32,7 @@ public final class SelectCityPresenter implements SelectCityContract.Presenter {
     SelectCityPresenter(Context context, SelectCityContract.View view) {
 
         this.cityListView = view;
+        this.subscriptions = new CompositeSubscription();
         cityListView.setPresenter(this);
 
         DaggerPresenterComponent.builder()
@@ -36,16 +41,21 @@ public final class SelectCityPresenter implements SelectCityContract.Presenter {
     }
 
     @Override
-    public void start() {
+    public void loadCities() {
+        Subscription subscription = Observable.just(cityDao.queryCityList())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(cityListView::displayCities);
+        subscriptions.add(subscription);
+    }
+
+    @Override
+    public void subscribe() {
         loadCities();
     }
 
     @Override
-    public void loadCities() {
-        Observable.just(cityDao.queryCityList())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(cityListView::displayCities);
+    public void unSubscribe() {
+        subscriptions.clear();
     }
-
 }

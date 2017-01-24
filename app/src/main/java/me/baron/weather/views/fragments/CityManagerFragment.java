@@ -99,7 +99,7 @@ public class CityManagerFragment extends BaseFragment implements CityManagerCont
         });
         cityManagerRecyclerView.setAdapter(cityManagerAdapter);
 
-        presenter.start();
+        presenter.subscribe();
 
         return rootView;
     }
@@ -109,6 +109,7 @@ public class CityManagerFragment extends BaseFragment implements CityManagerCont
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+        presenter.unSubscribe();
     }
 
     @Override

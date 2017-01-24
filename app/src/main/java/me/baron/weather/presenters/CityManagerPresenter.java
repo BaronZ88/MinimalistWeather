@@ -17,8 +17,10 @@ import me.baron.weather.models.preferences.WeatherSettings;
 import me.baron.weather.presenters.component.DaggerPresenterComponent;
 import me.baron.weather.utils.ActivityScoped;
 import rx.Observable;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
@@ -29,6 +31,9 @@ public final class CityManagerPresenter implements CityManagerContract.Presenter
 
     private CityManagerContract.View view;
 
+
+    private CompositeSubscription subscriptions;
+
     @Inject
     WeatherDao weatherDao;
 
@@ -36,6 +41,7 @@ public final class CityManagerPresenter implements CityManagerContract.Presenter
     CityManagerPresenter(Context context, CityManagerContract.View view) {
 
         this.view = view;
+        this.subscriptions = new CompositeSubscription();
         view.setPresenter(this);
 
         DaggerPresenterComponent.builder()
@@ -44,21 +50,26 @@ public final class CityManagerPresenter implements CityManagerContract.Presenter
     }
 
     @Override
-    public void start() {
-
+    public void subscribe() {
         loadSavedCities();
+    }
+
+    @Override
+    public void unSubscribe() {
+        subscriptions.clear();
     }
 
     @Override
     public void loadSavedCities() {
 
         try {
-            Observable.just(weatherDao.queryAllSaveCity())
+            Subscription subscription = Observable.just(weatherDao.queryAllSaveCity())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(weathers -> {
                         view.displaySavedCities(weathers);
                     });
+            subscriptions.add(subscription);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -97,5 +108,6 @@ public final class CityManagerPresenter implements CityManagerContract.Presenter
         }
         return currentCityId;
     }
+
 
 }

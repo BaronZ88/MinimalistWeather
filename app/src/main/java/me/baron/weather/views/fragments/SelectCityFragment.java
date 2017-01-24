@@ -75,7 +75,7 @@ public class SelectCityFragment extends BaseFragment implements SelectCityContra
             }
         });
         recyclerView.setAdapter(cityListAdapter);
-        this.presenter.start();
+        presenter.subscribe();
         return rootView;
     }
 
@@ -88,6 +88,7 @@ public class SelectCityFragment extends BaseFragment implements SelectCityContra
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+        presenter.unSubscribe();
     }
 
     @Override

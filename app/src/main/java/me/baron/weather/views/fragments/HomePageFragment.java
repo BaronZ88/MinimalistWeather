@@ -158,7 +158,7 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     public void onResume() {
         super.onResume();
         assert presenter != null;
-        presenter.start();
+        presenter.subscribe();
     }
 
     @SuppressLint("SetTextI18n")
@@ -188,6 +188,12 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     @Override
     public void setPresenter(HomePageContract.Presenter presenter) {
         this.presenter = presenter;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        presenter.unSubscribe();
     }
 
     @Override
