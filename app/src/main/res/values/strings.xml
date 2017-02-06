@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">极简天气</string>
+    <string name="app_name">天气</string>
     <string name="author_mail">baron.zhanglei@gmail.com</string>
     <string name="title_activity_select_city">城市选择</string>
     <string name="title_activity_city_manager">城市管理</string>
