@@ -38,8 +38,8 @@
 
 ```Java
 -me.baron.weather
-  + activities
-  + contracts       //契约类
+  + activities	      //Activity在项目中不在负责View的职责，仅仅是一个全局的控制者，负责创建View和Presenter的实例
+  + contracts       //契约类,用于统一管理View和Presenter的接口
   - models          //MVP中的Model层
     + db
     + http
