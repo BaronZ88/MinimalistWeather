@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.fragments.HomePageFragment">
+    tools:context="com.baronzhang.android.weather.views.fragments.HomePageFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -125,7 +125,7 @@
                     android:textSize="26sp"
                     tools:text="优" />
 
-                <me.baron.widget.IndicatorView
+                <com.baronzhang.android.widget.IndicatorView
                     android:id="@+id/indicator_view_aqi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

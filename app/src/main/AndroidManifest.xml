@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.baron.weather">
+    package="com.baronzhang.android.weather">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="me.baron.weather.WeatherApp"
+        android:name="com.baronzhang.android.weather.WeatherApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="me.baron.weather.activities.WelcomeActivity"
+            android:name=".activities.WelcomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/LaunchTheme">
             <intent-filter>
@@ -23,13 +23,13 @@
         </activity>
 
         <activity
-            android:name="me.baron.weather.activities.MainActivity"
+            android:name=".activities.MainActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="me.baron.weather.activities.SelectCityActivity"
+            android:name=".activities.SelectCityActivity"
             android:label="@string/title_activity_select_city"
-            android:parentActivityName="me.baron.weather.activities.MainActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -37,9 +37,9 @@
         </activity>
 
         <activity
-            android:name="me.baron.weather.activities.CityManagerActivity"
+            android:name=".activities.CityManagerActivity"
             android:label="@string/title_activity_city_manager"
-            android:parentActivityName="me.baron.weather.activities.MainActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -37,21 +37,46 @@
 ### App Module包结构
 
 ```Java
--me.baron.weather
-  + activities	          //Activity不再负责View的职责，仅仅是一个全局的控制者，负责创建View和Presenter的实例
-  + contracts           //契约类，用于统一管理View和Presenter的接口
-  - models              //MVP中的Model层
-    + db
-    + http
-    + preferences
-    + repository        //Model层中的Data Repository模块，对Presenter层屏蔽数据来源和细节，并将Model成中的数据包装成Rx Observer
-  + presenters          //MVP中的Presenter层
-  + utils
-  - views               //MVP中的View层
-    + adapters
-    + fragments
-    + widget
-  - AppConstants.java   //App全局常量
-  - WeatherApp.java     //Application类
+-com.baronzhang.android.weather
+    + activities	          //Activity不再负责View的职责，仅仅是一个全局的控制者，负责创建View和Presenter的实例
+    + contracts           //契约类，用于统一管理View和Presenter的接口
+    - models              //MVP中的Model层
+        + db
+        + http
+        + preferences
+        + repository        //Model层中的Data Repository模块，对Presenter层屏蔽数据来源和细节，并将Model成中的数据包装成Rx Observer
+    + presenters          //MVP中的Presenter层
+    + utils
+    - views               //MVP中的View层
+        + adapters
+        + fragments
+        + widget
+    - AppConstants.java   //App全局常量
+    - WeatherApp.java     //Application类
+```
+
+> 对于包结构的规范，大家不要照搬这个项目。由于这里只是个Demo，体量小，不会涉及到过多的业务，所以这样分包是合理的。但是在商业项目中，建议大家先按业务分包，然后再去遵循下面的分包规则。至于业务分包的粒度就需要大家根据各自的业务项目去合理把控了。拿安居客的来举例：
+
+```Java
+-com.anjuke.android.app
+    + chat            //微聊业务
+    + newhouse        //新房业务
+    - secondhouse     //二手房业务
+        + activities	          //Activity不再负责View的职责，仅仅是一个全局的控制者，负责创建View和Presenter的实例
+        + contracts           //契约类，用于统一管理View和Presenter的接口
+        - models              //MVP中的Model层
+            + db
+            + http
+            + preferences
+            + repository        //Model层中的Data Repository模块，对Presenter层屏蔽数据来源和细节，并将Model成中的数据包装成Rx Observer
+        + presenters          //MVP中的Presenter层
+        + utils
+        - views               //MVP中的View层
+            + adapters
+            + fragments
+            + widget
+    + renthouse        //租房业务
+    - AppConstants.java   //App全局常量
+    - AnjukeApp.java     //Application类
 ```
 

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.baron.library">
+    package="com.baronzhang.android.library">
 
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true">
-        <activity android:name="me.baron.library.activity.BaseActivity"></activity>
+        <activity android:name=".activity.BaseActivity"/>
     </application>
 
 </manifest>
