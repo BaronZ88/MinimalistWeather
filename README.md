@@ -38,18 +38,18 @@
 
 ```Java
 -com.baronzhang.android.weather
-    + activities	  //Activity不再负责View的职责，仅仅是一个全局的控制者，负责创建View和Presenter的实例
-    + contracts    //契约类，用于统一管理View和Presenter的接口
-    - models       //MVP中的Model层
+    + activity	  //Activity不再负责View的职责，仅仅是一个全局的控制者，负责创建View和Presenter的实例
+    + contract    //契约类，用于统一管理View和Presenter的接口
+    - model       //MVP中的Model层
         + db
         + http
-        + preferences
+        + preference
         + repository //Model层中的Data Repository模块，对Presenter层屏蔽数据来源和细节，并将Model成中的数据包装成Rx Observer
-    + presenters              //MVP中的Presenter层
-    + utils
-    - views                   //MVP中的View层
-        + adapters
-        + fragments
+    + presenter               //MVP中的Presenter层
+    + util
+    - view                    //MVP中的View层
+        + adapter
+        + fragment
         + widget
     - AppConstants.java        //App全局常量
     - WeatherApplication.java  //Application类
@@ -62,18 +62,18 @@
     + chat            //微聊业务
     + newhouse        //新房业务
     - secondhouse     //二手房业务
-        + activities  //Activity不再负责View的职责，仅仅是一个全局的控制者，负责创建View和Presenter的实例
-        + contracts   //契约类，用于统一管理View和Presenter的接口
-        - models      //MVP中的Model层
+        + activity    //Activity不再负责View的职责，仅仅是一个全局的控制者，负责创建View和Presenter的实例
+        + contract    //契约类，用于统一管理View和Presenter的接口
+        - model       //MVP中的Model层
             + db
             + http
-            + preferences
+            + preference
             + repository  //Model层中的Data Repository模块，对Presenter层屏蔽数据来源和细节，并将Model成中的数据包装成Rx Observer
-        + presenters      //MVP中的Presenter层
-        + utils
-        - views           //MVP中的View层
-            + adapters
-            + fragments
+        + presenter       //MVP中的Presenter层
+        + util
+        - view            //MVP中的View层
+            + adapter
+            + fragment
             + widget
     + renthouse           //租房业务
     - AppConstants.java   //App全局常量
