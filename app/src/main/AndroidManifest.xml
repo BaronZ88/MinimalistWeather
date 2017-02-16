@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.WelcomeActivity"
+            android:name=".activitiy.WelcomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/LaunchTheme">
             <intent-filter>
@@ -23,27 +23,27 @@
         </activity>
 
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".activitiy.MainActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activities.SelectCityActivity"
+            android:name=".activitiy.SelectCityActivity"
             android:label="@string/title_activity_select_city"
-            android:parentActivityName=".activities.MainActivity"
+            android:parentActivityName=".activitiy.MainActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.MainActivity" />
+                android:value=".activitiy.MainActivity" />
         </activity>
 
         <activity
-            android:name=".activities.CityManagerActivity"
+            android:name=".activitiy.CityManagerActivity"
             android:label="@string/title_activity_city_manager"
-            android:parentActivityName=".activities.MainActivity"
+            android:parentActivityName=".activitiy.MainActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.MainActivity" />
+                android:value=".activitiy.MainActivity" />
         </activity>
 
         <meta-data

@@ -6,9 +6,9 @@ import android.os.StrictMode;
 import android.support.design.BuildConfig;
 import android.util.Log;
 
-import com.baronzhang.android.weather.models.http.ApiClient;
-import com.baronzhang.android.weather.models.http.ApiConstants;
-import com.baronzhang.android.weather.models.http.configuration.ApiConfiguration;
+import com.baronzhang.android.weather.model.http.ApiClient;
+import com.baronzhang.android.weather.model.http.ApiConstants;
+import com.baronzhang.android.weather.model.http.configuration.ApiConfiguration;
 import com.crashlytics.android.Crashlytics;
 import com.facebook.stetho.Stetho;
 

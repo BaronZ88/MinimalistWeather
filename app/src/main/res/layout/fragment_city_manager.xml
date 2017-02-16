@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.baronzhang.android.weather.views.fragments.CityManagerFragment">
+    tools:context="com.baronzhang.android.weather.view.fragment.CityManagerFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_city_manager"
