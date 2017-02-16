@@ -15,7 +15,7 @@ import com.facebook.stetho.Stetho;
 import io.fabric.sdk.android.Fabric;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
  *         16/2/4
  */
 public class WeatherApplication extends Application {

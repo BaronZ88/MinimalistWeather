@@ -6,7 +6,7 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
  *         2016/11/30
  */
 @Module

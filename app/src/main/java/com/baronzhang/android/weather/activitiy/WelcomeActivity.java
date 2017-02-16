@@ -16,7 +16,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
  */
 public class WelcomeActivity extends BaseActivity {
 

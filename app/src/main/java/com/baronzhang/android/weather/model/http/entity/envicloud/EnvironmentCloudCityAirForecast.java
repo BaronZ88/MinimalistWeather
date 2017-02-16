@@ -3,7 +3,7 @@ package com.baronzhang.android.weather.model.http.entity.envicloud;
 import java.util.List;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
  *         2017/2/16
  */
 public class EnvironmentCloudCityAirForecast {

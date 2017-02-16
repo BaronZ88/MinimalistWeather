@@ -25,7 +25,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
  */
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, HomePageFragment.OnFragmentInteractionListener {

@@ -6,7 +6,7 @@ import dagger.Provides;
 import com.baronzhang.android.weather.contract.SelectCityContract;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
  *         2016/11/30
  */
 @Module

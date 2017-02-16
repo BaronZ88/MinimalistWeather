@@ -10,7 +10,7 @@ import com.baronzhang.android.weather.presenter.CityManagerPresenter;
 import com.baronzhang.android.weather.presenter.HomePagePresenter;
 
 /**
- * @author 张磊 (baron[dot]zhanglei[at]gmail[dot]com)
+ * @author 张磊 (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
  *         2016/12/2
  */
 @Singleton

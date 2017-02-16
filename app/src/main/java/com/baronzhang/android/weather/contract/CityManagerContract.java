@@ -9,7 +9,7 @@ import java.util.List;
 import com.baronzhang.android.weather.presenter.CityManagerPresenter;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
  *         16/4/16
  */
 public interface CityManagerContract {

@@ -18,7 +18,7 @@ import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
  *         16/3/13
  */
 public final class WeatherDatabaseHelper extends OrmLiteSqliteOpenHelper {

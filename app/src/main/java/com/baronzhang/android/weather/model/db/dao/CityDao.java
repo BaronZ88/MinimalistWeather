@@ -17,7 +17,7 @@ import com.baronzhang.android.weather.model.db.entities.HotCity;
 /**
  * City表操作类
  *
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
  *         16/3/13
  */
 public class CityDao {

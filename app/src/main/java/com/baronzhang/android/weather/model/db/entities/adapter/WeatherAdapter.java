@@ -9,7 +9,7 @@ import com.baronzhang.android.weather.model.db.entities.minimalist.WeatherLive;
 import java.util.List;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
  *         16/2/25
  */
 public abstract class WeatherAdapter {

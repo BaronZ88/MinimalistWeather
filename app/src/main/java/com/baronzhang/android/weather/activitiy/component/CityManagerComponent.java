@@ -8,7 +8,7 @@ import com.baronzhang.android.weather.activitiy.module.CityManagerModule;
 import com.baronzhang.android.weather.util.ActivityScoped;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
  *         2016/11/30
  */
 @ActivityScoped

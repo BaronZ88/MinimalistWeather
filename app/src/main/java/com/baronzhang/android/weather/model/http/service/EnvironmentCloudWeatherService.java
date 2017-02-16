@@ -10,7 +10,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
  *         2017/2/16
  */
 public interface EnvironmentCloudWeatherService {

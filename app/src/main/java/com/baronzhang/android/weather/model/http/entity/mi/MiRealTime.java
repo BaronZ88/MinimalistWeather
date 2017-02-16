@@ -3,7 +3,7 @@ package com.baronzhang.android.weather.model.http.entity.mi;
 import com.alibaba.fastjson.annotation.JSONField;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
  *         16/2/25
  */
 public class MiRealTime {
