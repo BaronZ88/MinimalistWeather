@@ -9,7 +9,7 @@ import android.support.v4.app.FragmentTransaction;
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
  *         16/4/13
  */
-public class ActivityUtils {
+public final class ActivityUtils {
 
     public static void addFragmentToActivity(FragmentManager fragmentManager, Fragment fragment, int frameId) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();

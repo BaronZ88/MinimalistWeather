@@ -7,7 +7,7 @@ import android.net.NetworkInfo;
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
  */
-public class NetworkUtils {
+public final class NetworkUtils {
 
     /**
      * 判断网络连接是否可用

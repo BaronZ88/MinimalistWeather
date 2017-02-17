@@ -3,6 +3,7 @@ package com.baronzhang.android.weather.presenter;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.baronzhang.android.library.util.RxSchedulerUtils;
 import com.baronzhang.android.weather.ApplicationModule;
 import com.baronzhang.android.weather.contract.HomePageContract;
 import com.baronzhang.android.weather.model.db.dao.WeatherDao;
@@ -15,8 +16,6 @@ import com.baronzhang.android.weather.util.ActivityScoped;
 import javax.inject.Inject;
 
 import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 /**
@@ -56,8 +55,7 @@ public final class HomePagePresenter implements HomePageContract.Presenter {
     public void loadWeather(String cityId) {
 
         Subscription subscription = WeatherDataRepository.getWeather(context, cityId, weatherDao)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxSchedulerUtils.normalSchedulersTransformer())
                 .subscribe(weatherView::displayWeatherInformation, throwable -> {
                     Toast.makeText(context, throwable.getMessage(), Toast.LENGTH_LONG).show();
                 });

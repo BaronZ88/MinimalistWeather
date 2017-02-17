@@ -13,6 +13,8 @@ import android.view.ViewGroup;
  */
 public class BaseFragment extends Fragment {
 
+//    private PublishSubject<FragmentLifecycleEvent> fragmentLifecycleSubject = PublishSubject.create();
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +28,7 @@ public class BaseFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
+//        fragmentLifecycleSubject.onNext(FragmentLifecycleEvent.DESTROY_VIEW);
         super.onDestroyView();
     }
 

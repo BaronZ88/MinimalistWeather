@@ -10,7 +10,7 @@ import java.util.Date;
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
  *         2016/12/12
  */
-public class DateConvertUtils {
+public final class DateConvertUtils {
 
     public static final String DATA_FORMAT_PATTEN_YYYY_MMMM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
     public static final String DATA_FORMAT_PATTEN_YYYY_MMMM_DD_HH_MM = "yyyy-MM-dd HH:mm";
