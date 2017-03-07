@@ -1,4 +1,4 @@
-# MinimalistWeather（待完善）
+# MinimalistWeather
 
 
 ## 一、简介

@@ -31,25 +31,25 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile rootProject.ext.dependencies.getAt("support-v4")
-    compile rootProject.ext.dependencies.getAt("appcompat-v7")
-    compile rootProject.ext.dependencies.getAt("design")
-    compile rootProject.ext.dependencies.getAt("recyclerview")
-    compile rootProject.ext.dependencies.getAt("cardview")
-    compile rootProject.ext.dependencies.getAt("rxandroid")
-    compile rootProject.ext.dependencies.getAt("rxbinding")
-    compile rootProject.ext.dependencies.getAt("rxbinding-support-v4")
-    compile rootProject.ext.dependencies.getAt("rxbinding-appcompat-v7")
-    compile rootProject.ext.dependencies.getAt("rxbinding-design")
-    compile rootProject.ext.dependencies.getAt("rxbinding-recyclerview-v7")
-    compile rootProject.ext.dependencies.getAt("ormlite-android")
-    compile rootProject.ext.dependencies.getAt("stream")
-    compile rootProject.ext.dependencies.getAt("retrofit")
-    compile rootProject.ext.dependencies.getAt("adapter-rxjava")
-    compile rootProject.ext.dependencies.getAt("fastjson")
-    compile rootProject.ext.dependencies.getAt("okhttp3-logging-interceptor")
-    compile rootProject.ext.dependencies.getAt("stetho")
-    compile rootProject.ext.dependencies.getAt("stetho-okhttp3")
+    compile rootProject.ext.dependencies["support-v4"]
+    compile rootProject.ext.dependencies["appcompat-v7"]
+    compile rootProject.ext.dependencies["design"]
+    compile rootProject.ext.dependencies["recyclerview"]
+    compile rootProject.ext.dependencies["cardview"]
+    compile rootProject.ext.dependencies["rxandroid"]
+    compile rootProject.ext.dependencies["rxbinding"]
+    compile rootProject.ext.dependencies["rxbinding-support-v4"]
+    compile rootProject.ext.dependencies["rxbinding-appcompat-v7"]
+    compile rootProject.ext.dependencies["rxbinding-design"]
+    compile rootProject.ext.dependencies["rxbinding-recyclerview-v7"]
+    compile rootProject.ext.dependencies["ormlite-android"]
+    compile rootProject.ext.dependencies["stream"]
+    compile rootProject.ext.dependencies["retrofit"]
+    compile rootProject.ext.dependencies["adapter-rxjava"]
+    compile rootProject.ext.dependencies["fastjson"]
+    compile rootProject.ext.dependencies["okhttp3-logging-interceptor"]
+    compile rootProject.ext.dependencies["stetho"]
+    compile rootProject.ext.dependencies["stetho-okhttp3"]
 
     compile 'org.glassfish:javax.annotation:10.0-b28'
 }

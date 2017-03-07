@@ -61,9 +61,9 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.6.1@aar') {
         transitive = true;
     }
-    compile rootProject.ext.dependencies.getAt("butterknife")
-    annotationProcessor rootProject.ext.dependencies.getAt("butterknife-compiler")
+    compile rootProject.ext.dependencies["butterknife"]
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
 
-    compile rootProject.ext.dependencies.getAt("dagger")
-    annotationProcessor rootProject.ext.dependencies.getAt("dagger-compiler")
+    compile rootProject.ext.dependencies["dagger"]
+    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
 }
