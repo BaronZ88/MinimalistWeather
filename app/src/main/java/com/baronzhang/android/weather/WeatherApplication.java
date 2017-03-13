@@ -9,10 +9,7 @@ import android.util.Log;
 import com.baronzhang.android.weather.model.http.ApiClient;
 import com.baronzhang.android.weather.model.http.ApiConstants;
 import com.baronzhang.android.weather.model.http.configuration.ApiConfiguration;
-import com.crashlytics.android.Crashlytics;
 import com.facebook.stetho.Stetho;
-
-import io.fabric.sdk.android.Fabric;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
@@ -50,7 +47,7 @@ public class WeatherApplication extends Application {
                 .applicationModule(new ApplicationModule(this))
                 .build();
 
-        Fabric.with(this, new Crashlytics());
+//        Fabric.with(this, new Crashlytics());
         Stetho.initializeWithDefaults(this.getApplicationContext());
 
         weatherApplicationInstance = this;
