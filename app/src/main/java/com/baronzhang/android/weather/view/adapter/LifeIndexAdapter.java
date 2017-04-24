@@ -18,6 +18,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.baronzhang.android.weather.R.drawable.ic_index_sunscreen;
+
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
  *         2016/12/13
@@ -71,9 +73,9 @@ public class LifeIndexAdapter extends BaseRecyclerViewAdapter<LifeIndexAdapter.V
     private Drawable getIndexDrawable(Context context, String indexName) {
 
 
-        int colorResourceId = 0;
+        int colorResourceId = ic_index_sunscreen;
         if (indexName.contains("防晒")) {
-            colorResourceId = R.drawable.ic_index_sunscreen;
+            colorResourceId = ic_index_sunscreen;
         } else if (indexName.contains("穿衣")) {
             colorResourceId = R.drawable.ic_index_dress;
         } else if (indexName.contains("运动")) {

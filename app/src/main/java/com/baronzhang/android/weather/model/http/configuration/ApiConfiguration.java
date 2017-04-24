@@ -12,7 +12,6 @@ public class ApiConfiguration {
     private int dataSourceType;
 
     private ApiConfiguration(Builder builder) {
-        assert builder != null;
         initialize(builder);
     }
 
