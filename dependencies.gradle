@@ -1,6 +1,6 @@
 def supportVersion = "25.3.1"
 def rxBindingVersion = "0.4.0"
-def retrofitVersion = "2.0.2"
+def retrofitVersion = "2.2.0"
 def stethoVersion = "1.3.1"
 def butterKnifeVersion = "8.5.1"
 def daggerVersion = "2.8"
@@ -18,41 +18,41 @@ project.ext {
 
     dependencies = [
             //android-support
-            "support-v4"                 : "com.android.support:support-v4:${supportVersion}",
-            "appcompat-v7"               : "com.android.support:appcompat-v7:${supportVersion}",
-            "design"                     : "com.android.support:design:${supportVersion}",
-            "recyclerview"               : "com.android.support:recyclerview-v7:${supportVersion}",
-            "cardview"                   : "com.android.support:cardview-v7:${supportVersion}",
+            "support-v4"                  : "com.android.support:support-v4:${supportVersion}",
+            "appcompat-v7"                : "com.android.support:appcompat-v7:${supportVersion}",
+            "design"                      : "com.android.support:design:${supportVersion}",
+            "recyclerview"                : "com.android.support:recyclerview-v7:${supportVersion}",
+            "cardview"                    : "com.android.support:cardview-v7:${supportVersion}",
 
             //java8-support
-            "stream"                     : "com.annimon:stream:1.0.8",
+            "stream"                      : "com.annimon:stream:1.0.8",
 
             //rx
-            "rxandroid"                  : "io.reactivex:rxandroid:1.2.1",
-            "rxbinding"                  : "com.jakewharton.rxbinding:rxbinding:${rxBindingVersion}",
-            "rxbinding-support-v4"       : "com.jakewharton.rxbinding:rxbinding-support-v4:${rxBindingVersion}",
-            "rxbinding-appcompat-v7"     : "com.jakewharton.rxbinding:rxbinding-appcompat-v7:${rxBindingVersion}",
-            "rxbinding-design"           : "com.jakewharton.rxbinding:rxbinding-design:${rxBindingVersion}",
-            "rxbinding-recyclerview-v7"  : "com.jakewharton.rxbinding:rxbinding-recyclerview-v7:${rxBindingVersion}",
+            "rxandroid"                   : "io.reactivex:rxandroid:1.2.1",
+            "rxbinding"                   : "com.jakewharton.rxbinding:rxbinding:${rxBindingVersion}",
+            "rxbinding-support-v4"        : "com.jakewharton.rxbinding:rxbinding-support-v4:${rxBindingVersion}",
+            "rxbinding-appcompat-v7"      : "com.jakewharton.rxbinding:rxbinding-appcompat-v7:${rxBindingVersion}",
+            "rxbinding-design"            : "com.jakewharton.rxbinding:rxbinding-design:${rxBindingVersion}",
+            "rxbinding-recyclerview-v7"   : "com.jakewharton.rxbinding:rxbinding-recyclerview-v7:${rxBindingVersion}",
 
             //retrofit
-            "retrofit"                   : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
-            "adapter-rxjava"             : "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}",
+            "retrofit"                    : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            "adapter-rxjava"              : "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}",
 
             //dagger
-            "dagger"                     : "com.google.dagger:dagger:${daggerVersion}",
-            "dagger-compiler"            : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            "dagger"                      : "com.google.dagger:dagger:${daggerVersion}",
+            "dagger-compiler"             : "com.google.dagger:dagger-compiler:${daggerVersion}",
 
             //facebook
-            "stetho"                     : "com.facebook.stetho:stetho:${stethoVersion}",
-            "stetho-okhttp3"             : "com.facebook.stetho:stetho-okhttp3:${stethoVersion}",
+            "stetho"                      : "com.facebook.stetho:stetho:${stethoVersion}",
+            "stetho-okhttp3"              : "com.facebook.stetho:stetho-okhttp3:${stethoVersion}",
 
             //others
-            "okhttp3-logging-interceptor": "com.squareup.okhttp3:logging-interceptor:3.1.2",
-            "ormlite-android"            : "com.j256.ormlite:ormlite-android:4.48",
-            "fastjson"                   : "com.alibaba:fastjson:1.2.10",
-            "butterknife"                : "com.jakewharton:butterknife:${butterKnifeVersion}",
-            "butterknife-compiler"       : "com.jakewharton:butterknife-compiler:${butterKnifeVersion}",
-//            "retrofit2-fastjson-converter": "me.baron.retrofit2.converter:Retrofit2-FastJson-Converter:1.0.0"
+            "okhttp3-logging-interceptor" : "com.squareup.okhttp3:logging-interceptor:3.1.2",
+            "ormlite-android"             : "com.j256.ormlite:ormlite-android:4.48",
+            "fastjson"                    : "com.alibaba:fastjson:1.2.31",
+            "butterknife"                 : "com.jakewharton:butterknife:${butterKnifeVersion}",
+            "butterknife-compiler"        : "com.jakewharton:butterknife-compiler:${butterKnifeVersion}",
+            "retrofit2-fastjson-converter": "com.github.BaronZ88:Retrofit2-FastJson-Converter:1.2"
     ]
 }

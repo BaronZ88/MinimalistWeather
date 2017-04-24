@@ -58,12 +58,12 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(':library')
     compile project(':widget')
-//    compile('com.crashlytics.sdk.android:crashlytics:2.6.1@aar') {
-//        transitive = true;
-//    }
+
     compile rootProject.ext.dependencies["butterknife"]
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
 
     compile rootProject.ext.dependencies["dagger"]
     annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
+
+    compile rootProject.ext.dependencies["retrofit2-fastjson-converter"]
 }

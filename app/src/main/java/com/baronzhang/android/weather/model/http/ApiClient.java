@@ -2,9 +2,9 @@ package com.baronzhang.android.weather.model.http;
 
 import com.baronzhang.android.weather.BuildConfig;
 import com.baronzhang.android.weather.model.http.configuration.ApiConfiguration;
-import com.baronzhang.android.weather.model.http.converter.FastJsonConverterFactory;
 import com.baronzhang.android.weather.model.http.service.EnvironmentCloudWeatherService;
 import com.baronzhang.android.weather.model.http.service.WeatherService;
+import com.baronzhang.retrofit2.converter.FastJsonConverterFactory;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import okhttp3.OkHttpClient;
