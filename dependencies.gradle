@@ -1,7 +1,8 @@
 def supportVersion = "25.3.1"
 def rxBindingVersion = "0.4.0"
 def retrofitVersion = "2.2.0"
-def stethoVersion = "1.3.1"
+def okHttpVersion = "3.7.0"
+def stethoVersion = "1.5.0"
 def butterKnifeVersion = "8.5.1"
 def daggerVersion = "2.8"
 
@@ -48,7 +49,7 @@ project.ext {
             "stetho-okhttp3"              : "com.facebook.stetho:stetho-okhttp3:${stethoVersion}",
 
             //others
-            "okhttp3-logging-interceptor" : "com.squareup.okhttp3:logging-interceptor:3.1.2",
+            "okhttp3-logging-interceptor" : "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}",
             "ormlite-android"             : "com.j256.ormlite:ormlite-android:4.48",
             "fastjson"                    : "com.alibaba:fastjson:1.2.31",
             "butterknife"                 : "com.jakewharton:butterknife:${butterKnifeVersion}",
