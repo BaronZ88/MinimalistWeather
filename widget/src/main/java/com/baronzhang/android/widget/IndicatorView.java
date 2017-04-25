@@ -42,7 +42,6 @@ public class IndicatorView extends LinearLayout {
     private int indicatorColorsResourceId = R.array.indicator_colors;
 
     private int indicatorViewWidth;// IndicatorView宽度
-    private int indicatorViewHeight;// IndicatorView高度
 
     private int paddingTopInXML;
 
@@ -108,7 +107,7 @@ public class IndicatorView extends LinearLayout {
     }
 
     /**
-     * 想父容器中填充View
+     * 向父容器中填充View
      */
     private void fillViewToParent(Context context) {
         indicatorStrings = context.getResources().getStringArray(indicatorStringsResourceId);
@@ -175,24 +174,32 @@ public class IndicatorView extends LinearLayout {
         this.indicatorViewWidth = MeasureSpec.getSize(widthMeasureSpec);
 
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
-        this.indicatorViewHeight = MeasureSpec.getSize(heightMeasureSpec);
+        int indicatorViewHeight = MeasureSpec.getSize(heightMeasureSpec);
 
         //测量宽度
-        if (widthMode == MeasureSpec.EXACTLY) {
-            indicatorViewWidth = indicatorViewWidth;
-        } else if (widthMode == MeasureSpec.AT_MOST) {
-            indicatorViewWidth = Math.min(desiredWidth, indicatorViewWidth);
-        } else {
-            indicatorViewWidth = desiredWidth;
+        switch (widthMode) {
+            case MeasureSpec.EXACTLY:
+//            indicatorViewWidth = indicatorViewWidth;
+                break;
+            case MeasureSpec.AT_MOST:
+                indicatorViewWidth = Math.min(desiredWidth, indicatorViewWidth);
+                break;
+            case MeasureSpec.UNSPECIFIED:
+                indicatorViewWidth = desiredWidth;
+                break;
         }
 
         //测量高度
-        if (heightMode == MeasureSpec.EXACTLY) {
-            indicatorViewHeight = indicatorViewHeight;
-        } else if (heightMode == MeasureSpec.AT_MOST) {
-            indicatorViewHeight = Math.min(desiredHeight, indicatorViewHeight);
-        } else {
-            indicatorViewHeight = desiredHeight;
+        switch (heightMode) {
+            case MeasureSpec.EXACTLY:
+//            indicatorViewHeight = indicatorViewHeight;
+                break;
+            case MeasureSpec.AT_MOST:
+                indicatorViewHeight = Math.min(desiredHeight, indicatorViewHeight);
+                break;
+            case MeasureSpec.UNSPECIFIED:
+                indicatorViewHeight = desiredHeight;
+                break;
         }
         setMeasuredDimension(indicatorViewWidth, indicatorViewHeight);
     }

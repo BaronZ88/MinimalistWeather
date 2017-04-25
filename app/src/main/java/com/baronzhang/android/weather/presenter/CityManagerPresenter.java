@@ -94,6 +94,11 @@ public final class CityManagerPresenter implements CityManagerContract.Presenter
                 });
     }
 
+    @Override
+    public void saveCurrentCityToPreference(String cityId) throws InvalidClassException{
+        PreferenceHelper.savePreference(WeatherSettings.SETTINGS_CURRENT_CITY_ID, cityId);
+    }
+
     private String deleteCityFromDBAndReturnCurrentCityId(String cityId) {
         String currentCityId = PreferenceHelper.getSharedPreferences().getString(WeatherSettings.SETTINGS_CURRENT_CITY_ID.getId(), "");
         try {

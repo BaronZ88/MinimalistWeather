@@ -3,10 +3,10 @@ package com.baronzhang.android.weather.contract;
 import com.baronzhang.android.library.presenter.BasePresenter;
 import com.baronzhang.android.library.view.BaseView;
 import com.baronzhang.android.weather.model.db.entities.minimalist.Weather;
-
-import java.util.List;
-
 import com.baronzhang.android.weather.presenter.CityManagerPresenter;
+
+import java.io.InvalidClassException;
+import java.util.List;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
@@ -24,5 +24,7 @@ public interface CityManagerContract {
         void loadSavedCities();
 
         void deleteCity(String cityId);
+
+        void saveCurrentCityToPreference(String cityId) throws InvalidClassException;
     }
 }

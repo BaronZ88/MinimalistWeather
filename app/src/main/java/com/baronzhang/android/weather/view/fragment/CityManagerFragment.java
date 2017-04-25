@@ -17,8 +17,6 @@ import com.baronzhang.android.weather.R;
 import com.baronzhang.android.weather.activitiy.SelectCityActivity;
 import com.baronzhang.android.weather.contract.CityManagerContract;
 import com.baronzhang.android.weather.model.db.entities.minimalist.Weather;
-import com.baronzhang.android.weather.model.preference.PreferenceHelper;
-import com.baronzhang.android.weather.model.preference.WeatherSettings;
 import com.baronzhang.android.weather.presenter.CityManagerPresenter;
 import com.baronzhang.android.weather.view.adapter.CityManagerAdapter;
 
@@ -86,7 +84,7 @@ public class CityManagerFragment extends BaseFragment implements CityManagerCont
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 try {
-                    PreferenceHelper.savePreference(WeatherSettings.SETTINGS_CURRENT_CITY_ID, weatherList.get(position).getCityId() + "");
+                    presenter.saveCurrentCityToPreference(weatherList.get(position).getCityId() + "");
                     CityManagerFragment.this.getActivity().finish();
                 } catch (InvalidClassException e) {
                     e.printStackTrace();

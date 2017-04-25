@@ -47,8 +47,7 @@ public class WeatherApplication extends Application {
                 .applicationModule(new ApplicationModule(this))
                 .build();
 
-//        Fabric.with(this, new Crashlytics());
-        Stetho.initializeWithDefaults(this.getApplicationContext());
+        Stetho.initializeWithDefaults(this);
 
         weatherApplicationInstance = this;
 
