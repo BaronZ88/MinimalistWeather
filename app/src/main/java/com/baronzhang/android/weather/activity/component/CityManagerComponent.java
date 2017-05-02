@@ -1,10 +1,10 @@
-package com.baronzhang.android.weather.activitiy.component;
+package com.baronzhang.android.weather.activity.component;
 
-import com.baronzhang.android.weather.activitiy.CityManagerActivity;
+import com.baronzhang.android.weather.activity.CityManagerActivity;
 
 import dagger.Component;
 import com.baronzhang.android.weather.ApplicationComponent;
-import com.baronzhang.android.weather.activitiy.module.CityManagerModule;
+import com.baronzhang.android.weather.activity.module.CityManagerModule;
 import com.baronzhang.android.weather.util.ActivityScoped;
 
 /**

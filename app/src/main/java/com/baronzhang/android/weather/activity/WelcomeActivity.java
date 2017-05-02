@@ -1,4 +1,4 @@
-package com.baronzhang.android.weather.activitiy;
+package com.baronzhang.android.weather.activity;
 
 import android.content.Intent;
 import android.os.Bundle;

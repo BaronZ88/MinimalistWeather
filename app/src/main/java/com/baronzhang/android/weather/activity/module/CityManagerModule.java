@@ -1,4 +1,4 @@
-package com.baronzhang.android.weather.activitiy.module;
+package com.baronzhang.android.weather.activity.module;
 
 import com.baronzhang.android.weather.contract.CityManagerContract;
 

@@ -1,4 +1,4 @@
-package com.baronzhang.android.weather.activitiy;
+package com.baronzhang.android.weather.activity;
 
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
@@ -11,8 +11,8 @@ import com.baronzhang.android.library.activity.BaseActivity;
 import com.baronzhang.android.library.util.ActivityUtils;
 import com.baronzhang.android.weather.R;
 import com.baronzhang.android.weather.WeatherApplication;
-import com.baronzhang.android.weather.activitiy.component.DaggerSelectCityComponent;
-import com.baronzhang.android.weather.activitiy.module.SelectCityModule;
+import com.baronzhang.android.weather.activity.component.DaggerSelectCityComponent;
+import com.baronzhang.android.weather.activity.module.SelectCityModule;
 import com.baronzhang.android.weather.presenter.SelectCityPresenter;
 import com.baronzhang.android.weather.view.fragment.SelectCityFragment;
 import com.jakewharton.rxbinding.support.v7.widget.RxSearchView;

@@ -1,4 +1,4 @@
-package com.baronzhang.android.weather.activitiy;
+package com.baronzhang.android.weather.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +14,8 @@ import com.baronzhang.android.library.activity.BaseActivity;
 import com.baronzhang.android.library.util.ActivityUtils;
 import com.baronzhang.android.weather.R;
 import com.baronzhang.android.weather.WeatherApplication;
-import com.baronzhang.android.weather.activitiy.component.DaggerHomePageComponent;
-import com.baronzhang.android.weather.activitiy.module.HomePageModule;
+import com.baronzhang.android.weather.activity.component.DaggerHomePageComponent;
+import com.baronzhang.android.weather.activity.module.HomePageModule;
 import com.baronzhang.android.weather.presenter.HomePagePresenter;
 import com.baronzhang.android.weather.view.fragment.HomePageFragment;
 

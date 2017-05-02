@@ -1,7 +1,7 @@
-package com.baronzhang.android.weather.activitiy.component;
+package com.baronzhang.android.weather.activity.component;
 
-import com.baronzhang.android.weather.activitiy.SelectCityActivity;
-import com.baronzhang.android.weather.activitiy.module.SelectCityModule;
+import com.baronzhang.android.weather.activity.SelectCityActivity;
+import com.baronzhang.android.weather.activity.module.SelectCityModule;
 import com.baronzhang.android.weather.util.ActivityScoped;
 
 import dagger.Component;

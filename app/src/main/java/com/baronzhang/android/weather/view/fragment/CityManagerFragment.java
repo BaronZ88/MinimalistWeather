@@ -14,7 +14,7 @@ import android.widget.AdapterView;
 
 import com.baronzhang.android.library.fragment.BaseFragment;
 import com.baronzhang.android.weather.R;
-import com.baronzhang.android.weather.activitiy.SelectCityActivity;
+import com.baronzhang.android.weather.activity.SelectCityActivity;
 import com.baronzhang.android.weather.contract.CityManagerContract;
 import com.baronzhang.android.weather.model.db.entities.minimalist.Weather;
 import com.baronzhang.android.weather.presenter.CityManagerPresenter;

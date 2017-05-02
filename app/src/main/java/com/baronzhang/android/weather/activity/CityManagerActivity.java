@@ -1,4 +1,4 @@
-package com.baronzhang.android.weather.activitiy;
+package com.baronzhang.android.weather.activity;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -7,8 +7,8 @@ import com.baronzhang.android.library.activity.BaseActivity;
 import com.baronzhang.android.library.util.ActivityUtils;
 import com.baronzhang.android.weather.R;
 import com.baronzhang.android.weather.WeatherApplication;
-import com.baronzhang.android.weather.activitiy.component.DaggerCityManagerComponent;
-import com.baronzhang.android.weather.activitiy.module.CityManagerModule;
+import com.baronzhang.android.weather.activity.component.DaggerCityManagerComponent;
+import com.baronzhang.android.weather.activity.module.CityManagerModule;
 import com.baronzhang.android.weather.presenter.CityManagerPresenter;
 import com.baronzhang.android.weather.view.fragment.CityManagerFragment;
 
