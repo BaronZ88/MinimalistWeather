@@ -1,9 +1,6 @@
-# MinimalistWeather
+## MinimalistWeather
 
-
-## 一、简介
-
-**MinimalistWeather是Android平台上一款开源天气App，目前还在开发中。项目基于MVP架构，采用各主流开源库实现。开发此项目主要是为展示各种开源库的使用方式以及Android项目的设计方案，并作为团队项目开发规范的一部分。**
+**MinimalistWeather 是 Android 平台上一款开源天气 App ，目前还在开发中。项目基于 MVP 架构，采用各主流开源库实现。开发此项目主要是为展示各种开源库的使用方式以及 Android 项目的设计方案，并作为团队项目开发规范的一部分。**
 
 采用的开源库包括：
 
@@ -28,13 +25,13 @@
 * 代码混淆配置；
 * 如何快速开发一款结构清晰、可扩展性强的Android Application。
 
-## 二、项目结构设计图
+### 项目结构设计图
 
 ![架构设计图](framework_minimalist_weather.png)
 
-## 三、项目包结构介绍
+### 项目包结构介绍
 
-### App Module包结构
+**App Module包结构**
 
 ```Java
 -com.baronzhang.android.weather
@@ -78,5 +75,23 @@
     + renthouse           //租房业务
     - AppConstants.java   //App全局常量
     - AnjukeApp.java      //Application类
+```
+
+### 开源许可 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+
+```
+Copyright 2017 Baron Zhang
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 ```
 
