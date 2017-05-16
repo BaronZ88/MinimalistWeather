@@ -1,7 +1,7 @@
 package com.baronzhang.android.weather.model.http;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         16/3/8
  */
 public final class ApiConstants {

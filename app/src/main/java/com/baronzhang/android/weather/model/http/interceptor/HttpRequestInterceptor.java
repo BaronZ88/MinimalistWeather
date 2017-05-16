@@ -6,7 +6,7 @@ import okhttp3.Interceptor;
 import okhttp3.Response;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         16/2/25
  */
 public class HttpRequestInterceptor implements Interceptor {

@@ -8,7 +8,7 @@ import com.baronzhang.android.weather.ApplicationComponent;
 import dagger.Component;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         2016/11/29
  */
 @ActivityScoped

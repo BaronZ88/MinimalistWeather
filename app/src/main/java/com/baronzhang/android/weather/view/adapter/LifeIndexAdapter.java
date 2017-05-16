@@ -21,7 +21,7 @@ import butterknife.ButterKnife;
 import static com.baronzhang.android.weather.R.drawable.ic_index_sunscreen;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         2016/12/13
  */
 public class LifeIndexAdapter extends BaseRecyclerViewAdapter<LifeIndexAdapter.ViewHolder> {

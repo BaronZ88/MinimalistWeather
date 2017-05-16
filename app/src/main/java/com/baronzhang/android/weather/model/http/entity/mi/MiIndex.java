@@ -3,7 +3,7 @@ package com.baronzhang.android.weather.model.http.entity.mi;
 /**
  * 小米天气生活指数
  *
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         16/2/25
  */
 public class MiIndex {

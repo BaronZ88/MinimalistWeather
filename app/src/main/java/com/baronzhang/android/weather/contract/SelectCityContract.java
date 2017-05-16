@@ -7,7 +7,7 @@ import com.baronzhang.android.library.presenter.BasePresenter;
 import com.baronzhang.android.library.view.BaseView;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  */
 public interface SelectCityContract {
 

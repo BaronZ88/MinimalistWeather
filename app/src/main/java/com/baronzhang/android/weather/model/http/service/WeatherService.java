@@ -8,7 +8,7 @@ import retrofit2.http.Query;
 import rx.Observable;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         16/2/25
  */
 public interface WeatherService {

@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 /**
  * 城市管理页面Adapter
  *
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         16/3/16
  */
 public class CityManagerAdapter extends BaseRecyclerViewAdapter<CityManagerAdapter.ViewHolder> {

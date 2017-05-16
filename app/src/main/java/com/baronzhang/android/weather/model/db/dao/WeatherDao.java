@@ -20,7 +20,7 @@ import java.util.concurrent.Callable;
 import javax.inject.Inject;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         16/3/14
  */
 public class WeatherDao {

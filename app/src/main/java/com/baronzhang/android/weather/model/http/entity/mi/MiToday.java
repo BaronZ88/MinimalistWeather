@@ -1,7 +1,7 @@
 package com.baronzhang.android.weather.model.http.entity.mi;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         16/2/25
  */
 public class MiToday {

@@ -26,7 +26,7 @@ import butterknife.ButterKnife;
 import rx.android.schedulers.AndroidSchedulers;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com ==>> baronzhang.com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
  */
 public class SelectCityActivity extends BaseActivity {
 

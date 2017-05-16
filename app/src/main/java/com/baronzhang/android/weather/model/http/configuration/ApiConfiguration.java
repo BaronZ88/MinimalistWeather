@@ -4,7 +4,7 @@ package com.baronzhang.android.weather.model.http.configuration;
 import com.baronzhang.android.weather.model.http.ApiConstants;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         2016/12/10
  */
 public class ApiConfiguration {

@@ -12,7 +12,7 @@ import com.baronzhang.android.weather.model.http.configuration.ApiConfiguration;
 import com.facebook.stetho.Stetho;
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         16/2/4
  */
 public class WeatherApplication extends Application {

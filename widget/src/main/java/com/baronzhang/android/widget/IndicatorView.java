@@ -23,7 +23,7 @@ import android.widget.TextView;
 
 
 /**
- * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com ==>> baronzhang.com)
+ * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         16/12/11
  */
 public class IndicatorView extends LinearLayout {
