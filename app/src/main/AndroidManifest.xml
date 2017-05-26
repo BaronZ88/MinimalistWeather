@@ -29,7 +29,6 @@
         <activity
             android:name=".activity.SelectCityActivity"
             android:label="@string/title_activity_select_city"
-            android:parentActivityName=".activity.MainActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -39,16 +38,12 @@
         <activity
             android:name=".activity.CityManagerActivity"
             android:label="@string/title_activity_city_manager"
-            android:parentActivityName=".activity.MainActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>
 
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="e6eaabb81f90778f04a9c8207635e6e32212f279" />
     </application>
 
 </manifest>

@@ -1,10 +1,14 @@
 <resources>
 
     <style name="BaseAppTheme" parent="BaseAppTheme.NoActionBar">
-        <item name="android:windowTranslucentStatus">false</item>
-        <item name="android:windowTranslucentNavigation">true</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="LaunchTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/bg_launch_window</item>
+        <item name="colorPrimaryDark">@android:color/transparent</item>
     </style>
 
 </resources>

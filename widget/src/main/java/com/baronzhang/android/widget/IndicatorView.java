@@ -15,12 +15,12 @@ import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
@@ -117,6 +117,7 @@ public class IndicatorView extends LinearLayout {
         }
         for (int i = 0; i < indicatorStrings.length; i++) {
             addTextView(context, indicatorStrings[i], indicatorColorIds[i]);
+            Log.d("IndicatorView", "addTextView=" + i);
             if (i != (indicatorStrings.length - 1)) {
                 addBlankView(context);
             }
@@ -138,6 +139,7 @@ public class IndicatorView extends LinearLayout {
         textView.setSingleLine();
         textView.setGravity(Gravity.CENTER);
         textView.setLayoutParams(new LayoutParams(0, LayoutParams.WRAP_CONTENT, 1.0F));
+        Log.d("IndicatorView", "textView=" + textView.getHeight());
         this.addView(textView);
     }
 
@@ -167,14 +169,14 @@ public class IndicatorView extends LinearLayout {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
-        int desiredWidth = this.getChildAt(0).getHeight() + getPaddingLeft() + getPaddingRight();
-        int desiredHeight = this.getChildAt(0).getHeight() + getPaddingTop() + getPaddingBottom();
-
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         this.indicatorViewWidth = MeasureSpec.getSize(widthMeasureSpec);
 
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         int indicatorViewHeight = MeasureSpec.getSize(heightMeasureSpec);
+
+        int desiredWidth = this.getChildAt(0).getWidth() + getPaddingLeft() + getPaddingRight();
+        int desiredHeight = this.getChildAt(0).getHeight() + getPaddingTop() + getPaddingBottom();
 
         //测量宽度
         switch (widthMode) {
@@ -202,6 +204,8 @@ public class IndicatorView extends LinearLayout {
                 break;
         }
         setMeasuredDimension(indicatorViewWidth, indicatorViewHeight);
+        Log.d("IndicatorView", "indicatorViewHeight=" + indicatorViewHeight);
+        Log.d("IndicatorView", "this.marker.getHeight()=" + this.marker.getHeight());
     }
 
     @Override
@@ -211,7 +215,7 @@ public class IndicatorView extends LinearLayout {
     }
 
     /**
-     * 用于绘制标示市场热度的图标
+     * 用于绘制指示器图标
      */
     private void drawMarkView(Canvas canvas) {
 
@@ -231,7 +235,6 @@ public class IndicatorView extends LinearLayout {
         } else {
             left += (width * 5 / 6) + (indicatorValue - 300) * width / 6 / 100 + intervalValue * 5;
         }
-
         canvas.drawBitmap(marker, left - marker.getWidth() / 2 - 2, this.paddingTopInXML, paint);
     }
 
