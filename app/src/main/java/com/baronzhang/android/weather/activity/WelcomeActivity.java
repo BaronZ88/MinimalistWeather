@@ -2,12 +2,12 @@ package com.baronzhang.android.weather.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
+import com.baronzhang.android.library.activity.BaseActivity;
+import com.baronzhang.android.library.util.system.StatusBarHelper;
 import com.baronzhang.android.weather.model.preference.PreferenceHelper;
 import com.baronzhang.android.weather.model.preference.WeatherSettings;
 import com.baronzhang.android.weather.util.CityDBUtil;
-import com.baronzhang.android.library.activity.BaseActivity;
 
 import java.io.InvalidClassException;
 
@@ -20,19 +20,16 @@ import rx.schedulers.Schedulers;
  */
 public class WelcomeActivity extends BaseActivity {
 
-    private static final String TAG = "WelcomeActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreate start");
+        StatusBarHelper.statusBarLightMode(this);
 
         Observable.just(initAppData())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(result -> gotoMainPage());
-
-        Log.d(TAG, "onCreate end");
     }
 
     private void gotoMainPage() {
@@ -55,9 +52,7 @@ public class WelcomeActivity extends BaseActivity {
                 e.printStackTrace();
             }
         }
-        Log.d(TAG, "importCityData start");
         CityDBUtil.importCityData();
-        Log.d(TAG, "importCityData end");
         return null;
     }
 }
