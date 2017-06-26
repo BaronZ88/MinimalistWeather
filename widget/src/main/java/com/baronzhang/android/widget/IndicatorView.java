@@ -48,6 +48,8 @@ public class IndicatorView extends LinearLayout {
     private String[] indicatorStrings;
     int[] indicatorColorIds;
 
+    private boolean isNeedToIncreaseHeight = true;
+
     public IndicatorView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
@@ -117,7 +119,6 @@ public class IndicatorView extends LinearLayout {
         }
         for (int i = 0; i < indicatorStrings.length; i++) {
             addTextView(context, indicatorStrings[i], indicatorColorIds[i]);
-            Log.d("IndicatorView", "addTextView=" + i);
             if (i != (indicatorStrings.length - 1)) {
                 addBlankView(context);
             }
@@ -139,7 +140,6 @@ public class IndicatorView extends LinearLayout {
         textView.setSingleLine();
         textView.setGravity(Gravity.CENTER);
         textView.setLayoutParams(new LayoutParams(0, LayoutParams.WRAP_CONTENT, 1.0F));
-        Log.d("IndicatorView", "textView=" + textView.getHeight());
         this.addView(textView);
     }
 
@@ -153,18 +153,6 @@ public class IndicatorView extends LinearLayout {
         this.addView(transparentView);
     }
 
-    /**
-     * 一个MeasureSpec封装了父布局传递给子布局的布局要求，每个MeasureSpec代表了一组宽度和高度的要求。
-     * 一个MeasureSpec由大小和模式组成
-     * 它有三种模式：UNSPECIFIED(未指定),父元素不对子元素施加任何束缚，子元素可以得到任意想要的大小;
-     * EXACTLY(完全)，父元素决定自元素的确切大小，子元素将被限定在给定的边界里而忽略它本身大小；
-     * AT_MOST(至多)，子元素至多达到指定大小的值。
-     * <p/>
-     * 　　它常用的三个函数：
-     * 1.static int getMode(int measureSpec):根据提供的测量值(格式)提取模式(上述三个模式之一)
-     * 2.static int getSize(int measureSpec):根据提供的测量值(格式)提取大小值(这个大小也就是我们通常所说的大小)
-     * 3.static int makeMeasureSpec(int size,int mode):根据提供的大小值和模式创建一个测量值(格式)
-     */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -175,13 +163,12 @@ public class IndicatorView extends LinearLayout {
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         int indicatorViewHeight = MeasureSpec.getSize(heightMeasureSpec);
 
-        int desiredWidth = this.getChildAt(0).getWidth() + getPaddingLeft() + getPaddingRight();
+        int desiredWidth = indicatorViewWidth + getPaddingLeft() + getPaddingRight();
         int desiredHeight = this.getChildAt(0).getHeight() + getPaddingTop() + getPaddingBottom();
 
         //测量宽度
         switch (widthMode) {
             case MeasureSpec.EXACTLY:
-//            indicatorViewWidth = indicatorViewWidth;
                 break;
             case MeasureSpec.AT_MOST:
                 indicatorViewWidth = Math.min(desiredWidth, indicatorViewWidth);
@@ -194,7 +181,6 @@ public class IndicatorView extends LinearLayout {
         //测量高度
         switch (heightMode) {
             case MeasureSpec.EXACTLY:
-//            indicatorViewHeight = indicatorViewHeight;
                 break;
             case MeasureSpec.AT_MOST:
                 indicatorViewHeight = Math.min(desiredHeight, indicatorViewHeight);
@@ -204,8 +190,6 @@ public class IndicatorView extends LinearLayout {
                 break;
         }
         setMeasuredDimension(indicatorViewWidth, indicatorViewHeight);
-        Log.d("IndicatorView", "indicatorViewHeight=" + indicatorViewHeight);
-        Log.d("IndicatorView", "this.marker.getHeight()=" + this.marker.getHeight());
     }
 
     @Override
@@ -236,6 +220,11 @@ public class IndicatorView extends LinearLayout {
             left += (width * 5 / 6) + (indicatorValue - 300) * width / 6 / 100 + intervalValue * 5;
         }
         canvas.drawBitmap(marker, left - marker.getWidth() / 2 - 2, this.paddingTopInXML, paint);
+        if (isNeedToIncreaseHeight) {
+            this.setMinimumHeight(this.getMeasuredHeight() + this.getChildAt(0).getHeight());
+            isNeedToIncreaseHeight = false;
+        }
+
     }
 
     private IndicatorValueChangeListener indicatorValueChangeListener;
