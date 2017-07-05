@@ -15,7 +15,6 @@ import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -47,8 +46,6 @@ public class IndicatorView extends LinearLayout {
 
     private String[] indicatorStrings;
     int[] indicatorColorIds;
-
-    private boolean isNeedToIncreaseHeight = true;
 
     public IndicatorView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -164,7 +161,7 @@ public class IndicatorView extends LinearLayout {
         int indicatorViewHeight = MeasureSpec.getSize(heightMeasureSpec);
 
         int desiredWidth = indicatorViewWidth + getPaddingLeft() + getPaddingRight();
-        int desiredHeight = this.getChildAt(0).getHeight() + getPaddingTop() + getPaddingBottom();
+        int desiredHeight = this.getChildAt(0).getMeasuredHeight() + getPaddingTop() + getPaddingBottom();
 
         //测量宽度
         switch (widthMode) {
@@ -220,11 +217,6 @@ public class IndicatorView extends LinearLayout {
             left += (width * 5 / 6) + (indicatorValue - 300) * width / 6 / 200 + intervalValue * 5;
         }
         canvas.drawBitmap(marker, left - marker.getWidth() / 2 - 2, this.paddingTopInXML, paint);
-        if (isNeedToIncreaseHeight) {
-            this.setMinimumHeight(this.getMeasuredHeight() + this.getChildAt(0).getHeight());
-            isNeedToIncreaseHeight = false;
-        }
-
     }
 
     private IndicatorValueChangeListener indicatorValueChangeListener;
