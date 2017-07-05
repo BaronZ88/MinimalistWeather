@@ -15,10 +15,6 @@ public class Weather {
     public static final String CITY_ID_FIELD_NAME = "cityId";
     public static final String CITY_NAME_FIELD_NAME = "cityName";
     public static final String CITY_NAME_EN_FIELD_NAME = "cityNameEn";
-//    public static final String REAL_TIME_FIELD_NAME = "real_time_city_id";
-//    public static final String FORECASTS_FIELD_NAME = "forecasts_city_id";
-//    public static final String AQI_FIELD_NAME = "aqi_city_id";
-//    public static final String LIFE_INDEXES_FIELD_NAME = "life_indexes_city_id";
 
     @DatabaseField(columnName = CITY_ID_FIELD_NAME, id = true)
     private String cityId;
@@ -26,13 +22,13 @@ public class Weather {
     private String cityName;
     @DatabaseField(columnName = CITY_NAME_EN_FIELD_NAME)
     private String cityNameEn;
-//    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = REAL_TIME_FIELD_NAME)
+
     private WeatherLive weatherLive;
-//    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = FORECASTS_FIELD_NAME)
+
     private List<WeatherForecast> weatherForecasts;
-//    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = AQI_FIELD_NAME)
+
     private AirQualityLive airQualityLive;
-//    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = LIFE_INDEXES_FIELD_NAME)
+
     private List<LifeIndex> lifeIndexes;
 
     public AirQualityLive getAirQualityLive() {

@@ -1,13 +1,12 @@
 package com.baronzhang.android.weather.model.http.service;
 
-import android.database.Observable;
-
 import com.baronzhang.android.weather.model.http.entity.envicloud.EnvironmentCloudCityAirLive;
 import com.baronzhang.android.weather.model.http.entity.envicloud.EnvironmentCloudForecast;
 import com.baronzhang.android.weather.model.http.entity.envicloud.EnvironmentCloudWeatherLive;
 
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import rx.Observable;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
@@ -47,16 +46,4 @@ public interface EnvironmentCloudWeatherService {
      */
     @GET("/v2/cityairlive/YMFYB256AGFUZZE0ODQ3MZM1MZE2NTU=/{cityId}")
     Observable<EnvironmentCloudCityAirLive> getAirLive(@Path("cityId") String cityId);
-
-
-    /**
-     * 获取指定城市的五日空气质量预报
-     * <p>
-     * API地址：http://service.envicloud.cn:8082/v2/cityairforecast/YMFYB256AGFUZZE0ODQ3MZM1MZE2NTU=/101020100
-     *
-     * @param cityId 城市id
-     * @return Observable
-     */
-    @GET("/v2/cityairforecast/YMFYB256AGFUZZE0ODQ3MZM1MZE2NTU=/{cityId}")
-    Observable<EnvironmentCloudCityAirLive> getAirForecast(@Path("cityId") String cityId);
 }

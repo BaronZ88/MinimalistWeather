@@ -1,6 +1,10 @@
 package com.baronzhang.android.weather.model.http.entity.envicloud;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 /**
+ * 城市实时空气质量
+ *
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         2017/2/16
  */
@@ -22,33 +26,61 @@ public class EnvironmentCloudCityAirLive {
      * AQI : 46
      */
 
-    private String citycode;
-    private String PM25;
-    private String time;
-    private String rdesc;
-    private String PM10;
-    private String SO2;
-    private String o3;
-    private String NO2;
-    private String primary;
-    private int rcode;
-    private String CO;
-    private String AQI;
+    @JSONField(name = "rcode")
+    private int requestCode;//结果吗
 
-    public String getCitycode() {
-        return citycode;
+    @JSONField(name = "rdesc")
+    private String requestDesc;//结果描述
+
+    @JSONField(name = "citycode")
+    private String cityId;//城市ID
+
+    private String time;//时间(yyyyMMddHH)
+
+    @JSONField(name = "AQI")
+    private String aqi;//空气质量指数
+
+    @JSONField(name = "PM25")
+    private String pm25;//PM2.5浓度(μg/m3)
+
+    @JSONField(name = "PM10")
+    private String pm10;//PM10浓度(μg/m3)
+
+    @JSONField(name = "CO")
+    private String co;//一氧化碳浓度(mg/m3)
+
+    @JSONField(name = "SO2")
+    private String so2;//二氧化硫浓度(μg/m3)
+
+    @JSONField(name = "NO2")
+    private String no2;//二氧化氮浓度(μg/m3)
+
+    private String o3;//臭氧浓度(μg/m3)
+
+    private String primary;//首要污染物
+
+    public int getRequestCode() {
+        return requestCode;
     }
 
-    public void setCitycode(String citycode) {
-        this.citycode = citycode;
+    public void setRequestCode(int requestCode) {
+        this.requestCode = requestCode;
     }
 
-    public String getPM25() {
-        return PM25;
+    public String getRequestDesc() {
+        return requestDesc;
     }
 
-    public void setPM25(String PM25) {
-        this.PM25 = PM25;
+    public void setRequestDesc(String requestDesc) {
+        this.requestDesc = requestDesc;
+    }
+
+    public String getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
     }
 
     public String getTime() {
@@ -59,28 +91,52 @@ public class EnvironmentCloudCityAirLive {
         this.time = time;
     }
 
-    public String getRdesc() {
-        return rdesc;
+    public String getAqi() {
+        return aqi;
     }
 
-    public void setRdesc(String rdesc) {
-        this.rdesc = rdesc;
+    public void setAqi(String aqi) {
+        this.aqi = aqi;
     }
 
-    public String getPM10() {
-        return PM10;
+    public String getPm25() {
+        return pm25;
     }
 
-    public void setPM10(String PM10) {
-        this.PM10 = PM10;
+    public void setPm25(String pm25) {
+        this.pm25 = pm25;
     }
 
-    public String getSO2() {
-        return SO2;
+    public String getPm10() {
+        return pm10;
     }
 
-    public void setSO2(String SO2) {
-        this.SO2 = SO2;
+    public void setPm10(String pm10) {
+        this.pm10 = pm10;
+    }
+
+    public String getCo() {
+        return co;
+    }
+
+    public void setCo(String co) {
+        this.co = co;
+    }
+
+    public String getSo2() {
+        return so2;
+    }
+
+    public void setSo2(String so2) {
+        this.so2 = so2;
+    }
+
+    public String getNo2() {
+        return no2;
+    }
+
+    public void setNo2(String no2) {
+        this.no2 = no2;
     }
 
     public String getO3() {
@@ -91,43 +147,11 @@ public class EnvironmentCloudCityAirLive {
         this.o3 = o3;
     }
 
-    public String getNO2() {
-        return NO2;
-    }
-
-    public void setNO2(String NO2) {
-        this.NO2 = NO2;
-    }
-
     public String getPrimary() {
         return primary;
     }
 
     public void setPrimary(String primary) {
         this.primary = primary;
-    }
-
-    public int getRcode() {
-        return rcode;
-    }
-
-    public void setRcode(int rcode) {
-        this.rcode = rcode;
-    }
-
-    public String getCO() {
-        return CO;
-    }
-
-    public void setCO(String CO) {
-        this.CO = CO;
-    }
-
-    public String getAQI() {
-        return AQI;
-    }
-
-    public void setAQI(String AQI) {
-        this.AQI = AQI;
     }
 }

@@ -1,5 +1,7 @@
 package com.baronzhang.android.weather.model.http.entity.envicloud;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.util.List;
 
 /**
@@ -18,27 +20,37 @@ public class EnvironmentCloudForecast {
      * forecast : [{"pop":"0","date":"2017-02-16","uv":"5","vis":"10","hum":"74","astro":{"ss":"17:42","mr":"22:42","ms":"09:41","sr":"06:34"},"pres":"1020","pcpn":"0.0","tmp":{"min":"10","max":"19"},"cond":{"cond_d":"小雨","cond_n":"阴"},"wind":{"sc":"微风","spd":"4","deg":"204","dir":"南风"}},{"pop":"70","date":"2017-02-17","uv":"6","vis":"10","hum":"77","astro":{"ss":"17:43","mr":"23:35","ms":"10:15","sr":"06:33"},"pres":"1025","pcpn":"0.3","tmp":{"min":"6","max":"15"},"cond":{"cond_d":"小雨","cond_n":"小雨"},"wind":{"sc":"3-4","spd":"10","deg":"28","dir":"东北风"}},{"pop":"33","date":"2017-02-18","uv":"6","vis":"10","hum":"72","astro":{"ss":"17:43","mr":"null","ms":"10:52","sr":"06:32"},"pres":"1029","pcpn":"0.0","tmp":{"min":"6","max":"10"},"cond":{"cond_d":"多云","cond_n":"晴"},"wind":{"sc":"微风","spd":"6","deg":"75","dir":"东南风"}},{"pop":"0","date":"2017-02-19","uv":"5","vis":"10","hum":"78","astro":{"ss":"17:44","mr":"00:27","ms":"11:31","sr":"06:31"},"pres":"1019","pcpn":"0.0","tmp":{"min":"10","max":"16"},"cond":{"cond_d":"多云","cond_n":"多云"},"wind":{"sc":"微风","spd":"1","deg":"174","dir":"东南风"}},{"pop":"0","date":"2017-02-20","uv":"N/A","vis":"10","hum":"81","astro":{"ss":"17:45","mr":"01:19","ms":"12:12","sr":"06:30"},"pres":"1013","pcpn":"0.0","tmp":{"min":"10","max":"19"},"cond":{"cond_d":"多云","cond_n":"小雨"},"wind":{"sc":"3-4","spd":"14","deg":"168","dir":"东北风"}},{"pop":"71","date":"2017-02-21","uv":"N/A","vis":"9","hum":"83","astro":{"ss":"17:46","mr":"02:10","ms":"12:57","sr":"06:29"},"pres":"1012","pcpn":"4.9","tmp":{"min":"7","max":"14"},"cond":{"cond_d":"小雨","cond_n":"小雨"},"wind":{"sc":"微风","spd":"0","deg":"94","dir":"东南风"}},{"pop":"100","date":"2017-02-22","uv":"N/A","vis":"2","hum":"91","astro":{"ss":"17:47","mr":"03:00","ms":"13:46","sr":"06:28"},"pres":"1016","pcpn":"9.7","tmp":{"min":"2","max":"11"},"cond":{"cond_d":"小雨","cond_n":"中雨"},"wind":{"sc":"4-5","spd":"23","deg":"340","dir":"西北风"}}]
      */
 
-    private String citycode;
-    private String rdesc;
-    private SuggestionEntity suggestion;
-    private String cityname;
-    private int rcode;
-    private List<ForecastEntity> forecast;
 
-    public String getCitycode() {
-        return citycode;
+    @JSONField(name = "rcode")
+    private int requestCode;//结果吗
+
+    @JSONField(name = "rdesc")
+    private String requestDesc;//结果描述
+
+    private SuggestionEntity suggestion;//生活指数
+
+    @JSONField(name = "citycode")
+    private String cityId;//城市ID
+
+    @JSONField(name = "cityname")
+    private String cityName;//城市名
+
+    private List<ForecastEntity> forecast;//天气预报
+
+    public int getRequestCode() {
+        return requestCode;
     }
 
-    public void setCitycode(String citycode) {
-        this.citycode = citycode;
+    public void setRequestCode(int requestCode) {
+        this.requestCode = requestCode;
     }
 
-    public String getRdesc() {
-        return rdesc;
+    public String getRequestDesc() {
+        return requestDesc;
     }
 
-    public void setRdesc(String rdesc) {
-        this.rdesc = rdesc;
+    public void setRequestDesc(String requestDesc) {
+        this.requestDesc = requestDesc;
     }
 
     public SuggestionEntity getSuggestion() {
@@ -49,20 +61,20 @@ public class EnvironmentCloudForecast {
         this.suggestion = suggestion;
     }
 
-    public String getCityname() {
-        return cityname;
+    public String getCityId() {
+        return cityId;
     }
 
-    public void setCityname(String cityname) {
-        this.cityname = cityname;
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
     }
 
-    public int getRcode() {
-        return rcode;
+    public String getCityName() {
+        return cityName;
     }
 
-    public void setRcode(int rcode) {
-        this.rcode = rcode;
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
     }
 
     public List<ForecastEntity> getForecast() {
@@ -85,14 +97,14 @@ public class EnvironmentCloudForecast {
          * flu : {"txt":"天气较凉，较易发生感冒，请适当增加衣服。体质较弱的朋友尤其应该注意防护。","brf":"较易发"}
          */
 
-        private UvEntity uv;
-        private CwEntity cw;
-        private DrsEntity drs;
-        private TravEntity trav;
-        private AirEntity air;
-        private ComfEntity comf;
-        private SportEntity sport;
-        private FluEntity flu;
+        private UvEntity uv;//紫外线
+        private CwEntity cw;//洗车指数
+        private DrsEntity drs;//穿衣指数
+        private TravEntity trav;//旅游指数
+        private AirEntity air;//空气质量指数
+        private ComfEntity comf;//s舒适度指数
+        private SportEntity sport;//运动指数
+        private FluEntity flu;//感冒指数
 
         public UvEntity getUv() {
             return uv;
@@ -164,8 +176,8 @@ public class EnvironmentCloudForecast {
              * brf : 最弱
              */
 
-            private String txt;
-            private String brf;
+            private String txt;//生活指数详情
+            private String brf;//生活指数简介
 
             public String getTxt() {
                 return txt;
@@ -382,17 +394,17 @@ public class EnvironmentCloudForecast {
          * wind : {"sc":"微风","spd":"4","deg":"204","dir":"南风"}
          */
 
-        private String pop;
-        private String date;
-        private String uv;
-        private String vis;
-        private String hum;
-        private AstroEntity astro;
-        private String pres;
-        private String pcpn;
-        private TmpEntity tmp;
-        private CondEntity cond;
-        private WindEntity wind;
+        private String pop;//降水概率(%)
+        private String date;//预报日期
+        private String uv;//紫外线级别
+        private String vis;//能见度(km)
+        private String hum;//相对湿度(%)
+        private AstroEntity astro;//天文数据
+        private String pres;//气压(hPa)
+        private String pcpn;//降水量(mm)
+        private TmpEntity tmp;//气温
+        private CondEntity cond;//天气现象
+        private WindEntity wind;//风力风向数据
 
         public String getPop() {
             return pop;
@@ -490,10 +502,10 @@ public class EnvironmentCloudForecast {
              * sr : 06:34
              */
 
-            private String ss;
-            private String mr;
-            private String ms;
-            private String sr;
+            private String ss;//日落时间
+            private String mr;//月升
+            private String ms;//月落
+            private String sr;//日出时间
 
             public String getSs() {
                 return ss;
@@ -534,8 +546,8 @@ public class EnvironmentCloudForecast {
              * max : 19
              */
 
-            private String min;
-            private String max;
+            private String min;//最低气温(℃)
+            private String max;//最高气温(℃)
 
             public String getMin() {
                 return min;
@@ -560,8 +572,8 @@ public class EnvironmentCloudForecast {
              * cond_n : 阴
              */
 
-            private String cond_d;
-            private String cond_n;
+            private String cond_d;//白天天气现象
+            private String cond_n;//夜间天气现象
 
             public String getCond_d() {
                 return cond_d;
@@ -588,10 +600,10 @@ public class EnvironmentCloudForecast {
              * dir : 南风
              */
 
-            private String sc;
-            private String spd;
-            private String deg;
-            private String dir;
+            private String sc;//风力
+            private String spd;//风速(m/s)
+            private String deg;//风向(360°)
+            private String dir;//风向
 
             public String getSc() {
                 return sc;

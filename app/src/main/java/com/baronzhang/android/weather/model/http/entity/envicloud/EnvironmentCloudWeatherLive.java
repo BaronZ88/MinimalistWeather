@@ -1,6 +1,10 @@
 package com.baronzhang.android.weather.model.http.entity.envicloud;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 /**
+ * 天气实况
+ *
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         2017/2/16
  */
@@ -23,82 +27,71 @@ public class EnvironmentCloudWeatherLive {
      * phenomena : 阵雨
      */
 
-    private String airpressure;
-    private String rain;
-    private String windpower;
-    private int rcode;
-    private String feelst;
-    private String citycode;
-    private String rdesc;
-    private String winddirect;
-    private String temperature;
-    private String humidity;
-    private String windspeed;
-    private String updatetime;
-    private String phenomena;
+    @JSONField(name = "rcode")
+    private int requestCode;//结果吗
 
-    public String getAirpressure() {
-        return airpressure;
+    @JSONField(name = "rdesc")
+    private String requestDesc;//结果描述
+
+    @JSONField(name = "updatetime")
+    private String updateTime;//更新时间
+
+    private String phenomena;//天气现象
+
+    private String temperature;//气温(℃)
+
+    @JSONField(name = "feelst")
+    private String feelsTemperature;//体感温度(℃)
+
+    @JSONField(name = "airpressure")
+    private String airPressure;//气压(hPa)
+
+    private String humidity;//相对湿度(%)
+
+    private String rain;//降雨量(mm)
+
+    @JSONField(name = "winddirect")
+    private String windDirect;//风向
+
+    @JSONField(name = "windpower")
+    private String windPower;//风力
+
+    @JSONField(name = "windspeed")
+    private String windSpeed;//风速(m/s)
+
+    @JSONField(name = "citycode")
+    private String cityId;//城市ID
+
+    public int getRequestCode() {
+        return requestCode;
     }
 
-    public void setAirpressure(String airpressure) {
-        this.airpressure = airpressure;
+    public void setRequestCode(int requestCode) {
+        this.requestCode = requestCode;
     }
 
-    public String getRain() {
-        return rain;
+    public String getRequestDesc() {
+        return requestDesc;
     }
 
-    public void setRain(String rain) {
-        this.rain = rain;
+    public void setRequestDesc(String requestDesc) {
+        this.requestDesc = requestDesc;
     }
 
-    public String getWindpower() {
-        return windpower;
+    public String getUpdateTime() {
+        return updateTime;
     }
 
-    public void setWindpower(String windpower) {
-        this.windpower = windpower;
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
     }
 
-    public int getRcode() {
-        return rcode;
+    public String getPhenomena() {
+        return phenomena;
     }
 
-    public void setRcode(int rcode) {
-        this.rcode = rcode;
-    }
-
-    public String getFeelst() {
-        return feelst;
-    }
-
-    public void setFeelst(String feelst) {
-        this.feelst = feelst;
-    }
-
-    public String getCitycode() {
-        return citycode;
-    }
-
-    public void setCitycode(String citycode) {
-        this.citycode = citycode;
-    }
-
-    public String getRdesc() {
-        return rdesc;
-    }
-
-    public void setRdesc(String rdesc) {
-        this.rdesc = rdesc;
-    }
-
-    public String getWinddirect() {
-        return winddirect;
-    }
-
-    public void setWinddirect(String winddirect) {
-        this.winddirect = winddirect;
+    public void setPhenomena(String phenomena) {
+        this.phenomena = phenomena;
     }
 
     public String getTemperature() {
@@ -109,6 +102,22 @@ public class EnvironmentCloudWeatherLive {
         this.temperature = temperature;
     }
 
+    public String getFeelsTemperature() {
+        return feelsTemperature;
+    }
+
+    public void setFeelsTemperature(String feelsTemperature) {
+        this.feelsTemperature = feelsTemperature;
+    }
+
+    public String getAirPressure() {
+        return airPressure;
+    }
+
+    public void setAirPressure(String airPressure) {
+        this.airPressure = airPressure;
+    }
+
     public String getHumidity() {
         return humidity;
     }
@@ -117,28 +126,44 @@ public class EnvironmentCloudWeatherLive {
         this.humidity = humidity;
     }
 
-    public String getWindspeed() {
-        return windspeed;
+    public String getRain() {
+        return rain;
     }
 
-    public void setWindspeed(String windspeed) {
-        this.windspeed = windspeed;
+    public void setRain(String rain) {
+        this.rain = rain;
     }
 
-    public String getUpdatetime() {
-        return updatetime;
+    public String getWindDirect() {
+        return windDirect;
     }
 
-    public void setUpdatetime(String updatetime) {
-        this.updatetime = updatetime;
+    public void setWindDirect(String windDirect) {
+        this.windDirect = windDirect;
     }
 
-    public String getPhenomena() {
-        return phenomena;
+    public String getWindPower() {
+        return windPower;
     }
 
-    public void setPhenomena(String phenomena) {
-        this.phenomena = phenomena;
+    public void setWindPower(String windPower) {
+        this.windPower = windPower;
+    }
+
+    public String getWindSpeed() {
+        return windSpeed;
+    }
+
+    public void setWindSpeed(String windSpeed) {
+        this.windSpeed = windSpeed;
+    }
+
+    public String getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
     }
 }
 

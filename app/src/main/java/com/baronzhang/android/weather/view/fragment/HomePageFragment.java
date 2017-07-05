@@ -170,7 +170,7 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         onFragmentInteractionListener.updatePageTitle(weather.getCityName());
         tempTextView.setText(weather.getWeatherLive().getTemp());
         weatherNameTextView.setText(weather.getWeatherLive().getWeather());
-        realTimeTextView.setText(getString(R.string.string_publish_time) + DateConvertUtils.timeStampToDate(weather.getWeatherLive().getTime(), DateConvertUtils.DATA_FORMAT_PATTEN_YYYY_MMMM_DD_HH_MM));
+        realTimeTextView.setText(getString(R.string.string_publish_time) + DateConvertUtils.timeStampToDate(weather.getWeatherLive().getTime(), DateConvertUtils.DATA_FORMAT_PATTEN_YYYY_MM_DD_HH_MM));
 
         AirQualityLive airQualityLive = weather.getAirQualityLive();
         aqiIndicatorView.setIndicatorValue(airQualityLive.getAqi());

@@ -1,5 +1,6 @@
 package com.baronzhang.android.weather.model.db.entities.minimalist;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -20,6 +21,11 @@ public class WeatherLive {
     public static final String WIND_SPEED_FIELD_NAME = "windSpeed";
     public static final String TIME_FIELD_NAME = "time";
 
+    public static final String WIND_POWER_FIELD_NAME = "windPower";
+    public static final String RAIN_FIELD_NAME = "rain";
+    public static final String FEELS_TEMP_FIELD_NAME = "feelsTemperature";
+    public static final String PRESSURE_FIELD_NAME = "airPressure";
+
     @DatabaseField(columnName = CITY_ID_FIELD_NAME, id = true)
     private String cityId;
     @DatabaseField(columnName = WEATHER_FIELD_NAME)
@@ -34,6 +40,15 @@ public class WeatherLive {
     private String windSpeed;//风速
     @DatabaseField(columnName = TIME_FIELD_NAME)
     private long time;//发布时间（时间戳）
+
+    @DatabaseField(columnName = WIND_POWER_FIELD_NAME)
+    private String windPower;//风力
+    @DatabaseField(columnName = RAIN_FIELD_NAME)
+    private String rain;//降雨量(mm)
+    @DatabaseField(columnName = FEELS_TEMP_FIELD_NAME)
+    private String feelsTemperature;//体感温度(℃)
+    @DatabaseField(columnName = PRESSURE_FIELD_NAME)
+    private String airPressure;//气压(hPa)
 
     public WeatherLive() {
     }
@@ -105,16 +120,52 @@ public class WeatherLive {
         this.windSpeed = windSpeed;
     }
 
+    public String getWindPower() {
+        return windPower;
+    }
+
+    public void setWindPower(String windPower) {
+        this.windPower = windPower;
+    }
+
+    public String getRain() {
+        return rain;
+    }
+
+    public void setRain(String rain) {
+        this.rain = rain;
+    }
+
+    public String getFeelsTemperature() {
+        return feelsTemperature;
+    }
+
+    public void setFeelsTemperature(String feelsTemperature) {
+        this.feelsTemperature = feelsTemperature;
+    }
+
+    public String getAirPressure() {
+        return airPressure;
+    }
+
+    public void setAirPressure(String airPressure) {
+        this.airPressure = airPressure;
+    }
+
     @Override
     public String toString() {
-        return "RealTime{" +
+        return "WeatherLive{" +
                 "cityId='" + cityId + '\'' +
                 ", weather='" + weather + '\'' +
                 ", temp='" + temp + '\'' +
                 ", humidity='" + humidity + '\'' +
                 ", wind='" + wind + '\'' +
                 ", windSpeed='" + windSpeed + '\'' +
-                ", time='" + time + '\'' +
+                ", time=" + time +
+                ", windPower='" + windPower + '\'' +
+                ", rain='" + rain + '\'' +
+                ", feelsTemperature='" + feelsTemperature + '\'' +
+                ", airPressure='" + airPressure + '\'' +
                 '}';
     }
 }
