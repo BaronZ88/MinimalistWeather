@@ -23,11 +23,16 @@ import com.baronzhang.android.weather.model.db.entities.minimalist.AirQualityLiv
 import com.baronzhang.android.weather.model.db.entities.minimalist.WeatherForecast;
 import com.baronzhang.android.weather.model.db.entities.minimalist.LifeIndex;
 import com.baronzhang.android.weather.model.db.entities.minimalist.Weather;
+import com.baronzhang.android.weather.view.adapter.DetailAdapter;
 import com.baronzhang.android.weather.view.adapter.ForecastAdapter;
 import com.baronzhang.android.weather.view.adapter.LifeIndexAdapter;
+import com.baronzhang.android.weather.view.entity.WeatherDetail;
+import com.baronzhang.android.weather.view.widget.CannotScrollGridLayoutManager;
+import com.baronzhang.android.weather.view.widget.CannotScrollLinearLayoutManager;
 import com.baronzhang.android.widget.IndicatorView;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import butterknife.BindView;
@@ -60,6 +65,10 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     @BindView(R.id.tv_city_rank)
     TextView cityRankTextView;
 
+    //详细天气信息
+    @BindView(R.id.detail_recycler_view)
+    RecyclerView detailRecyclerView;
+
     //预报
     @BindView(R.id.forecast_recycler_view)
     RecyclerView forecastRecyclerView;
@@ -76,9 +85,11 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
 
     private Weather weather;
 
+    private List<WeatherDetail> weatherDetails;
     private List<WeatherForecast> weatherForecasts;
     private List<LifeIndex> lifeIndices;
 
+    private DetailAdapter detailAdapter;
     private ForecastAdapter forecastAdapter;
     private LifeIndexAdapter lifeIndexAdapter;
 
@@ -110,15 +121,17 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         View rootView = inflater.inflate(R.layout.fragment_home_page, container, false);
         unbinder = ButterKnife.bind(this, rootView);
 
-        forecastRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()) {
-            /**
-             * 重写此方法解决ScrollView嵌套RecyclerView滑动卡顿的问题
-             */
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
+        //天气详情
+        detailRecyclerView.setLayoutManager(new CannotScrollGridLayoutManager(getActivity(), 3));
+        weatherDetails = new ArrayList<>();
+        detailAdapter = new DetailAdapter(weatherDetails);
+        detailAdapter.setOnItemClickListener((adapterView, view, i, l) -> {
         });
+        forecastRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        detailRecyclerView.setAdapter(detailAdapter);
+
+        //天气预报
+        forecastRecyclerView.setLayoutManager(new CannotScrollLinearLayoutManager(getActivity()));
         weatherForecasts = new ArrayList<>();
         forecastAdapter = new ForecastAdapter(weatherForecasts);
         forecastAdapter.setOnItemClickListener((adapterView, view, i, l) -> {
@@ -126,15 +139,8 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         forecastRecyclerView.setItemAnimator(new DefaultItemAnimator());
         forecastRecyclerView.setAdapter(forecastAdapter);
 
-        lifeIndexRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 4) {
-            /**
-             * 重写此方法解决ScrollView嵌套RecyclerView滑动卡顿的问题
-             */
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-        });
+        //生活指数
+        lifeIndexRecyclerView.setLayoutManager(new CannotScrollGridLayoutManager(getActivity(), 4));
         lifeIndices = new ArrayList<>();
         lifeIndexAdapter = new LifeIndexAdapter(getActivity(), lifeIndices);
         lifeIndexAdapter.setOnItemClickListener((adapterView, view, i, l) -> Toast.makeText(HomePageFragment.this.getContext(), lifeIndices.get(i).getDetails(), Toast.LENGTH_LONG).show());
@@ -177,6 +183,10 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         adviceTextView.setText(airQualityLive.getAdvice());
         cityRankTextView.setText(airQualityLive.getCityRank());
 
+        weatherDetails.clear();
+        weatherDetails.addAll(createDetails(weather));
+        detailAdapter.notifyDataSetChanged();
+
         weatherForecasts.clear();
         weatherForecasts.addAll(weather.getWeatherForecasts());
         forecastAdapter.notifyDataSetChanged();
@@ -184,6 +194,20 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         lifeIndices.clear();
         lifeIndices.addAll(weather.getLifeIndexes());
         lifeIndexAdapter.notifyDataSetChanged();
+    }
+
+    private List<WeatherDetail> createDetails(Weather weather) {
+
+        List<WeatherDetail> details = new ArrayList<>();
+        details.add(new WeatherDetail(R.drawable.ic_index_sunscreen, "体感温度", weather.getWeatherLive().getFeelsTemperature() + "°C"));
+        details.add(new WeatherDetail(R.drawable.ic_index_sunscreen, "湿度", weather.getWeatherLive().getHumidity() + "%"));
+//        details.add(new WeatherDetail(R.drawable.ic_index_sunscreen, "气压", (int) Double.parseDouble(weather.getWeatherLive().getAirPressure()) + "hPa"));
+        details.add(new WeatherDetail(R.drawable.ic_index_sunscreen, "紫外线指数", weather.getWeatherForecasts().get(0).getUv()));
+        details.add(new WeatherDetail(R.drawable.ic_index_sunscreen, "降水量", weather.getWeatherLive().getRain() + "mm"));
+        details.add(new WeatherDetail(R.drawable.ic_index_sunscreen, "降水概率", weather.getWeatherForecasts().get(0).getPop() + "%"));
+        details.add(new WeatherDetail(R.drawable.ic_index_sunscreen, "能见度", weather.getWeatherForecasts().get(0).getVisibility() + "km"));
+//        details.add(new WeatherDetail(R.drawable.ic_index_sport, "体感温度", ""));
+        return details;
     }
 
     @Override

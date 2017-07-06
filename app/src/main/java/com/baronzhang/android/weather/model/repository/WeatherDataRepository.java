@@ -63,12 +63,7 @@ public class WeatherDataRepository {
                 Observable<EnvironmentCloudCityAirLive> airLiveObservable = ApiClient.environmentCloudWeatherService.getAirLive(cityId);
 
                 observableForGetWeatherFromNetWork = Observable.combineLatest(weatherLiveObservable, forecastObservable, airLiveObservable,
-                        new Func3<EnvironmentCloudWeatherLive, EnvironmentCloudForecast, EnvironmentCloudCityAirLive, Weather>() {
-                            @Override
-                            public Weather call(EnvironmentCloudWeatherLive weatherLive, EnvironmentCloudForecast forecast, EnvironmentCloudCityAirLive airLive) {
-                                return new CloudWeatherAdapter(weatherLive, forecast, airLive).getWeather();
-                            }
-                        });
+                        (weatherLive, forecast, airLive) -> new CloudWeatherAdapter(weatherLive, forecast, airLive).getWeather());
 
                 break;
         }
@@ -84,6 +79,6 @@ public class WeatherDataRepository {
         return Observable.concat(observableForGetWeatherFromDB, observableForGetWeatherFromNetWork)
                 .filter(weather -> weather != null && !TextUtils.isEmpty(weather.getCityId()))
                 .distinct(weather -> weather.getWeatherLive().getTime())
-                .takeUntil(weather -> System.currentTimeMillis() - weather.getWeatherLive().getTime() <= 60 * 60 * 1000);
+                .takeUntil(weather -> System.currentTimeMillis() - weather.getWeatherLive().getTime() <= 15 * 60 * 1000);
     }
 }

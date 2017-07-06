@@ -62,12 +62,30 @@
                     android:layout_below="@id/weather_text_view" />
 
                 <View
-                    android:id="@+id/line"
+                    android:id="@+id/line1"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_below="@id/publish_time_text_view"
                     android:layout_margin="4dp"
                     android:background="@android:color/darker_gray" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/detail_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/line1"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    tools:listitem="@layout/item_detail" />
+
+                <View
+                    android:id="@+id/line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/detail_recycler_view"
+                    android:layout_margin="4dp"
+                    android:background="@android:color/darker_gray" />
+
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/forecast_recycler_view"
