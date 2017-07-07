@@ -37,6 +37,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 public class HomePageFragment extends BaseFragment implements HomePageContract.View {
@@ -168,6 +169,13 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         presenter.subscribe();
     }
 
+    @OnClick(R.id.cv_aqi)
+    void onAQIClick() {
+
+        Toast.makeText(getActivity(), "点击了控制污染指数模块", Toast.LENGTH_SHORT).show();
+    }
+
+
     @SuppressLint("SetTextI18n")
     @Override
     public void displayWeatherInformation(Weather weather) {
@@ -181,7 +189,8 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         AirQualityLive airQualityLive = weather.getAirQualityLive();
         aqiIndicatorView.setIndicatorValue(airQualityLive.getAqi());
         adviceTextView.setText(airQualityLive.getAdvice());
-        cityRankTextView.setText(airQualityLive.getCityRank());
+        String rank = airQualityLive.getCityRank();
+        cityRankTextView.setText(TextUtils.isEmpty(rank) ? "首要污染物: " + airQualityLive.getPrimary() : rank);
 
         weatherDetails.clear();
         weatherDetails.addAll(createDetails(weather));
@@ -206,7 +215,6 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         details.add(new WeatherDetail(R.drawable.ic_index_sunscreen, "降水量", weather.getWeatherLive().getRain() + "mm"));
         details.add(new WeatherDetail(R.drawable.ic_index_sunscreen, "降水概率", weather.getWeatherForecasts().get(0).getPop() + "%"));
         details.add(new WeatherDetail(R.drawable.ic_index_sunscreen, "能见度", weather.getWeatherForecasts().get(0).getVisibility() + "km"));
-//        details.add(new WeatherDetail(R.drawable.ic_index_sport, "体感温度", ""));
         return details;
     }
 
