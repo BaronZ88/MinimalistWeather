@@ -38,11 +38,11 @@ public final class WeatherDatabaseHelper extends OrmLiteSqliteOpenHelper {
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
 
         try {
-            TableUtils.createTable(connectionSource, AirQualityLive.class);
-            TableUtils.createTable(connectionSource, WeatherForecast.class);
-            TableUtils.createTable(connectionSource, LifeIndex.class);
-            TableUtils.createTable(connectionSource, WeatherLive.class);
-            TableUtils.createTable(connectionSource, Weather.class);
+            TableUtils.createTableIfNotExists(connectionSource, AirQualityLive.class);
+            TableUtils.createTableIfNotExists(connectionSource, WeatherForecast.class);
+            TableUtils.createTableIfNotExists(connectionSource, LifeIndex.class);
+            TableUtils.createTableIfNotExists(connectionSource, WeatherLive.class);
+            TableUtils.createTableIfNotExists(connectionSource, Weather.class);
 
             String weatherTrigger = "CREATE TRIGGER trigger_delete AFTER DELETE " +
                     "ON Weather " +
@@ -63,6 +63,7 @@ public final class WeatherDatabaseHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion, int newVersion) {
 
+        onCreate(database, connectionSource);
     }
 
     /**

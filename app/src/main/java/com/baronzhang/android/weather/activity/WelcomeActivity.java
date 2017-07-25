@@ -5,9 +5,9 @@ import android.os.Bundle;
 
 import com.baronzhang.android.library.activity.BaseActivity;
 import com.baronzhang.android.library.util.system.StatusBarHelper;
+import com.baronzhang.android.weather.model.db.CityDatabaseHelper;
 import com.baronzhang.android.weather.model.preference.PreferenceHelper;
 import com.baronzhang.android.weather.model.preference.WeatherSettings;
-import com.baronzhang.android.weather.util.CityDBUtil;
 
 import java.io.InvalidClassException;
 
@@ -52,7 +52,7 @@ public class WelcomeActivity extends BaseActivity {
                 e.printStackTrace();
             }
         }
-        CityDBUtil.importCityData();
+        CityDatabaseHelper.importCityDB();
         return null;
     }
 }

@@ -4,11 +4,18 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.baronzhang.android.weather.AppConstants;
+import com.baronzhang.android.weather.R;
+import com.baronzhang.android.weather.WeatherApplication;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.support.ConnectionSource;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 
 /**
@@ -70,5 +77,37 @@ public final class CityDatabaseHelper extends OrmLiteSqliteOpenHelper {
             Log.e(TAG, e.getMessage());
         }
         return null;
+    }
+
+    /**
+     * 导入城市数据库
+     */
+    public static void importCityDB() {
+
+        // 判断保持城市的数据库文件是否存在
+        File file = new File(WeatherApplication.getInstance().getDatabasePath(DATABASE_NAME).getAbsolutePath());
+        if (!file.exists()) {// 如果不存在，则导入数据库文件
+            //数据库文件
+            File dbFile = WeatherApplication.getInstance().getDatabasePath(DATABASE_NAME);
+            try {
+                if (!dbFile.getParentFile().exists()) {
+                    dbFile.getParentFile().mkdir();
+                }
+                if (!dbFile.exists()) {
+                    dbFile.createNewFile();
+                }
+                //加载欲导入的数据库
+                InputStream is = WeatherApplication.getInstance().getResources().openRawResource(R.raw.city);
+                FileOutputStream fos = new FileOutputStream(dbFile);
+                byte[] buffer = new byte[is.available()];
+                is.read(buffer);
+                fos.write(buffer);
+                is.close();
+                fos.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

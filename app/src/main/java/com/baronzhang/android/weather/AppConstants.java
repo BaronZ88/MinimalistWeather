@@ -6,5 +6,4 @@ package com.baronzhang.android.weather;
  */
 public class AppConstants {
 
-    public static final String DB_NAME_CITY = "city.db";
 }
