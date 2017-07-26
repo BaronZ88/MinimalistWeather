@@ -39,12 +39,14 @@ android {
     buildTypes {
         debug {
             buildConfigField("boolean", "LOG_DEBUG", "true")
+            buildConfigField 'com.baronzhang.android.library.util.StethoHelper', 'STETHO', 'new com.baron.android.weather.util.stetho.DebugStethoHelper()'
         }
 
         release {
             buildConfigField("boolean", "LOG_DEBUG", "false")
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField 'com.baronzhang.android.library.util.StethoHelper', 'STETHO', 'new com.baron.android.weather.util.stetho.ReleaseStethoHelper()'
         }
     }
 
@@ -56,7 +58,9 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile project(':library')
+//    compile project(':library')
+    releaseCompile project(path: ':library', configuration: 'release')
+    debugCompile project(path: ':library', configuration: 'debug')
     compile project(':widget')
 
     compile rootProject.ext.dependencies["butterknife"]

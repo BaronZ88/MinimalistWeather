@@ -3,13 +3,11 @@ package com.baronzhang.android.weather;
 import android.app.Application;
 import android.content.Context;
 import android.os.StrictMode;
-import android.support.design.BuildConfig;
 import android.util.Log;
 
 import com.baronzhang.android.weather.model.http.ApiClient;
 import com.baronzhang.android.weather.model.http.ApiConstants;
 import com.baronzhang.android.weather.model.http.configuration.ApiConfiguration;
-import com.facebook.stetho.Stetho;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
@@ -47,7 +45,8 @@ public class WeatherApplication extends Application {
                 .applicationModule(new ApplicationModule(this))
                 .build();
 
-        Stetho.initializeWithDefaults(this);
+        //初始化Stetho
+        BuildConfig.STETHO.init(this.getApplicationContext());
 
         weatherApplicationInstance = this;
 

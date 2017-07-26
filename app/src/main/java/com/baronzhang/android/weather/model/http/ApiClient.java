@@ -5,7 +5,6 @@ import com.baronzhang.android.weather.model.http.configuration.ApiConfiguration;
 import com.baronzhang.android.weather.model.http.service.EnvironmentCloudWeatherService;
 import com.baronzhang.android.weather.model.http.service.WeatherService;
 import com.baronzhang.retrofit2.converter.FastJsonConverterFactory;
-import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -49,7 +48,9 @@ public final class ApiClient {
         if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
             httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-            builder.addInterceptor(httpLoggingInterceptor).addNetworkInterceptor(new StethoInterceptor());
+            builder.addInterceptor(httpLoggingInterceptor);
+//            builder.addNetworkInterceptor(new StethoInterceptor());
+            BuildConfig.STETHO.addNetworkInterceptor(builder);
         }
         OkHttpClient client = builder.build();
 
