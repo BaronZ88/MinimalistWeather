@@ -15,3 +15,9 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+-keep public class * extends com.baronzhang.android.library.util.StethoHelper
+
+# Retrofit
+-dontwarn okio.**
+-dontwarn javax.annotation.*

@@ -5,6 +5,8 @@ def okHttpVersion = "3.7.0"
 def stethoVersion = "1.5.0"
 def butterKnifeVersion = "8.5.1"
 def daggerVersion = "2.8"
+def ormLiteVersion = "4.48"
+def fastJsonVersion = "1.1.60.android"
 
 project.ext {
     android = [
@@ -50,8 +52,8 @@ project.ext {
 
             //others
             "okhttp3-logging-interceptor" : "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}",
-            "ormlite-android"             : "com.j256.ormlite:ormlite-android:4.48",
-            "fastjson"                    : "com.alibaba:fastjson:1.2.31",
+            "ormlite-android"             : "com.j256.ormlite:ormlite-android:${ormLiteVersion}",
+            "fastjson"                    : "com.alibaba:fastjson:${fastJsonVersion}",
             "butterknife"                 : "com.jakewharton:butterknife:${butterKnifeVersion}",
             "butterknife-compiler"        : "com.jakewharton:butterknife-compiler:${butterKnifeVersion}",
             "retrofit2-fastjson-converter": "com.github.BaronZ88:Retrofit2-FastJson-Converter:1.2"
