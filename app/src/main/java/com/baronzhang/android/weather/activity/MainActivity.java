@@ -2,6 +2,7 @@ package com.baronzhang.android.weather.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -30,6 +31,8 @@ import butterknife.ButterKnife;
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, HomePageFragment.OnFragmentInteractionListener {
 
+    @BindView(R.id.collapsing_toolbar)
+    CollapsingToolbarLayout collapsingToolbarLayout;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.drawer_layout)
@@ -124,5 +127,6 @@ public class MainActivity extends BaseActivity
     @Override
     public void updatePageTitle(String title) {
         toolbar.setTitle(title);
+        collapsingToolbarLayout.setTitle(title);
     }
 }
