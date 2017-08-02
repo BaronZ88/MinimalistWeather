@@ -27,12 +27,9 @@ import com.baronzhang.android.weather.view.adapter.DetailAdapter;
 import com.baronzhang.android.weather.view.adapter.ForecastAdapter;
 import com.baronzhang.android.weather.view.adapter.LifeIndexAdapter;
 import com.baronzhang.android.weather.view.entity.WeatherDetail;
-import com.baronzhang.android.weather.view.widget.CannotScrollGridLayoutManager;
-import com.baronzhang.android.weather.view.widget.CannotScrollLinearLayoutManager;
 import com.baronzhang.android.widget.IndicatorView;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import butterknife.BindView;
@@ -123,7 +120,8 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         unbinder = ButterKnife.bind(this, rootView);
 
         //天气详情
-        detailRecyclerView.setLayoutManager(new CannotScrollGridLayoutManager(getActivity(), 3));
+        detailRecyclerView.setNestedScrollingEnabled(false);
+        detailRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         weatherDetails = new ArrayList<>();
         detailAdapter = new DetailAdapter(weatherDetails);
         detailAdapter.setOnItemClickListener((adapterView, view, i, l) -> {
@@ -132,7 +130,8 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         detailRecyclerView.setAdapter(detailAdapter);
 
         //天气预报
-        forecastRecyclerView.setLayoutManager(new CannotScrollLinearLayoutManager(getActivity()));
+        forecastRecyclerView.setNestedScrollingEnabled(false);
+        forecastRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         weatherForecasts = new ArrayList<>();
         forecastAdapter = new ForecastAdapter(weatherForecasts);
         forecastAdapter.setOnItemClickListener((adapterView, view, i, l) -> {
@@ -141,7 +140,8 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         forecastRecyclerView.setAdapter(forecastAdapter);
 
         //生活指数
-        lifeIndexRecyclerView.setLayoutManager(new CannotScrollGridLayoutManager(getActivity(), 4));
+        lifeIndexRecyclerView.setNestedScrollingEnabled(false);
+        lifeIndexRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 4));
         lifeIndices = new ArrayList<>();
         lifeIndexAdapter = new LifeIndexAdapter(getActivity(), lifeIndices);
         lifeIndexAdapter.setOnItemClickListener((adapterView, view, i, l) -> Toast.makeText(HomePageFragment.this.getContext(), lifeIndices.get(i).getDetails(), Toast.LENGTH_LONG).show());

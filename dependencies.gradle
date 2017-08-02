@@ -1,4 +1,4 @@
-def supportVersion = "25.3.1"
+def supportVersion = "26.0.0-alpha1"
 def rxBindingVersion = "0.4.0"
 def retrofitVersion = "2.2.0"
 def okHttpVersion = "3.7.0"
@@ -10,11 +10,11 @@ def fastJsonVersion = "1.1.60.android"
 
 project.ext {
     android = [
-            compileSdkVersion: 25,
-            buildToolsVersion: "25.0.2",
+            compileSdkVersion: 26,
+            buildToolsVersion: "26.0.1",
             applicationId    : "com.baronzhang.android.weather",
             minSdkVersion    : 15,
-            targetSdkVersion : 25,
+            targetSdkVersion : 26,
             versionCode      : 1,
             versionName      : "1.0"
     ]
