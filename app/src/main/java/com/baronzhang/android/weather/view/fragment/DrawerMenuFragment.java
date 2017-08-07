@@ -1,7 +1,6 @@
 package com.baronzhang.android.weather.view.fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -14,10 +13,9 @@ import android.widget.AdapterView;
 
 import com.baronzhang.android.library.fragment.BaseFragment;
 import com.baronzhang.android.weather.R;
-import com.baronzhang.android.weather.activity.SelectCityActivity;
-import com.baronzhang.android.weather.contract.CityManagerContract;
+import com.baronzhang.android.weather.contract.DrawerContract;
 import com.baronzhang.android.weather.model.db.entities.minimalist.Weather;
-import com.baronzhang.android.weather.presenter.CityManagerPresenter;
+import com.baronzhang.android.weather.presenter.DrawerMenuPresenter;
 import com.baronzhang.android.weather.view.adapter.CityManagerAdapter;
 
 import java.io.InvalidClassException;
@@ -26,10 +24,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
 
-public class CityManagerFragment extends BaseFragment implements CityManagerContract.View {
+public class DrawerMenuFragment extends BaseFragment implements DrawerContract.View {
 
 
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -43,13 +40,13 @@ public class CityManagerFragment extends BaseFragment implements CityManagerCont
     private List<Weather> weatherList;
     private CityManagerAdapter cityManagerAdapter;
 
-    private CityManagerContract.Presenter presenter;
+    private DrawerContract.Presenter presenter;
 
-    public CityManagerFragment() {
+    public DrawerMenuFragment() {
     }
 
-    public static CityManagerFragment newInstance(int columnCount) {
-        CityManagerFragment fragment = new CityManagerFragment();
+    public static DrawerMenuFragment newInstance(int columnCount) {
+        DrawerMenuFragment fragment = new DrawerMenuFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -68,7 +65,7 @@ public class CityManagerFragment extends BaseFragment implements CityManagerCont
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_city_manager, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_drawer_menu, container, false);
         unbinder = ButterKnife.bind(this, rootView);
         Context context = rootView.getContext();
         if (columnCount <= 1) {
@@ -85,7 +82,7 @@ public class CityManagerFragment extends BaseFragment implements CityManagerCont
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 try {
                     presenter.saveCurrentCityToPreference(weatherList.get(position).getCityId() + "");
-                    CityManagerFragment.this.getActivity().finish();
+                    DrawerMenuFragment.this.getActivity().finish();
                 } catch (InvalidClassException e) {
                     e.printStackTrace();
                 }
@@ -118,15 +115,8 @@ public class CityManagerFragment extends BaseFragment implements CityManagerCont
     }
 
     @Override
-    public void setPresenter(CityManagerPresenter presenter) {
+    public void setPresenter(DrawerMenuPresenter presenter) {
 
         this.presenter = presenter;
-    }
-
-    @OnClick(R.id.fab)
-    public void onFabClick() {
-        Intent intent = new Intent(getActivity(), SelectCityActivity.class);
-        startActivity(intent);
-        getActivity().finish();
     }
 }

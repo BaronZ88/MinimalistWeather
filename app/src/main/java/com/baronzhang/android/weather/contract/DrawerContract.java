@@ -3,7 +3,7 @@ package com.baronzhang.android.weather.contract;
 import com.baronzhang.android.library.presenter.BasePresenter;
 import com.baronzhang.android.library.view.BaseView;
 import com.baronzhang.android.weather.model.db.entities.minimalist.Weather;
-import com.baronzhang.android.weather.presenter.CityManagerPresenter;
+import com.baronzhang.android.weather.presenter.DrawerMenuPresenter;
 
 import java.io.InvalidClassException;
 import java.util.List;
@@ -12,9 +12,9 @@ import java.util.List;
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         16/4/16
  */
-public interface CityManagerContract {
+public interface DrawerContract {
 
-    interface View extends BaseView<CityManagerPresenter> {
+    interface View extends BaseView<DrawerMenuPresenter> {
 
         void displaySavedCities(List<Weather> weatherList);
     }

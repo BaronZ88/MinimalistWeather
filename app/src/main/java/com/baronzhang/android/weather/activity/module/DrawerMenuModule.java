@@ -1,6 +1,6 @@
 package com.baronzhang.android.weather.activity.module;
 
-import com.baronzhang.android.weather.contract.CityManagerContract;
+import com.baronzhang.android.weather.contract.DrawerContract;
 
 import dagger.Module;
 import dagger.Provides;
@@ -10,16 +10,16 @@ import dagger.Provides;
  *         2016/11/30
  */
 @Module
-public class CityManagerModule {
+public class DrawerMenuModule {
 
-    private CityManagerContract.View view;
+    private DrawerContract.View view;
 
-    public CityManagerModule(CityManagerContract.View view) {
+    public DrawerMenuModule(DrawerContract.View view) {
         this.view = view;
     }
 
     @Provides
-    CityManagerContract.View provideCityManagerContactView() {
+    DrawerContract.View provideCityManagerContactView() {
         return view;
     }
 }

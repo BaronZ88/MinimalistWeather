@@ -30,7 +30,7 @@
             android:name=".activity.SelectCityActivity"
             android:label="@string/title_activity_select_city"
             android:screenOrientation="portrait">
-            <meta-data
+            <meta-date
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>
@@ -39,7 +39,7 @@
             android:name=".activity.CityManagerActivity"
             android:label="@string/title_activity_city_manager"
             android:screenOrientation="portrait">
-            <meta-data
+            <meta-date
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>

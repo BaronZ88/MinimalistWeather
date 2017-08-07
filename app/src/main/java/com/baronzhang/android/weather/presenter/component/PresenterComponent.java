@@ -1,12 +1,12 @@
 package com.baronzhang.android.weather.presenter.component;
 
+import com.baronzhang.android.weather.presenter.DrawerMenuPresenter;
 import com.baronzhang.android.weather.presenter.SelectCityPresenter;
 
 import javax.inject.Singleton;
 
 import dagger.Component;
 import com.baronzhang.android.weather.ApplicationModule;
-import com.baronzhang.android.weather.presenter.CityManagerPresenter;
 import com.baronzhang.android.weather.presenter.HomePagePresenter;
 
 /**
@@ -21,6 +21,6 @@ public interface PresenterComponent {
 
     void inject(SelectCityPresenter presenter);
 
-    void inject(CityManagerPresenter presenter);
+    void inject(DrawerMenuPresenter presenter);
 }
  

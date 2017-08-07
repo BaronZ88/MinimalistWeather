@@ -1,6 +1,5 @@
 package com.baronzhang.android.weather.model.db.entities.minimalist;
 
-import com.baronzhang.android.weather.model.http.entity.envicloud.EnvironmentCloudForecast;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -21,7 +20,7 @@ public class WeatherForecast {
     public static final String TEMP_MAX_FIELD_NAME = "tempMax";
     public static final String TEMP_MIN_FIELD_NAME = "tempMin";
     public static final String WIND_FIELD_NAME = "wind";
-    public static final String DATA_FIELD_NAME = "data";
+    public static final String DATE_FIELD_NAME = "date";
     public static final String WEEK_FIELD_NAME = "week";
 
     public static final String POP_FIELD_NAME = "pop";
@@ -51,8 +50,8 @@ public class WeatherForecast {
     private int tempMin;
     @DatabaseField(columnName = WIND_FIELD_NAME)
     private String wind;
-    @DatabaseField(columnName = DATA_FIELD_NAME)
-    private String data;
+    @DatabaseField(columnName = DATE_FIELD_NAME)
+    private String date;
     @DatabaseField(columnName = WEEK_FIELD_NAME)
     private String week; //周一，周二，...
 
@@ -90,7 +89,7 @@ public class WeatherForecast {
         this.tempMax = tempMax;
         this.tempMin = tempMin;
         this.wind = wind;
-        this.data = data;
+        this.date = data;
         this.week = week;
     }
 
@@ -110,12 +109,12 @@ public class WeatherForecast {
         this.cityId = cityId;
     }
 
-    public String getData() {
-        return data;
+    public String getDate() {
+        return date;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public int getTempMax() {
@@ -265,7 +264,7 @@ public class WeatherForecast {
                 ", tempMax=" + tempMax +
                 ", tempMin=" + tempMin +
                 ", wind='" + wind + '\'' +
-                ", data='" + data + '\'' +
+                ", date='" + date + '\'' +
                 ", week='" + week + '\'' +
                 ", pop='" + pop + '\'' +
                 ", uv='" + uv + '\'' +

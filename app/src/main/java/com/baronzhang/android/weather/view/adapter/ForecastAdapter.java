@@ -1,6 +1,8 @@
 package com.baronzhang.android.weather.view.adapter;
 
+import android.annotation.SuppressLint;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,13 +37,19 @@ public class ForecastAdapter extends BaseRecyclerViewAdapter<ForecastAdapter.Vie
         return new ViewHolder(itemView, this);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(ForecastAdapter.ViewHolder holder, int position) {
         WeatherForecast weatherForecast = weatherForecasts.get(position);
         holder.weekTextView.setText(weatherForecast.getWeek());
+        holder.dateTextView.setText(weatherForecast.getDate());
         holder.weatherIconImageView.setImageResource(R.mipmap.ic_launcher);
+        holder.weatherTextView.setText(TextUtils.isEmpty(weatherForecast.getWeather()) ?
+                (weatherForecast.getWeatherDay().equals(weatherForecast.getWeatherNight()) ?
+                        weatherForecast.getWeatherDay() : weatherForecast.getWeatherDay() + "转" + weatherForecast.getWeatherNight())
+                : weatherForecast.getWeather());
         holder.tempMaxTextView.setText(weatherForecast.getTempMax() + "°");
-        holder.tempMinTextView.setText(weatherForecast.getTempMin()+"°");
+        holder.tempMinTextView.setText(weatherForecast.getTempMin() + "°");
     }
 
     @Override
@@ -53,8 +61,12 @@ public class ForecastAdapter extends BaseRecyclerViewAdapter<ForecastAdapter.Vie
 
         @BindView(R.id.week_text_view)
         TextView weekTextView;
+        @BindView(R.id.date_text_view)
+        TextView dateTextView;
         @BindView(R.id.weather_icon_image_view)
         ImageView weatherIconImageView;
+        @BindView(R.id.weather_text_view)
+        TextView weatherTextView;
         @BindView(R.id.temp_max_text_view)
         TextView tempMaxTextView;
         @BindView(R.id.temp_min_text_view)

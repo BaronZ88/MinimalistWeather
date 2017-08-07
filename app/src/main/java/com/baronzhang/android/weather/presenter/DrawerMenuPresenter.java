@@ -3,7 +3,7 @@ package com.baronzhang.android.weather.presenter;
 import android.content.Context;
 
 import com.baronzhang.android.weather.ApplicationModule;
-import com.baronzhang.android.weather.contract.CityManagerContract;
+import com.baronzhang.android.weather.contract.DrawerContract;
 import com.baronzhang.android.weather.model.db.dao.WeatherDao;
 import com.baronzhang.android.weather.model.db.entities.minimalist.Weather;
 import com.baronzhang.android.weather.model.preference.PreferenceHelper;
@@ -28,9 +28,9 @@ import rx.subscriptions.CompositeSubscription;
  *         16/4/16
  */
 @ActivityScoped
-public final class CityManagerPresenter implements CityManagerContract.Presenter {
+public final class DrawerMenuPresenter implements DrawerContract.Presenter {
 
-    private CityManagerContract.View view;
+    private DrawerContract.View view;
 
 
     private CompositeSubscription subscriptions;
@@ -39,7 +39,7 @@ public final class CityManagerPresenter implements CityManagerContract.Presenter
     WeatherDao weatherDao;
 
     @Inject
-    CityManagerPresenter(Context context, CityManagerContract.View view) {
+    public DrawerMenuPresenter(Context context, DrawerContract.View view) {
 
         this.view = view;
         this.subscriptions = new CompositeSubscription();

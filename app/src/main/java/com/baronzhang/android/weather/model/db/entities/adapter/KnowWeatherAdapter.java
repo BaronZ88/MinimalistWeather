@@ -62,7 +62,7 @@ public class KnowWeatherAdapter extends WeatherAdapter {
             weatherForecast.setWind("");
             weatherForecast.setWeather(dailyForecastEntity.getWeather());
             weatherForecast.setWeek(dailyForecastEntity.getWeek());
-            weatherForecast.setData(dailyForecastEntity.getDate());
+            weatherForecast.setDate(dailyForecastEntity.getDate());
             int[] temperature = splitTemperature(dailyForecastEntity.getTemp_range());
             if (temperature != null) {
                 weatherForecast.setTempMax(temperature[1]);

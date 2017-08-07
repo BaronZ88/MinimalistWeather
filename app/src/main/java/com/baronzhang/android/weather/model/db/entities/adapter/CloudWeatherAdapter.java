@@ -73,7 +73,6 @@ public class CloudWeatherAdapter extends WeatherAdapter {
             WeatherForecast weatherForecast = new WeatherForecast();
             weatherForecast.setWind(forecastEntity.getWind().getDir());
             weatherForecast.setCityId(getCityId());
-            weatherForecast.setData(forecastEntity.getDate());
             weatherForecast.setHumidity(forecastEntity.getHum());
             weatherForecast.setMoonrise(forecastEntity.getAstro().getMr());
             weatherForecast.setMoonset(forecastEntity.getAstro().getMs());
@@ -90,6 +89,7 @@ public class CloudWeatherAdapter extends WeatherAdapter {
             weatherForecast.setWeatherDay(forecastEntity.getCond().getCond_d());
             weatherForecast.setWeatherNight(forecastEntity.getCond().getCond_n());
             weatherForecast.setWeek(DateConvertUtils.convertDataToWeek(forecastEntity.getDate()));
+            weatherForecast.setDate(DateConvertUtils.convertDataToString(forecastEntity.getDate()));
             weatherForecasts.add(weatherForecast);
         }
 

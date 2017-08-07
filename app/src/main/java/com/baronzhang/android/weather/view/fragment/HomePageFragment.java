@@ -39,15 +39,13 @@ import butterknife.Unbinder;
 
 public class HomePageFragment extends BaseFragment implements HomePageContract.View {
 
-    //基本天气信息
-    @BindView(R.id.cv_weather_information)
-    CardView weatherInformationCardView;
-    @BindView(R.id.temp_text_view)
-    TextView tempTextView;
-    @BindView(R.id.weather_text_view)
-    TextView weatherNameTextView;
-    @BindView(R.id.publish_time_text_view)
-    TextView realTimeTextView;
+//    //基本天气信息
+//    @BindView(R.id.temp_text_view)
+//    TextView tempTextView;
+//    @BindView(R.id.weather_text_view)
+//    TextView weatherNameTextView;
+//    @BindView(R.id.publish_time_text_view)
+//    TextView realTimeTextView;
 
     //AQI
     @BindView(R.id.cv_aqi)
@@ -181,10 +179,10 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     public void displayWeatherInformation(Weather weather) {
 
         this.weather = weather;
-        onFragmentInteractionListener.updatePageTitle(weather.getCityName());
-        tempTextView.setText(weather.getWeatherLive().getTemp());
-        weatherNameTextView.setText(weather.getWeatherLive().getWeather());
-        realTimeTextView.setText(getString(R.string.string_publish_time) + DateConvertUtils.timeStampToDate(weather.getWeatherLive().getTime(), DateConvertUtils.DATA_FORMAT_PATTEN_YYYY_MM_DD_HH_MM));
+        onFragmentInteractionListener.updatePageTitle(weather);
+//        tempTextView.setText(weather.getWeatherLive().getTemp());
+//        weatherNameTextView.setText(weather.getWeatherLive().getWeather());
+//        realTimeTextView.setText(getString(R.string.string_publish_time) + DateConvertUtils.timeStampToDate(weather.getWeatherLive().getTime(), DateConvertUtils.DATA_FORMAT_PATTEN_YYYY_MM_DD_HH_MM));
 
         AirQualityLive airQualityLive = weather.getAirQualityLive();
         aqiIndicatorView.setIndicatorValue(airQualityLive.getAqi());
@@ -236,6 +234,6 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     }
 
     public interface OnFragmentInteractionListener {
-        void updatePageTitle(String title);
+        void updatePageTitle(Weather weather);
     }
 }

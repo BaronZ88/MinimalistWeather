@@ -1,6 +1,7 @@
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:indicatorView="http://schemas.android.com/apk/res-auto"
+    xmlns:titleView="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,7 +13,6 @@
         android:orientation="vertical">
 
         <android.support.v7.widget.CardView
-            android:id="@+id/cv_weather_information"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
@@ -27,76 +27,55 @@
                 android:layout_height="wrap_content"
                 android:descendantFocusability="blocksDescendants">
 
-                <TextView
-                    android:id="@+id/temp_text_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:includeFontPadding="false"
-                    android:textSize="96sp"
-                    tools:text="12°" />
-
-                <ImageView
-                    android:id="@+id/weather_icon_image_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/temp_text_view"
-                    android:contentDescription="@string/content_description_default"
-                    android:src="@mipmap/ic_launcher" />
-
-                <TextView
-                    android:id="@+id/weather_text_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/weather_icon_image_view"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/publish_time_text_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@id/weather_text_view" />
-
-                <View
-                    android:id="@+id/line1"
+                <com.baronzhang.android.widget.TitleView
+                    android:id="@+id/detail_title"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_below="@id/publish_time_text_view"
-                    android:layout_margin="4dp"
-                    android:background="@android:color/darker_gray" />
+                    android:layout_height="42dp"
+                    titleView:titleViewText="@string/title_detail_module" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/detail_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/line1"
-                    android:layout_marginTop="4dp"
+                    android:layout_below="@id/detail_title"
                     android:layout_marginBottom="4dp"
+                    android:layout_marginTop="12dp"
                     tools:listitem="@layout/item_detail" />
+            </RelativeLayout>
 
-                <View
-                    android:id="@+id/line"
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="8dp"
+            app:cardElevation="1dp"
+            app:contentPadding="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:descendantFocusability="blocksDescendants">
+
+                <com.baronzhang.android.widget.TitleView
+                    android:id="@+id/forecast_title"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_below="@id/detail_recycler_view"
-                    android:layout_margin="4dp"
-                    android:background="@android:color/darker_gray" />
-
+                    android:layout_height="42dp"
+                    titleView:titleViewText="@string/title_forecast_module" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/forecast_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/line"
-                    android:layout_margin="4dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_below="@id/forecast_title"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="12dp"
                     tools:listitem="@layout/item_forecast" />
-
             </RelativeLayout>
+
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
@@ -106,7 +85,7 @@
             android:layout_marginBottom="4dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="6dp"
             app:cardElevation="1dp"
             app:contentPadding="8dp">
 
@@ -114,17 +93,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/aqi_title_text_view"
+                <com.baronzhang.android.widget.TitleView
+                    android:id="@+id/aqi_title"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/string_aqi_title" />
+                    android:layout_height="42dp"
+                    titleView:titleViewText="@string/title_aqi_module" />
 
                 <TextView
                     android:id="@+id/tv_aqi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/aqi_title_text_view"
+                    android:layout_below="@id/aqi_title"
                     android:layout_marginTop="8dp"
                     android:includeFontPadding="false"
                     android:textSize="48sp"
@@ -197,17 +176,17 @@
                 android:layout_height="wrap_content"
                 android:descendantFocusability="blocksDescendants">
 
-                <TextView
-                    android:id="@+id/index_title_text_view"
+                <com.baronzhang.android.widget.TitleView
+                    android:id="@+id/index_title"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/string_index_title" />
+                    android:layout_height="42dp"
+                    titleView:titleViewText="@string/title_index_module" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/life_index_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/index_title_text_view"
+                    android:layout_below="@id/index_title"
                     android:layout_marginBottom="4dp"
                     android:layout_marginTop="12dp"
                     tools:listitem="@layout/item_life_index" />

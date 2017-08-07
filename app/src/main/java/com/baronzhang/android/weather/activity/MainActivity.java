@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,14 +14,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.baronzhang.android.library.activity.BaseActivity;
 import com.baronzhang.android.library.util.ActivityUtils;
+import com.baronzhang.android.library.util.DateConvertUtils;
 import com.baronzhang.android.weather.R;
 import com.baronzhang.android.weather.WeatherApplication;
 import com.baronzhang.android.weather.activity.component.DaggerHomePageComponent;
 import com.baronzhang.android.weather.activity.module.HomePageModule;
+import com.baronzhang.android.weather.model.db.entities.minimalist.Weather;
+import com.baronzhang.android.weather.presenter.DrawerMenuPresenter;
 import com.baronzhang.android.weather.presenter.HomePagePresenter;
+import com.baronzhang.android.weather.view.fragment.DrawerMenuFragment;
 import com.baronzhang.android.weather.view.fragment.HomePageFragment;
 
 import javax.inject.Inject;
@@ -34,7 +38,7 @@ import butterknife.ButterKnife;
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  */
 public class MainActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener, HomePageFragment.OnFragmentInteractionListener {
+        implements HomePageFragment.OnFragmentInteractionListener {
 
     @BindView(R.id.collapsing_toolbar)
     CollapsingToolbarLayout collapsingToolbarLayout;
@@ -42,6 +46,14 @@ public class MainActivity extends BaseActivity
     Toolbar toolbar;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
+
+    //基本天气信息
+    @BindView(R.id.temp_text_view)
+    TextView tempTextView;
+    @BindView(R.id.weather_text_view)
+    TextView weatherNameTextView;
+    @BindView(R.id.publish_time_text_view)
+    TextView realTimeTextView;
 
     @Inject
     HomePagePresenter homePagePresenter;
@@ -58,7 +70,7 @@ public class MainActivity extends BaseActivity
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.TRANSPARENT);
         }
-        
+
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
@@ -70,10 +82,6 @@ public class MainActivity extends BaseActivity
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        assert navigationView != null;
-        navigationView.setNavigationItemSelectedListener(this);
-
         HomePageFragment homePageFragment = HomePageFragment.newInstance();
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), homePageFragment, R.id.fragment_container);
 
@@ -81,6 +89,11 @@ public class MainActivity extends BaseActivity
                 .applicationComponent(WeatherApplication.getInstance().getApplicationComponent())
                 .homePageModule(new HomePageModule(homePageFragment))
                 .build().inject(this);
+
+        DrawerMenuFragment drawerMenuFragment = DrawerMenuFragment.newInstance(1);
+        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), drawerMenuFragment, R.id.fragment_container_drawer_menu);
+
+        new DrawerMenuPresenter(this, drawerMenuFragment);
     }
 
     @Override
@@ -115,34 +128,38 @@ public class MainActivity extends BaseActivity
         return super.onOptionsItemSelected(item);
     }
 
+//    @Override
+//    public boolean onNavigationItemSelected(MenuItem item) {
+//
+//        int id = item.getItemId();
+//
+//        if (id == R.id.nav_camera) {
+//
+//        } else if (id == R.id.nav_gallery) {
+//
+//        } else if (id == R.id.nav_slideshow) {
+//
+//        } else if (id == R.id.nav_manage) {
+//
+//        } else if (id == R.id.nav_share) {
+//
+//        } else if (id == R.id.nav_send) {
+//
+//        }
+//
+//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        assert drawer != null;
+//        drawer.closeDrawer(GravityCompat.START);
+//        return true;
+//    }
+
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public void updatePageTitle(Weather weather) {
+        toolbar.setTitle(weather.getCityName());
+        collapsingToolbarLayout.setTitle(weather.getCityName());
 
-        int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        assert drawer != null;
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
-    @Override
-    public void updatePageTitle(String title) {
-        toolbar.setTitle(title);
-        collapsingToolbarLayout.setTitle(title);
+        tempTextView.setText(weather.getWeatherLive().getTemp());
+        weatherNameTextView.setText(weather.getWeatherLive().getWeather());
+        realTimeTextView.setText(getString(R.string.string_publish_time) + DateConvertUtils.timeStampToDate(weather.getWeatherLive().getTime(), DateConvertUtils.DATA_FORMAT_PATTEN_YYYY_MM_DD_HH_MM));
     }
 }

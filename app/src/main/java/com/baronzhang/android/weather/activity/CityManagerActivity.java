@@ -8,9 +8,9 @@ import com.baronzhang.android.library.util.ActivityUtils;
 import com.baronzhang.android.weather.R;
 import com.baronzhang.android.weather.WeatherApplication;
 import com.baronzhang.android.weather.activity.component.DaggerCityManagerComponent;
-import com.baronzhang.android.weather.activity.module.CityManagerModule;
-import com.baronzhang.android.weather.presenter.CityManagerPresenter;
-import com.baronzhang.android.weather.view.fragment.CityManagerFragment;
+import com.baronzhang.android.weather.activity.module.DrawerMenuModule;
+import com.baronzhang.android.weather.presenter.DrawerMenuPresenter;
+import com.baronzhang.android.weather.view.fragment.DrawerMenuFragment;
 
 import javax.inject.Inject;
 
@@ -26,7 +26,7 @@ public class CityManagerActivity extends BaseActivity {
     Toolbar toolbar;
 
     @Inject
-    CityManagerPresenter cityManagerPresenter;
+    DrawerMenuPresenter drawerMenuPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +40,12 @@ public class CityManagerActivity extends BaseActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        CityManagerFragment cityManagerFragment = CityManagerFragment.newInstance(3);
-        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), cityManagerFragment, R.id.fragment_container);
+        DrawerMenuFragment drawerMenuFragment = DrawerMenuFragment.newInstance(3);
+        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), drawerMenuFragment, R.id.fragment_container);
 
         DaggerCityManagerComponent.builder()
                 .applicationComponent(WeatherApplication.getInstance().getApplicationComponent())
-                .cityManagerModule(new CityManagerModule(cityManagerFragment))
+                .drawerMenuModule(new DrawerMenuModule(drawerMenuFragment))
                 .build().inject(this);
     }
 }
