@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="130dp"
+    android:layout_height="120dp"
     android:layout_margin="4dp"
     android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="0dp"
@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?attr/textAppearanceListItem"
-            android:textSize="26sp" />
+            android:textSize="@dimen/text_size_headline" />
 
         <ImageView
             android:layout_width="55dp"
@@ -31,12 +31,20 @@
             android:src="@mipmap/ic_launcher" />
 
         <TextView
-            android:id="@+id/item_tv_weather"
+            android:id="@+id/item_tv_publish_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:textAppearance="?attr/textAppearanceListItem"
-            android:textSize="18sp" />
+            android:textSize="@dimen/text_size_caption_small" />
+
+        <TextView
+            android:id="@+id/item_tv_weather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/item_tv_publish_time"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textSize="@dimen/text_size_subheading" />
 
         <TextView
             android:id="@+id/item_tv_temp"
@@ -46,7 +54,7 @@
             android:layout_marginLeft="4dp"
             android:layout_toRightOf="@id/item_tv_weather"
             android:textAppearance="?attr/textAppearanceListItem"
-            android:textSize="15sp" />
+            android:textSize="@dimen/text_size_body" />
 
         <ImageButton
             android:id="@+id/item_delete"

@@ -1,6 +1,7 @@
 package com.baronzhang.android.weather.view.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -10,9 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 
 import com.baronzhang.android.library.fragment.BaseFragment;
 import com.baronzhang.android.weather.R;
+import com.baronzhang.android.weather.activity.MainActivity;
+import com.baronzhang.android.weather.activity.SelectCityActivity;
 import com.baronzhang.android.weather.contract.DrawerContract;
 import com.baronzhang.android.weather.model.db.entities.minimalist.Weather;
 import com.baronzhang.android.weather.presenter.DrawerMenuPresenter;
@@ -24,6 +28,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 public class DrawerMenuFragment extends BaseFragment implements DrawerContract.View {
@@ -31,6 +36,9 @@ public class DrawerMenuFragment extends BaseFragment implements DrawerContract.V
 
     private static final String ARG_COLUMN_COUNT = "column-count";
 
+
+    @BindView(R.id.add_city_btn)
+    Button addCityButton;
     @BindView(R.id.rv_city_manager)
     RecyclerView cityManagerRecyclerView;
 
@@ -42,6 +50,8 @@ public class DrawerMenuFragment extends BaseFragment implements DrawerContract.V
 
     private DrawerContract.Presenter presenter;
 
+    private OnSelectCity onSelectCity;
+
     public DrawerMenuFragment() {
     }
 
@@ -51,6 +61,18 @@ public class DrawerMenuFragment extends BaseFragment implements DrawerContract.V
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
         return fragment;
+    }
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnSelectCity) {
+            onSelectCity = (OnSelectCity) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
     }
 
     @Override
@@ -81,8 +103,8 @@ public class DrawerMenuFragment extends BaseFragment implements DrawerContract.V
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 try {
-                    presenter.saveCurrentCityToPreference(weatherList.get(position).getCityId() + "");
-                    DrawerMenuFragment.this.getActivity().finish();
+                    presenter.saveCurrentCityToPreference(weatherList.get(position).getCityId());
+                    onSelectCity.onSelect(weatherList.get(position).getCityId());
                 } catch (InvalidClassException e) {
                     e.printStackTrace();
                 }
@@ -100,7 +122,6 @@ public class DrawerMenuFragment extends BaseFragment implements DrawerContract.V
         return rootView;
     }
 
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -110,6 +131,7 @@ public class DrawerMenuFragment extends BaseFragment implements DrawerContract.V
 
     @Override
     public void displaySavedCities(List<Weather> weatherList) {
+        this.weatherList.clear();
         this.weatherList.addAll(weatherList);
         cityManagerAdapter.notifyDataSetChanged();
     }
@@ -118,5 +140,18 @@ public class DrawerMenuFragment extends BaseFragment implements DrawerContract.V
     public void setPresenter(DrawerMenuPresenter presenter) {
 
         this.presenter = presenter;
+    }
+
+
+    @OnClick(R.id.add_city_btn)
+    void onAddCityClick() {
+        Intent intent = new Intent(getActivity(), SelectCityActivity.class);
+        startActivity(intent);
+    }
+
+
+    public interface OnSelectCity {
+
+        void onSelect(String cityId);
     }
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -35,10 +36,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
+ * 首页
+ *
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  */
 public class MainActivity extends BaseActivity
-        implements HomePageFragment.OnFragmentInteractionListener {
+        implements HomePageFragment.OnFragmentInteractionListener, DrawerMenuFragment.OnSelectCity {
 
     @BindView(R.id.collapsing_toolbar)
     CollapsingToolbarLayout collapsingToolbarLayout;
@@ -57,6 +60,7 @@ public class MainActivity extends BaseActivity
 
     @Inject
     HomePagePresenter homePagePresenter;
+    DrawerMenuPresenter drawerMenuPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +97,7 @@ public class MainActivity extends BaseActivity
         DrawerMenuFragment drawerMenuFragment = DrawerMenuFragment.newInstance(1);
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), drawerMenuFragment, R.id.fragment_container_drawer_menu);
 
-        new DrawerMenuPresenter(this, drawerMenuFragment);
+        drawerMenuPresenter = new DrawerMenuPresenter(this, drawerMenuFragment);
     }
 
     @Override
@@ -116,42 +120,15 @@ public class MainActivity extends BaseActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_select_city) {
-            Intent intent = new Intent(MainActivity.this, SelectCityActivity.class);
-            startActivity(intent);
+        if (id == R.id.action_settings) {
             return true;
-        } else if (id == R.id.action_city_manager) {
-            Intent intent = new Intent(MainActivity.this, CityManagerActivity.class);
-            startActivity(intent);
+        } else if (id == R.id.action_about) {
+            return true;
+        } else if (id == R.id.action_feedback) {
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
-
-//    @Override
-//    public boolean onNavigationItemSelected(MenuItem item) {
-//
-//        int id = item.getItemId();
-//
-//        if (id == R.id.nav_camera) {
-//
-//        } else if (id == R.id.nav_gallery) {
-//
-//        } else if (id == R.id.nav_slideshow) {
-//
-//        } else if (id == R.id.nav_manage) {
-//
-//        } else if (id == R.id.nav_share) {
-//
-//        } else if (id == R.id.nav_send) {
-//
-//        }
-//
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        assert drawer != null;
-//        drawer.closeDrawer(GravityCompat.START);
-//        return true;
-//    }
 
     @Override
     public void updatePageTitle(Weather weather) {
@@ -161,5 +138,19 @@ public class MainActivity extends BaseActivity
         tempTextView.setText(weather.getWeatherLive().getTemp());
         weatherNameTextView.setText(weather.getWeatherLive().getWeather());
         realTimeTextView.setText(getString(R.string.string_publish_time) + DateConvertUtils.timeStampToDate(weather.getWeatherLive().getTime(), DateConvertUtils.DATA_FORMAT_PATTEN_YYYY_MM_DD_HH_MM));
+    }
+
+    @Override
+    public void addOrUpdateCityListInDrawerMenu(Weather weather) {
+        drawerMenuPresenter.loadSavedCities();
+    }
+
+    @Override
+    public void onSelect(String cityId) {
+
+        assert drawerLayout != null;
+        drawerLayout.closeDrawer(GravityCompat.START);
+
+        new Handler().postDelayed(() -> homePagePresenter.loadWeather(cityId), 250);
     }
 }

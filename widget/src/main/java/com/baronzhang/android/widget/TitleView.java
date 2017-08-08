@@ -58,7 +58,7 @@ public class TitleView extends LinearLayout {
 
         TextView titleTextView = (TextView) findViewById(R.id.title_text_view);
         titleTextView.setText(title);
-        titleTextView.setTextSize(titleTextSize);
+//        titleTextView.setTextSize(titleTextSize);
         titleTextView.setTextColor(titleTextColor);
 
         View view = findViewById(R.id.title_line_view);

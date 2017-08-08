@@ -48,8 +48,6 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
 //    TextView realTimeTextView;
 
     //AQI
-    @BindView(R.id.cv_aqi)
-    CardView aqiCardView;
     @BindView(R.id.tv_aqi)
     TextView aqiTextView;
     @BindView(R.id.tv_quality)
@@ -70,8 +68,6 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     RecyclerView forecastRecyclerView;
 
     //生活指数
-    @BindView(R.id.index_card_view)
-    CardView indexCardView;
     @BindView(R.id.life_index_recycler_view)
     RecyclerView lifeIndexRecyclerView;
 
@@ -167,13 +163,6 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         presenter.subscribe();
     }
 
-    @OnClick(R.id.cv_aqi)
-    void onAQIClick() {
-
-        Toast.makeText(getActivity(), "点击了控制污染指数模块", Toast.LENGTH_SHORT).show();
-    }
-
-
     @SuppressLint("SetTextI18n")
     @Override
     public void displayWeatherInformation(Weather weather) {
@@ -201,6 +190,8 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         lifeIndices.clear();
         lifeIndices.addAll(weather.getLifeIndexes());
         lifeIndexAdapter.notifyDataSetChanged();
+
+        onFragmentInteractionListener.addOrUpdateCityListInDrawerMenu(weather);
     }
 
     private List<WeatherDetail> createDetails(Weather weather) {
@@ -235,5 +226,11 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
 
     public interface OnFragmentInteractionListener {
         void updatePageTitle(Weather weather);
+
+        /**
+         * 更新完天气数据同时需要刷新侧边栏的已添加的城市列表
+         * @param weather 天气数据
+         */
+        void addOrUpdateCityListInDrawerMenu(Weather weather);
     }
 }

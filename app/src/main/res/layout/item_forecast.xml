@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:textSize="@dimen/text_size_subheading"
+        android:textSize="@dimen/text_size_body"
         tools:text="周五" />
 
     <TextView
@@ -22,16 +22,16 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="3dp"
-        android:textSize="@dimen/text_size_caption"
         android:layout_toRightOf="@id/week_text_view"
+        android:textSize="@dimen/text_size_caption_small"
         tools:text="08.07" />
 
     <ImageView
         android:id="@+id/weather_icon_image_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="36dp"
+        android:layout_marginLeft="60dp"
         android:layout_toRightOf="@id/date_text_view"
         android:contentDescription="@string/content_description_default"
         tools:src="@mipmap/ic_launcher" />
@@ -41,11 +41,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@id/weather_icon_image_view"
         android:layout_marginLeft="2dp"
+        android:layout_toRightOf="@id/weather_icon_image_view"
         android:gravity="center"
         android:lines="1"
         android:textColor="#52D681"
+        android:textSize="@dimen/text_size_body"
         tools:text="多云转晴" />
 
     <TextView
@@ -57,6 +58,7 @@
         android:gravity="center"
         android:lines="1"
         android:textColor="#52D681"
+        android:textSize="@dimen/text_size_body"
         tools:text="13°" />
 
     <TextView
@@ -66,7 +68,8 @@
         android:layout_centerVertical="true"
         android:layout_toLeftOf="@id/temp_min_text_view"
         android:gravity="center"
-        android:text="@string/separator" />
+        android:text="@string/separator"
+        android:textSize="@dimen/text_size_body" />
 
     <TextView
         android:id="@+id/temp_max_text_view"
@@ -76,6 +79,7 @@
         android:layout_toLeftOf="@id/separator_text_view"
         android:gravity="center"
         android:lines="1"
+        android:textSize="@dimen/text_size_body"
         tools:text="19°" />
 
 </RelativeLayout>

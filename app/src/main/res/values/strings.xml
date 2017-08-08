@@ -10,8 +10,8 @@
     <string name="navigation_drawer_close">关闭抽屉</string>
 
     <string name="action_settings">设置</string>
-    <string name="action_select_city">城市选择</string>
-    <string name="action_city_manager">城市管理</string>
+    <string name="action_about">关于</string>
+    <string name="action_feedback">反馈</string>
     <string name="action_fabric_test">Fabric Test</string>
     <string name="cities_importing">正在导入城市数据…</string>
 

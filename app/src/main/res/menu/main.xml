@@ -7,15 +7,15 @@
         android:title="@string/action_settings"
         app:showAsAction="never" />
     <item
-        android:id="@+id/action_select_city"
+        android:id="@+id/action_about"
         android:orderInCategory="100"
-        android:title="@string/action_select_city"
+        android:title="@string/action_about"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_city_manager"
+        android:id="@+id/action_feedback"
         android:orderInCategory="100"
-        android:title="@string/action_city_manager"
+        android:title="@string/action_feedback"
         app:showAsAction="never" />
 
 </menu>

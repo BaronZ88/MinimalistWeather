@@ -10,7 +10,7 @@
     <include
         layout="@layout/layout_drawer_menu_head"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="160dp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_city_manager"

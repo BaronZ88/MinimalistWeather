@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.baronzhang.android.library.adapter.BaseRecyclerViewAdapter;
+import com.baronzhang.android.library.util.DateConvertUtils;
 import com.baronzhang.android.weather.R;
 import com.baronzhang.android.weather.model.db.entities.minimalist.Weather;
 
@@ -44,6 +45,7 @@ public class CityManagerAdapter extends BaseRecyclerViewAdapter<CityManagerAdapt
         holder.city.setText(weather.getCityName());
         holder.weather.setText(weather.getWeatherLive().getWeather());
         holder.temp.setText(new StringBuilder().append(weather.getWeatherForecasts().get(0).getTempMin()).append("~").append(weather.getWeatherForecasts().get(0).getTempMax()).append("℃").toString());
+        holder.publishTime.setText("发布于 " + DateConvertUtils.timeStampToDate(weather.getWeatherLive().getTime(), DateConvertUtils.DATA_FORMAT_PATTEN_YYYY_MM_DD_HH_MM));
         holder.deleteButton.setOnClickListener(v -> {
             Weather removeWeather = weatherList.get(holder.getAdapterPosition());
             weatherList.remove(removeWeather);
@@ -66,6 +68,8 @@ public class CityManagerAdapter extends BaseRecyclerViewAdapter<CityManagerAdapt
         ImageButton deleteButton;
         @BindView(R.id.item_tv_city)
         TextView city;
+        @BindView(R.id.item_tv_publish_time)
+        TextView publishTime;
         @BindView(R.id.item_tv_weather)
         TextView weather;
         @BindView(R.id.item_tv_temp)

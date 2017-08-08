@@ -44,6 +44,7 @@
                     android:layout_marginBottom="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
+                    android:textSize="@dimen/text_size_caption"
                     android:textColor="@android:color/white"
                     tools:text="发布时间 2017-08-02 19:00" />
 
@@ -56,7 +57,7 @@
                     android:layout_alignRight="@id/publish_time_text_view"
                     android:includeFontPadding="false"
                     android:textColor="@android:color/white"
-                    android:textSize="96sp"
+                    android:textSize="88sp"
                     tools:text="12°" />
 
                 <TextView
@@ -67,7 +68,7 @@
                     android:layout_alignEnd="@+id/publish_time_text_view"
                     android:layout_alignRight="@+id/publish_time_text_view"
                     android:textColor="@android:color/white"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/text_size_title"
                     tools:text="小雨" />
 
                 <ImageView

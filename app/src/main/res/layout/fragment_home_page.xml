@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.baronzhang.android.weather.view.fragment.HomePageFragment">
+    tools:context="com.baronzhang.android.weather.view.fragment.HomePageFragment"
+    tools:ignore="RtlHardcoded">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -106,7 +107,7 @@
                     android:layout_below="@id/aqi_title"
                     android:layout_marginTop="8dp"
                     android:includeFontPadding="false"
-                    android:textSize="48sp"
+                    android:textSize="46sp"
                     tools:text="29" />
 
                 <TextView
@@ -114,12 +115,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@id/tv_aqi"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_toEndOf="@id/tv_aqi"
                     android:layout_toRightOf="@id/tv_aqi"
                     android:includeFontPadding="false"
-                    android:textSize="26sp"
+                    android:textSize="@dimen/text_size_headline"
                     tools:text="优" />
 
                 <com.baronzhang.android.widget.IndicatorView
@@ -153,7 +154,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_below="@id/tv_advice"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="4dp"
+                    android:textSize="@dimen/text_size_caption"
                     tools:text="空气质量超过全国4%的城市或地区" />
 
             </RelativeLayout>
