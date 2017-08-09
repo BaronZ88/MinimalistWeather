@@ -7,4 +7,6 @@
     <color name="colorForWelcome">@color/colorPrimary</color>
 
     <color name="lineColor">#E6E6E6</color>
+
+    <color name="textColorDarkerGray">@android:color/darker_gray</color>
 </resources>

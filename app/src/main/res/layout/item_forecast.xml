@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="60dp"
     android:background="?android:attr/selectableItemBackground"
     android:padding="6dp"
     tools:ignore="RtlHardcoded">
@@ -20,18 +20,19 @@
         android:id="@+id/date_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_marginLeft="3dp"
         android:layout_toRightOf="@id/week_text_view"
+        android:layout_alignBottom="@id/week_text_view"
+        android:textColor="@android:color/darker_gray"
         android:textSize="@dimen/text_size_caption_small"
         tools:text="08.07" />
 
     <ImageView
         android:id="@+id/weather_icon_image_view"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="60dp"
+        android:layout_marginLeft="50dp"
         android:layout_toRightOf="@id/date_text_view"
         android:contentDescription="@string/content_description_default"
         tools:src="@mipmap/ic_launcher" />
@@ -41,11 +42,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="2dp"
+        android:layout_marginLeft="4dp"
         android:layout_toRightOf="@id/weather_icon_image_view"
         android:gravity="center"
         android:lines="1"
-        android:textColor="#52D681"
+        android:textColor="@color/textColorDarkerGray"
         android:textSize="@dimen/text_size_body"
         tools:text="多云转晴" />
 
@@ -57,7 +58,6 @@
         android:layout_centerVertical="true"
         android:gravity="center"
         android:lines="1"
-        android:textColor="#52D681"
         android:textSize="@dimen/text_size_body"
         tools:text="13°" />
 

@@ -1,6 +1,5 @@
 package com.baronzhang.android.weather.activity;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -29,6 +28,8 @@ import com.baronzhang.android.weather.presenter.DrawerMenuPresenter;
 import com.baronzhang.android.weather.presenter.HomePagePresenter;
 import com.baronzhang.android.weather.view.fragment.DrawerMenuFragment;
 import com.baronzhang.android.weather.view.fragment.HomePageFragment;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 
 import javax.inject.Inject;
 
@@ -42,6 +43,10 @@ import butterknife.ButterKnife;
  */
 public class MainActivity extends BaseActivity
         implements HomePageFragment.OnFragmentInteractionListener, DrawerMenuFragment.OnSelectCity {
+
+
+    @BindView(R.id.refresh_layout)
+    SmartRefreshLayout smartRefreshLayout;
 
     @BindView(R.id.collapsing_toolbar)
     CollapsingToolbarLayout collapsingToolbarLayout;
@@ -62,6 +67,8 @@ public class MainActivity extends BaseActivity
     HomePagePresenter homePagePresenter;
     DrawerMenuPresenter drawerMenuPresenter;
 
+    private String currentCityId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +86,12 @@ public class MainActivity extends BaseActivity
 
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
+
+        //设置 Header 为 Material风格
+        ClassicsHeader header = new ClassicsHeader(this);
+        header.setPrimaryColors(this.getResources().getColor(R.color.colorPrimary), Color.WHITE);
+        this.smartRefreshLayout.setRefreshHeader(header);
+        this.smartRefreshLayout.setOnRefreshListener(refreshLayout -> homePagePresenter.loadWeather(currentCityId, true));
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -132,6 +145,8 @@ public class MainActivity extends BaseActivity
 
     @Override
     public void updatePageTitle(Weather weather) {
+        currentCityId = weather.getCityId();
+        smartRefreshLayout.finishRefresh();
         toolbar.setTitle(weather.getCityName());
         collapsingToolbarLayout.setTitle(weather.getCityName());
 
@@ -151,6 +166,6 @@ public class MainActivity extends BaseActivity
         assert drawerLayout != null;
         drawerLayout.closeDrawer(GravityCompat.START);
 
-        new Handler().postDelayed(() -> homePagePresenter.loadWeather(cityId), 250);
+        new Handler().postDelayed(() -> homePagePresenter.loadWeather(cityId, false), 250);
     }
 }

@@ -20,6 +20,7 @@ import java.sql.SQLException;
 import rx.Observable;
 import rx.Subscriber;
 import rx.exceptions.Exceptions;
+import rx.functions.Func1;
 import rx.functions.Func3;
 import rx.schedulers.Schedulers;
 
@@ -29,7 +30,7 @@ import rx.schedulers.Schedulers;
  */
 public class WeatherDataRepository {
 
-    public static Observable<Weather> getWeather(Context context, String cityId, WeatherDao weatherDao) {
+    public static Observable<Weather> getWeather(Context context, String cityId, WeatherDao weatherDao, boolean refreshNow) {
 
         //从数据库获取天气数据
         Observable<Weather> observableForGetWeatherFromDB = Observable.create(subscriber -> {
@@ -79,6 +80,6 @@ public class WeatherDataRepository {
         return Observable.concat(observableForGetWeatherFromDB, observableForGetWeatherFromNetWork)
                 .filter(weather -> weather != null && !TextUtils.isEmpty(weather.getCityId()))
                 .distinct(weather -> weather.getWeatherLive().getTime())
-                .takeUntil(weather -> System.currentTimeMillis() - weather.getWeatherLive().getTime() <= 15 * 60 * 1000);
+                .takeUntil(weather -> !refreshNow && System.currentTimeMillis() - weather.getWeatherLive().getTime() <= 15 * 60 * 1000);
     }
 }

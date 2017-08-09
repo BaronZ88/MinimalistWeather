@@ -16,6 +16,6 @@ public interface HomePageContract {
 
     interface Presenter extends BasePresenter {
 
-        void loadWeather(String cityId);
+        void loadWeather(String cityId, boolean refreshNow);
     }
 }

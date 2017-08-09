@@ -28,6 +28,10 @@ import com.baronzhang.android.weather.view.adapter.ForecastAdapter;
 import com.baronzhang.android.weather.view.adapter.LifeIndexAdapter;
 import com.baronzhang.android.weather.view.entity.WeatherDetail;
 import com.baronzhang.android.widget.IndicatorView;
+import com.scwang.smartrefresh.header.MaterialHeader;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,14 +42,6 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 public class HomePageFragment extends BaseFragment implements HomePageContract.View {
-
-//    //基本天气信息
-//    @BindView(R.id.temp_text_view)
-//    TextView tempTextView;
-//    @BindView(R.id.weather_text_view)
-//    TextView weatherNameTextView;
-//    @BindView(R.id.publish_time_text_view)
-//    TextView realTimeTextView;
 
     //AQI
     @BindView(R.id.tv_aqi)
@@ -169,9 +165,6 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
 
         this.weather = weather;
         onFragmentInteractionListener.updatePageTitle(weather);
-//        tempTextView.setText(weather.getWeatherLive().getTemp());
-//        weatherNameTextView.setText(weather.getWeatherLive().getWeather());
-//        realTimeTextView.setText(getString(R.string.string_publish_time) + DateConvertUtils.timeStampToDate(weather.getWeatherLive().getTime(), DateConvertUtils.DATA_FORMAT_PATTEN_YYYY_MM_DD_HH_MM));
 
         AirQualityLive airQualityLive = weather.getAirQualityLive();
         aqiIndicatorView.setIndicatorValue(airQualityLive.getAqi());
@@ -229,6 +222,7 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
 
         /**
          * 更新完天气数据同时需要刷新侧边栏的已添加的城市列表
+         *
          * @param weather 天气数据
          */
         void addOrUpdateCityListInDrawerMenu(Weather weather);

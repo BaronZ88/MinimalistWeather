@@ -19,8 +19,8 @@
 
         <ImageView
             android:id="@+id/detail_icon_image_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:contentDescription="@string/content_description_default"
             tools:src="@mipmap/ic_launcher" />
 
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:lines="1"
-            android:textSize="@dimen/text_size_title"
+            android:textSize="@dimen/text_size_title_small"
             tools:text="42°C" />
 
     </LinearLayout>

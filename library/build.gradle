@@ -54,5 +54,8 @@ dependencies {
     debugCompile rootProject.ext.dependencies["stetho"]
     debugCompile rootProject.ext.dependencies["stetho-okhttp3"]
 
+    compile rootProject.ext.dependencies["SmartRefreshLayout"]
+    compile rootProject.ext.dependencies["SmartRefreshHeader"]
+
     compile 'org.glassfish:javax.annotation:10.0-b28'
 }

@@ -48,13 +48,13 @@ public final class HomePagePresenter implements HomePageContract.Presenter {
     @Override
     public void subscribe() {
         String cityId = PreferenceHelper.getSharedPreferences().getString(WeatherSettings.SETTINGS_CURRENT_CITY_ID.getId(), "");
-        loadWeather(cityId);
+        loadWeather(cityId, false);
     }
 
     @Override
-    public void loadWeather(String cityId) {
+    public void loadWeather(String cityId, boolean refreshNow) {
 
-        Subscription subscription = WeatherDataRepository.getWeather(context, cityId, weatherDao)
+        Subscription subscription = WeatherDataRepository.getWeather(context, cityId, weatherDao, refreshNow)
                 .compose(RxSchedulerUtils.normalSchedulersTransformer())
                 .subscribe(weatherView::displayWeatherInformation, throwable -> {
                     Toast.makeText(context, throwable.getMessage(), Toast.LENGTH_LONG).show();
