@@ -49,9 +49,11 @@ public class SelectCityActivity extends BaseActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
-
-        selectCityFragment = SelectCityFragment.newInstance();
-        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), selectCityFragment, R.id.fragment_container);
+        selectCityFragment = (SelectCityFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        if (selectCityFragment == null) {
+            selectCityFragment = SelectCityFragment.newInstance();
+            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), selectCityFragment, R.id.fragment_container);
+        }
 
         DaggerSelectCityComponent.builder()
                 .applicationComponent(WeatherApplication.getInstance().getApplicationComponent())

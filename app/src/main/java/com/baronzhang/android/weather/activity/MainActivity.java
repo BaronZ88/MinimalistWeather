@@ -99,16 +99,23 @@ public class MainActivity extends BaseActivity
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        HomePageFragment homePageFragment = HomePageFragment.newInstance();
-        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), homePageFragment, R.id.fragment_container);
+        HomePageFragment homePageFragment = (HomePageFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        if (homePageFragment == null) {
+
+            homePageFragment = HomePageFragment.newInstance();
+            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), homePageFragment, R.id.fragment_container);
+        }
 
         DaggerHomePageComponent.builder()
                 .applicationComponent(WeatherApplication.getInstance().getApplicationComponent())
                 .homePageModule(new HomePageModule(homePageFragment))
                 .build().inject(this);
 
-        DrawerMenuFragment drawerMenuFragment = DrawerMenuFragment.newInstance(1);
-        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), drawerMenuFragment, R.id.fragment_container_drawer_menu);
+        DrawerMenuFragment drawerMenuFragment = (DrawerMenuFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container_drawer_menu);
+        if (drawerMenuFragment == null) {
+            drawerMenuFragment = DrawerMenuFragment.newInstance(1);
+            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), drawerMenuFragment, R.id.fragment_container_drawer_menu);
+        }
 
         drawerMenuPresenter = new DrawerMenuPresenter(this, drawerMenuFragment);
     }

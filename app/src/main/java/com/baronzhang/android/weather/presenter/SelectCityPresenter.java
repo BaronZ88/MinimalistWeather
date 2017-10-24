@@ -1,6 +1,7 @@
 package com.baronzhang.android.weather.presenter;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.baronzhang.android.weather.ApplicationModule;
 import com.baronzhang.android.weather.contract.SelectCityContract;

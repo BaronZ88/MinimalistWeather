@@ -1,9 +1,11 @@
 package com.baronzhang.android.weather.view.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,13 +50,7 @@ public class SelectCityFragment extends BaseFragment implements SelectCityContra
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View rootView = inflater.inflate(R.layout.fragment_select_city, container, false);
         unbinder = ButterKnife.bind(this, rootView);
 
@@ -80,10 +76,6 @@ public class SelectCityFragment extends BaseFragment implements SelectCityContra
         return rootView;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
 
     @Override
     public void onDestroyView() {
@@ -91,6 +83,7 @@ public class SelectCityFragment extends BaseFragment implements SelectCityContra
         unbinder.unbind();
         presenter.unSubscribe();
     }
+
 
     @Override
     public void displayCities(List<City> cities) {

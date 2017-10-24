@@ -40,8 +40,11 @@ public class CityManagerActivity extends BaseActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        DrawerMenuFragment drawerMenuFragment = DrawerMenuFragment.newInstance(3);
-        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), drawerMenuFragment, R.id.fragment_container);
+        DrawerMenuFragment drawerMenuFragment = (DrawerMenuFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        if (drawerMenuFragment == null) {
+            drawerMenuFragment = DrawerMenuFragment.newInstance(3);
+            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), drawerMenuFragment, R.id.fragment_container);
+        }
 
         DaggerCityManagerComponent.builder()
                 .applicationComponent(WeatherApplication.getInstance().getApplicationComponent())
