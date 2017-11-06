@@ -1,32 +1,13 @@
 apply plugin: 'com.android.application'
-apply plugin: 'me.tatarka.retrolambda'
-//apply plugin: 'io.fabric'
-//
-//
-//buildscript {
-//    repositories {
-//        maven { url 'https://maven.fabric.io/public' }
-//    }
-//
-//    dependencies {
-//        classpath 'io.fabric.tools:gradle:1.21.7'
-//    }
-//}
-//
-//repositories {
-//    maven { url 'https://maven.fabric.io/public' }
-//}
-
 
 android {
-    compileSdkVersion rootProject.ext.android.compileSdkVersion
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig {
         applicationId rootProject.ext.android.applicationId
         minSdkVersion rootProject.ext.android.minSdkVersion
@@ -56,18 +37,17 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
 
-    releaseCompile project(path: ':library', configuration: 'release')
-    debugCompile project(path: ':library', configuration: 'debug')
-    compile project(':widget')
+    implementation project(':library')
+    implementation project(':widget')
 
-    compile rootProject.ext.dependencies["butterknife"]
+    implementation rootProject.ext.dependencies["butterknife"]
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
 
-    compile rootProject.ext.dependencies["dagger"]
+    implementation rootProject.ext.dependencies["dagger"]
     annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
 
-    compile rootProject.ext.dependencies["retrofit2-fastjson-converter"]
+    implementation rootProject.ext.dependencies["retrofit2-fastjson-converter"]
 }
