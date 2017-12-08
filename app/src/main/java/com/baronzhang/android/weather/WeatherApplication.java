@@ -5,9 +5,12 @@ import android.content.Context;
 import android.os.StrictMode;
 import android.util.Log;
 
-import com.baronzhang.android.weather.model.http.ApiClient;
-import com.baronzhang.android.weather.model.http.ApiConstants;
-import com.baronzhang.android.weather.model.http.configuration.ApiConfiguration;
+import com.baronzhang.android.weather.data.http.ApiClient;
+import com.baronzhang.android.weather.data.http.ApiConstants;
+import com.baronzhang.android.weather.data.http.configuration.ApiConfiguration;
+import com.baronzhang.android.weather.di.component.ApplicationComponent;
+import com.baronzhang.android.weather.di.component.DaggerApplicationComponent;
+import com.baronzhang.android.weather.di.module.ApplicationModule;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)

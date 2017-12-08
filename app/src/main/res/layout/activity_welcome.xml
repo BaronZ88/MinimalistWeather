@@ -6,7 +6,7 @@
     android:fitsSystemWindows="true"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="com.baronzhang.android.weather.activity.WelcomeActivity">
+    tools:context="com.baronzhang.android.weather.WelcomeActivity">
 
     <TextView
         android:layout_width="wrap_content"

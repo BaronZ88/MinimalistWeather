@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.WelcomeActivity"
+            android:name=".WelcomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/LaunchTheme">
             <intent-filter>
@@ -23,21 +23,12 @@
         </activity>
 
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".feature.home.MainActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.SelectCityActivity"
+            android:name=".feature.selectcity.SelectCityActivity"
             android:label="@string/title_activity_select_city"
-            android:screenOrientation="portrait">
-            <meta-date
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.MainActivity" />
-        </activity>
-
-        <activity
-            android:name=".activity.CityManagerActivity"
-            android:label="@string/title_activity_city_manager"
             android:screenOrientation="portrait">
             <meta-date
                 android:name="android.support.PARENT_ACTIVITY"

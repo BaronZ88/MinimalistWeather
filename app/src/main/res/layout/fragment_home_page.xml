@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.baronzhang.android.weather.view.fragment.HomePageFragment"
+    tools:context="com.baronzhang.android.weather.feature.home.HomePageFragment"
     tools:ignore="RtlHardcoded">
 
     <LinearLayout
