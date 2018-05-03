@@ -56,7 +56,7 @@
 
 **欢迎扫码关注公众号交流**
 
-![](http://ocjtywvav.bkt.clouddn.com/blog/common/qrcode1.png)
+<img src="http://ocjtywvav.bkt.clouddn.com/blog/common/qrcode1.png" width="70%" height="70%" />
 
 ## 三. 开源许可 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
