@@ -1,6 +1,8 @@
-## MinimalistWeather
+# MinimalistWeather
 
 > 欢迎关注微信公众号：**BaronTalk**
+
+## 一. 前言
 
 **MinimalistWeather 是 Android 平台上一款开源天气 App ，目前还在开发中。项目基于 MVP 架构，采用各主流开源库实现。开发此项目主要是为展示各种开源库的使用方式以及 Android 项目的设计方案，并作为团队项目开发规范的一部分。**
 
@@ -27,11 +29,11 @@
 * 代码混淆配置；
 * 如何快速开发一款结构清晰、可扩展性强的Android Application。
 
-### 项目结构设计图
+## 二. 项目结构设计图
 
 ![架构设计图](framework_minimalist_weather.png)
 
-### 项目包结构介绍
+## 三. 项目包结构介绍
 
 **App Module包结构**
 
@@ -56,7 +58,7 @@
 
 ![](http://ocjtywvav.bkt.clouddn.com/blog/common/qrcode1.png)
 
-### 开源许可 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+## 三. 开源许可 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 ```
 Copyright 2017 Baron Zhang
