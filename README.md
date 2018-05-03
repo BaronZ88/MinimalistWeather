@@ -1,5 +1,7 @@
 ## MinimalistWeather
 
+> 欢迎关注微信公众号：**BaronTalk**
+
 **MinimalistWeather 是 Android 平台上一款开源天气 App ，目前还在开发中。项目基于 MVP 架构，采用各主流开源库实现。开发此项目主要是为展示各种开源库的使用方式以及 Android 项目的设计方案，并作为团队项目开发规范的一部分。**
 
 采用的开源库包括：
@@ -35,47 +37,24 @@
 
 ```Java
 -com.baronzhang.android.weather
-    + activity	  //Activity不再负责View的职责，仅仅是一个全局的控制者，负责创建View和Presenter的实例
-    + contract    //契约类，用于统一管理View和Presenter的接口
-    - model       //MVP中的Model层
-        + db
-        + http
-        + preference
-        + repository //Model层中的Data Repository模块，对Presenter层屏蔽数据来源和细节，并将Model成中的数据包装成Rx Observer
-    + presenter               //MVP中的Presenter层
+    + base	  // MVP 各组件的基类及相关基础类
+    + data    // MVP 中所有 Model 层的数据处理都在这里
+    - feature       // 业务 feature，feature 内按页面划分，如果是大型项目可以按业务模块划分，对于特大型项目建议走模块化（组件化）方案，每个业务模块再按照 MinimalistWeather 的分包规则来分包
+        + home
+        - selectcity
+            - xxActivity.java // Activity 作为全局的控制者，用来负责创建 View 和 Presenter 的实例
+            - xxFragment.java 
+            - xxPresenter.java
+            - xxContract.java // 契约类，用来统一管理 View 和 Presenter 的接口
     + util
-    - view                    //MVP中的View层
-        + adapter
-        + fragment
-        + widget
-    - AppConstants.java        //App全局常量
-    - WeatherApplication.java  //Application类
+    - AppConstants.java        // App 全局常量
+    - WeatherApplication.java  // Application 类
+    - WelcomeActivity.java     // 放在这里是为了便于查找应用程序入口
 ```
 
-对于包结构的规范，大家不要照搬这个项目。由于这里只是个Demo，体量小，不会涉及到过多的业务，所以这样分包是合理的。但是在商业项目中，建议大家先按业务分包，然后再去遵循上面的分包规则。至于业务分包的粒度就需要大家根据各自的业务项目去合理把控了。拿安居客的来举例，我们可以这样分包：
+**欢迎扫码关注公众号交流**
 
-```Java
--com.anjuke.android.app
-    + chat            //微聊业务
-    + newhouse        //新房业务
-    - secondhouse     //二手房业务
-        + activity    //Activity不再负责View的职责，仅仅是一个全局的控制者，负责创建View和Presenter的实例
-        + contract    //契约类，用于统一管理View和Presenter的接口
-        - model       //MVP中的Model层
-            + db
-            + http
-            + preference
-            + repository  //Model层中的Data Repository模块，对Presenter层屏蔽数据来源和细节，并将Model成中的数据包装成Rx Observer
-        + presenter       //MVP中的Presenter层
-        + util
-        - view            //MVP中的View层
-            + adapter
-            + fragment
-            + widget
-    + renthouse           //租房业务
-    - AppConstants.java   //App全局常量
-    - AnjukeApp.java      //Application类
-```
+![](http://ocjtywvav.bkt.clouddn.com/blog/common/qrcode1.png)
 
 ### 开源许可 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 

@@ -29,11 +29,8 @@
         <activity
             android:name=".feature.selectcity.SelectCityActivity"
             android:label="@string/title_activity_select_city"
-            android:screenOrientation="portrait">
-            <meta-date
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.MainActivity" />
-        </activity>
+            android:screenOrientation="portrait" />
+
 
     </application>
 
