@@ -1,4 +1,4 @@
-package com.baronzhang.android.weather.util.stetho;
+package com.baronzhang.android.weather;
 
 import android.content.Context;
 
