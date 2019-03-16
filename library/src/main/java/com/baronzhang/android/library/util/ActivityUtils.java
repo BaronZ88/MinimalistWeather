@@ -1,9 +1,9 @@
 package com.baronzhang.android.library.util;
 
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)

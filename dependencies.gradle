@@ -1,31 +1,36 @@
-def supportVersion = "27.1.1"
+def supportVersion = "28.0.0"
 def rxBindingVersion = "0.4.0"
-def retrofitVersion = "2.2.0"
-def okHttpVersion = "3.7.0"
+def retrofitVersion = "2.5.0"
+def okHttpVersion = "3.14.0"
 def stethoVersion = "1.5.0"
-def butterKnifeVersion = "8.8.1"
+def butterKnifeVersion = "10.1.0"
 def daggerVersion = "2.8"
 def ormLiteVersion = "4.48"
 def fastJsonVersion = "1.1.60.android"
 
 project.ext {
     android = [
-            compileSdkVersion: 27,
-            buildToolsVersion: "27.0.3",
+            compileSdkVersion: 28,
             applicationId    : "com.baronzhang.android.weather",
-            minSdkVersion    : 15,
-            targetSdkVersion : 27,
+            minSdkVersion    : 19,
+            targetSdkVersion : 28,
             versionCode      : 1,
             versionName      : "1.0"
     ]
 
     dependencies = [
             //android-support
-            "support-v4"                  : "com.android.support:support-v4:${supportVersion}",
-            "appcompat-v7"                : "com.android.support:appcompat-v7:${supportVersion}",
-            "design"                      : "com.android.support:design:${supportVersion}",
-            "recyclerview"                : "com.android.support:recyclerview-v7:${supportVersion}",
-            "cardview"                    : "com.android.support:cardview-v7:${supportVersion}",
+//            "support-v4"                  : "com.android.support:support-v4:${supportVersion}",
+//            "appcompat-v7"                : "com.android.support:appcompat-v7:${supportVersion}",
+//            "design"                      : "com.android.support:design:${supportVersion}",
+//            "recyclerview"                : "com.android.support:recyclerview-v7:${supportVersion}",
+//            "cardview"                    : "com.android.support:cardview-v7:${supportVersion}",
+
+            "support-v4"                  : "androidx.legacy:legacy-support-v4:1.0.0",
+            "appcompat-v7"                : "androidx.appcompat:appcompat:1.0.0",
+            "design"                      : "com.google.android.material:material:1.0.0-rc01",
+            "recyclerview"                : "androidx.recyclerview:recyclerview:1.0.0",
+            "cardview"                    : "androidx.cardview:cardview:1.0.0",
 
             //java8-support
             "stream"                      : "com.annimon:stream:1.0.8",
