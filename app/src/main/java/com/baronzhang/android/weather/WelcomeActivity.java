@@ -31,11 +31,14 @@ public class WelcomeActivity extends BaseActivity {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(result -> gotoMainPage());
+
     }
 
     private void gotoMainPage() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        // 修复 Android 9.0 下 Activity 跳转动画导致的启动页闪屏的问题
+        overridePendingTransition(0, 0);
         finish();
     }
 
