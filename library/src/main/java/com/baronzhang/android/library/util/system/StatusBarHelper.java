@@ -15,18 +15,18 @@ import java.lang.annotation.RetentionPolicy;
  */
 public class StatusBarHelper {
 
-    public static final int MIUI = 1;
-    public static final int FLYME = 2;
-    public static final int ANDROID_M = 3;
-    public static final int OTHER = 4;
+    private static final int MIUI = 1;
+    private static final int FLYME = 2;
+    private static final int ANDROID_M = 3;
+    private static final int OTHER = 4;
 
     @IntDef({MIUI, FLYME, ANDROID_M, OTHER})
     @Retention(RetentionPolicy.SOURCE)
     @interface SystemType {
     }
 
-    public static int statusBarLightMode(Activity activity) {
-        return statusMode(activity, true);
+    public static void statusBarLightMode(Activity activity) {
+        statusMode(activity, true);
     }
 
     public static int statusBarDarkMode(Activity activity) {
