@@ -62,7 +62,7 @@
 
 **欢迎扫码关注公众号交流**
 
-<img src="http://ocjtywvav.bkt.clouddn.com/blog/common/qrcode1.png" width="70%" height="70%" />
+<img src="扫码关注.png" width="80%" height="80%" />
 
 ## 三. 开源许可 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
