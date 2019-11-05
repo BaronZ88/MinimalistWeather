@@ -64,7 +64,7 @@
 
 **欢迎扫码关注公众号交流**
 
-<div align="center"><img src="http://resources.baronzhang.com/blog/common/gzh3.png" width="85%"/></div>
+<div align="center"><img src="http://resources.baronzhang.com/blog/common/gzh3.png" width="80%"/></div>
 
 ## 三. 开源许可 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
