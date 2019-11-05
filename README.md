@@ -2,6 +2,8 @@
 
 > 欢迎关注微信公众号：**BaronTalk**
 
+> 这是个新分支，将使用 Kotlin + Google 架构组件 + MVVM 将项目重新，并完善更多功能。
+
 
 ## 一. 前言
 
@@ -62,7 +64,7 @@
 
 **欢迎扫码关注公众号交流**
 
-<img src="扫码关注.png" width="80%" height="80%" />
+<div align="center"><img src="http://resources.baronzhang.com/blog/common/gzh3.png" width="85%"/></div>
 
 ## 三. 开源许可 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
