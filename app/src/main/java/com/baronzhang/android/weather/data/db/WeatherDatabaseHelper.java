@@ -30,7 +30,7 @@ public final class WeatherDatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     private static volatile WeatherDatabaseHelper instance;
 
-    public WeatherDatabaseHelper(Context context) {
+    private WeatherDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 

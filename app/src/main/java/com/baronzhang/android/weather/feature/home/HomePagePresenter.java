@@ -8,11 +8,6 @@ import com.baronzhang.android.weather.data.db.dao.WeatherDao;
 import com.baronzhang.android.weather.data.preference.PreferenceHelper;
 import com.baronzhang.android.weather.data.preference.WeatherSettings;
 import com.baronzhang.android.weather.data.repository.WeatherDataRepository;
-import com.baronzhang.android.weather.di.component.DaggerPresenterComponent;
-import com.baronzhang.android.weather.di.module.ApplicationModule;
-import com.baronzhang.android.weather.di.scope.ActivityScoped;
-
-import javax.inject.Inject;
 
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
@@ -20,7 +15,6 @@ import rx.subscriptions.CompositeSubscription;
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  */
-@ActivityScoped
 public final class HomePagePresenter implements HomePageContract.Presenter {
 
     private final Context context;
@@ -28,10 +22,8 @@ public final class HomePagePresenter implements HomePageContract.Presenter {
 
     private CompositeSubscription subscriptions;
 
-    @Inject
-    WeatherDao weatherDao;
+    private WeatherDao weatherDao;
 
-    @Inject
     HomePagePresenter(Context context, HomePageContract.View view) {
 
         this.context = context;
@@ -39,9 +31,7 @@ public final class HomePagePresenter implements HomePageContract.Presenter {
         this.subscriptions = new CompositeSubscription();
         weatherView.setPresenter(this);
 
-        DaggerPresenterComponent.builder()
-                .applicationModule(new ApplicationModule(context))
-                .build().inject(this);
+        weatherDao = new WeatherDao(context);
     }
 
     @Override

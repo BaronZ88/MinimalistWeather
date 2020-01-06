@@ -17,8 +17,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-import javax.inject.Inject;
-
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         16/3/14
@@ -33,8 +31,7 @@ public class WeatherDao {
     private Dao<WeatherLive, String> realTimeDaoOperation;
     private Dao<Weather, String> weatherDaoOperation;
 
-    @Inject
-    WeatherDao(Context context) {
+    public WeatherDao(Context context) {
 
         this.context = context;
         this.apiDaoOperation = WeatherDatabaseHelper.getInstance(context).getWeatherDao(AirQualityLive.class);

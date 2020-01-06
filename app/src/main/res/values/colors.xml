@@ -9,4 +9,6 @@
     <color name="lineColor">#E6E6E6</color>
 
     <color name="textColorDarkerGray">@android:color/darker_gray</color>
+
+    <color name="navigation_bar_color">#fffafafa</color>
 </resources>

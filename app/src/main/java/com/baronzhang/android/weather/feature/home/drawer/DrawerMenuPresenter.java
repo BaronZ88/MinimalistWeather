@@ -6,15 +6,10 @@ import com.baronzhang.android.weather.data.db.dao.WeatherDao;
 import com.baronzhang.android.weather.data.db.entities.minimalist.Weather;
 import com.baronzhang.android.weather.data.preference.PreferenceHelper;
 import com.baronzhang.android.weather.data.preference.WeatherSettings;
-import com.baronzhang.android.weather.di.component.DaggerPresenterComponent;
-import com.baronzhang.android.weather.di.module.ApplicationModule;
-import com.baronzhang.android.weather.di.scope.ActivityScoped;
 
 import java.io.InvalidClassException;
 import java.sql.SQLException;
 import java.util.List;
-
-import javax.inject.Inject;
 
 import rx.Observable;
 import rx.Subscription;
@@ -26,7 +21,6 @@ import rx.subscriptions.CompositeSubscription;
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         16/4/16
  */
-@ActivityScoped
 public final class DrawerMenuPresenter implements DrawerContract.Presenter {
 
     private DrawerContract.View view;
@@ -34,19 +28,15 @@ public final class DrawerMenuPresenter implements DrawerContract.Presenter {
 
     private CompositeSubscription subscriptions;
 
-    @Inject
-    WeatherDao weatherDao;
+    private WeatherDao weatherDao;
 
-    @Inject
     public DrawerMenuPresenter(Context context, DrawerContract.View view) {
 
         this.view = view;
         this.subscriptions = new CompositeSubscription();
         view.setPresenter(this);
 
-        DaggerPresenterComponent.builder()
-                .applicationModule(new ApplicationModule(context))
-                .build().inject(this);
+        weatherDao = new WeatherDao(context);
     }
 
     @Override

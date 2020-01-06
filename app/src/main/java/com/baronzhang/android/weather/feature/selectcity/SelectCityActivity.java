@@ -1,9 +1,11 @@
 package com.baronzhang.android.weather.feature.selectcity;
 
 import android.os.Bundle;
+
 import androidx.core.view.MenuItemCompat;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -14,8 +16,6 @@ import com.baronzhang.android.weather.WeatherApplication;
 import com.jakewharton.rxbinding.support.v7.widget.RxSearchView;
 
 import java.util.concurrent.TimeUnit;
-
-import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,8 +31,7 @@ public class SelectCityActivity extends BaseActivity {
 
     SelectCityFragment selectCityFragment;
 
-    @Inject
-    SelectCityPresenter selectCityPresenter;
+    private SelectCityPresenter selectCityPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +49,7 @@ public class SelectCityActivity extends BaseActivity {
             selectCityFragment = SelectCityFragment.newInstance();
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), selectCityFragment, R.id.fragment_container);
         }
-
-        DaggerSelectCityComponent.builder()
-                .applicationComponent(WeatherApplication.getInstance().getApplicationComponent())
-                .selectCityModule(new SelectCityModule(selectCityFragment))
-                .build().inject(this);
+        selectCityPresenter = new SelectCityPresenter(this, selectCityFragment);
     }
 
     @Override

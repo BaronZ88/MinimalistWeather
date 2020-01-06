@@ -16,6 +16,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.Objects;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
@@ -30,7 +31,7 @@ public final class CityDatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     private static volatile CityDatabaseHelper instance;
 
-    public CityDatabaseHelper(Context context) {
+    private CityDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -84,10 +85,10 @@ public final class CityDatabaseHelper extends OrmLiteSqliteOpenHelper {
     public static void importCityDB() {
 
         // 判断保持城市的数据库文件是否存在
-        File file = new File(WeatherApplication.getInstance().getDatabasePath(DATABASE_NAME).getAbsolutePath());
+        File file = new File(Objects.requireNonNull(WeatherApplication.Companion.getInstance()).getDatabasePath(DATABASE_NAME).getAbsolutePath());
         if (!file.exists()) {// 如果不存在，则导入数据库文件
             //数据库文件
-            File dbFile = WeatherApplication.getInstance().getDatabasePath(DATABASE_NAME);
+            File dbFile = WeatherApplication.Companion.getInstance().getDatabasePath(DATABASE_NAME);
             try {
                 if (!dbFile.getParentFile().exists()) {
                     dbFile.getParentFile().mkdir();
@@ -96,7 +97,7 @@ public final class CityDatabaseHelper extends OrmLiteSqliteOpenHelper {
                     dbFile.createNewFile();
                 }
                 //加载欲导入的数据库
-                InputStream is = WeatherApplication.getInstance().getResources().openRawResource(R.raw.city);
+                InputStream is = WeatherApplication.Companion.getInstance().getResources().openRawResource(R.raw.city);
                 FileOutputStream fos = new FileOutputStream(dbFile);
                 byte[] buffer = new byte[is.available()];
                 is.read(buffer);

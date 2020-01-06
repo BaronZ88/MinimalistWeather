@@ -3,11 +3,6 @@ package com.baronzhang.android.weather.feature.selectcity;
 import android.content.Context;
 
 import com.baronzhang.android.weather.data.db.dao.CityDao;
-import com.baronzhang.android.weather.di.component.DaggerPresenterComponent;
-import com.baronzhang.android.weather.di.module.ApplicationModule;
-import com.baronzhang.android.weather.di.scope.ActivityScoped;
-
-import javax.inject.Inject;
 
 import rx.Observable;
 import rx.Subscription;
@@ -18,26 +13,20 @@ import rx.subscriptions.CompositeSubscription;
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  */
-@ActivityScoped
 public final class SelectCityPresenter implements SelectCityContract.Presenter {
 
     private final SelectCityContract.View cityListView;
 
     private CompositeSubscription subscriptions;
 
-    @Inject
-    CityDao cityDao;
+    private CityDao cityDao;
 
-    @Inject
     SelectCityPresenter(Context context, SelectCityContract.View view) {
 
         this.cityListView = view;
         this.subscriptions = new CompositeSubscription();
         cityListView.setPresenter(this);
-
-        DaggerPresenterComponent.builder()
-                .applicationModule(new ApplicationModule(context))
-                .build().inject(this);
+        cityDao = new CityDao(context);
     }
 
     @Override

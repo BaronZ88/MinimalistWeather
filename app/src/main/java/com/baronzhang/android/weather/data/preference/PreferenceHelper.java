@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -53,7 +54,7 @@ public final class PreferenceHelper {
     }
 
     public static SharedPreferences getSharedPreferences() {
-        return WeatherApplication.getInstance().getSharedPreferences(
+        return Objects.requireNonNull(WeatherApplication.Companion.getInstance()).getSharedPreferences(
                 SETTINGS_FILENAME, Context.MODE_PRIVATE);
     }
 

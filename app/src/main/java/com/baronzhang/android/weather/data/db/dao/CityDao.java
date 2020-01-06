@@ -9,8 +9,6 @@ import com.j256.ormlite.stmt.QueryBuilder;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.inject.Inject;
-
 import com.baronzhang.android.weather.data.db.CityDatabaseHelper;
 import com.baronzhang.android.weather.data.db.entities.HotCity;
 
@@ -25,8 +23,7 @@ public class CityDao {
     private Dao<City, Integer> cityDaoOperation;
     private Dao<HotCity, Integer> hotCityDaoOperation;
 
-    @Inject
-    CityDao(Context context) {
+    public CityDao(Context context) {
 
         this.cityDaoOperation = CityDatabaseHelper.getInstance(context).getCityDao(City.class);
         this.hotCityDaoOperation = CityDatabaseHelper.getInstance(context).getCityDao(HotCity.class);

@@ -20,14 +20,11 @@ import com.baronzhang.android.weather.base.BaseActivity;
 import com.baronzhang.android.library.util.ActivityUtils;
 import com.baronzhang.android.library.util.DateConvertUtils;
 import com.baronzhang.android.weather.R;
-import com.baronzhang.android.weather.WeatherApplication;
 import com.baronzhang.android.weather.data.db.entities.minimalist.Weather;
 import com.baronzhang.android.weather.feature.home.drawer.DrawerMenuPresenter;
 import com.baronzhang.android.weather.feature.home.drawer.DrawerMenuFragment;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
-
-import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,9 +56,8 @@ public class MainActivity extends BaseActivity
     @BindView(R.id.publish_time_text_view)
     TextView realTimeTextView;
 
-    @Inject
-    HomePagePresenter homePagePresenter;
-    DrawerMenuPresenter drawerMenuPresenter;
+    private HomePagePresenter homePagePresenter;
+    private DrawerMenuPresenter drawerMenuPresenter;
 
     private String currentCityId;
 
@@ -101,18 +97,14 @@ public class MainActivity extends BaseActivity
             homePageFragment = HomePageFragment.newInstance();
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), homePageFragment, R.id.fragment_container);
         }
+        homePagePresenter = new HomePagePresenter(this, homePageFragment);
 
-        DaggerHomePageComponent.builder()
-                .applicationComponent(WeatherApplication.getInstance().getApplicationComponent())
-                .homePageModule(new HomePageModule(homePageFragment))
-                .build().inject(this);
 
         DrawerMenuFragment drawerMenuFragment = (DrawerMenuFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container_drawer_menu);
         if (drawerMenuFragment == null) {
             drawerMenuFragment = DrawerMenuFragment.newInstance(1);
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), drawerMenuFragment, R.id.fragment_container_drawer_menu);
         }
-
         drawerMenuPresenter = new DrawerMenuPresenter(this, drawerMenuFragment);
     }
 
