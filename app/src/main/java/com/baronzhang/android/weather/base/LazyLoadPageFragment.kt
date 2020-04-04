@@ -19,6 +19,11 @@ abstract class LazyLoadPageFragment : BaseFragment() {
         prepareFetchData()
     }
 
+    /**
+     * setUserVisibleHint()在Fragment实例化时会先调用一次，并且默认值是false，当选中当前显示的Fragment时还会再调用一次。
+     *
+     * 此方法在fragment生命周期开始之前便被调用，运行在onAttach()之前。所以，它运行的时候，fragment都还没创建。
+     */
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
         this.isVisibleToUser = isVisibleToUser
