@@ -8,7 +8,7 @@ import java.util.Locale;
 
 /**
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
- *         2016/12/12
+ * 2016/12/12
  */
 public final class DateConvertUtils {
 
@@ -89,8 +89,10 @@ public final class DateConvertUtils {
         }
         if (date == null)
             return "";
-        return (String.valueOf(date.getMonth()).length() == 1 ? "0" + date.getMonth() : String.valueOf(date.getMonth()))
-                + "." + (String.valueOf(date.getDay()).length() == 1 ? "0" + date.getDay() : String.valueOf(date.getDay()));
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return (String.valueOf(calendar.get(Calendar.MONTH)).length() == 1 ? "0" + calendar.get(Calendar.MONTH) : String.valueOf(calendar.get(Calendar.MONTH)))
+                + "." + (String.valueOf(calendar.get(Calendar.DAY_OF_MONTH)).length() == 1 ? "0" + calendar.get(Calendar.DAY_OF_MONTH) : String.valueOf(calendar.get(Calendar.DAY_OF_MONTH)));
     }
 
     /**
